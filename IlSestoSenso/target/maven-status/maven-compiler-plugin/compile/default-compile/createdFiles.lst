@@ -1,0 +1,13 @@
+di/uniba/map/ilsestosenso/type/AdvObject.class
+di/uniba/map/ilsestosenso/type/AdvObjectContainer.class
+di/uniba/map/ilsestosenso/GameDescription.class
+di/uniba/map/ilsestosenso/type/Command.class
+di/uniba/map/ilsestosenso/games/FireHouseGame.class
+di/uniba/map/ilsestosenso/IlSestoSenso.class
+di/uniba/map/ilsestosenso/Engine.class
+di/uniba/map/ilsestosenso/parser/Parser.class
+di/uniba/map/ilsestosenso/type/CommandType.class
+di/uniba/map/ilsestosenso/type/Room.class
+di/uniba/map/ilsestosenso/parser/ParserOutput.class
+di/uniba/map/ilsestosenso/type/Inventory.class
+di/uniba/map/ilsestosenso/Utils.class
