@@ -65,32 +65,37 @@ public class FireHouseGame extends GameDescription {
         push.setAlias(new String[]{"spingi","attiva"});
         getCommands().add(push);
         //Rooms
-        Room hall = new Room(0, "Corridoio", "Sei appena tornato a casa e non sai cosa fare.\nTi ricordi che non hai ancora aperto quel fantastico regalo di tua zia Lina.\n"
-                + " Sarà il caso di cercarlo e di giocarci!");
-        hall.setLook("Sei nel corridoio, a nord vedi il bagno, a sud il soggiorno e ad ovest la tua cameretta, forse il gioco sarà lì?");
-        Room livingRoom = new Room(1, "Soggiorno", "Ti trovi nel soggiorno.\nCi sono quei mobili marrone scuro che hai sempre odiato e delle orribili sedie.");
-        livingRoom.setLook("Non c'è nulla di interessante qui.");
-        Room kitchen = new Room(2, "Cucina", "Ti trovi nella solita cucina.\nMobili bianchi, maniglie azzurre, quello strano lampadario che adoravi tanto quando eri piccolo.\n"
-                + "C'è un tavolo con un bel portafrutta e una finestra.");
-        kitchen.setLook("La solita cucina, ma noti una chiave vicino al portafrutta.");
-        Room bathroom = new Room(3, "Bagno", "Sei nel bagno.\nQuanto tempo passato qui dentro...meglio non pensarci...");
-        bathroom.setLook("Vedo delle batterie sul mobile alla destra del lavandino.");
-        Room yourRoom = new Room(4, "La tua cameratta", "Finalmente la tua cameretta!\nQuesto luogo ti è così famigliare...ma non ricordi dove hai messo il nuovo regalo di zia Lina.");
-        yourRoom.setLook("C'è un armadio bianco, di solito ci conservi i tuoi giochi.");
-        //maps
-        kitchen.setEast(livingRoom);
-        livingRoom.setNorth(hall);
-        livingRoom.setWest(kitchen);
-        hall.setSouth(livingRoom);
-        hall.setWest(yourRoom);
-        hall.setNorth(bathroom);
-        bathroom.setSouth(hall);
-        yourRoom.setEast(hall);
-        getRooms().add(kitchen);
+        Room entranceHall = new Room(0, "Atrio", "Sei nell atrio");
+        Room livingRoom = new Room(1, "Soggiorno", "Sei nel soggiorno");
+        Room kitchen = new Room(2, "Cucina", "Sei in cucina");
+        Room walkinCloset = new Room(3, "Cabina armadio", "Sei nella cabina armadio");
+        Room bedRoom = new Room(4, "Camera da letto", "Sei nella camera da letto");
+        Room diningRoom = new Room(5, "Sala da pranzo", "Sei nella sala da pranzo");
+        Room bathroom = new Room(6, "Bagno", "Sei nel bagno");
+        Room backyard = new Room(7, "Cortile", "Sei nel cortile");
+        entranceHall.setEast(kitchen);
+        entranceHall.setNorth(livingRoom);
+        livingRoom.setNorth(backyard);
+        livingRoom.setEast(bedRoom);
+        kitchen.setWest(entranceHall);
+        kitchen.setNorth(diningRoom);
+        walkinCloset.setSouth(bedRoom);
+        bedRoom.setNorth(walkinCloset);
+        bedRoom.setEast(bathroom);
+        bedRoom.setWest(livingRoom);
+        diningRoom.setNorth(bathroom);
+        diningRoom.setSouth(kitchen);
+        bathroom.setSouth(diningRoom);
+        bathroom.setWest(bedRoom);
+        backyard.setSouth(livingRoom);
+        getRooms().add(entranceHall);
         getRooms().add(livingRoom);
-        getRooms().add(hall);
+        getRooms().add(kitchen);
+        getRooms().add(walkinCloset);
+        getRooms().add(bedRoom);
+        getRooms().add(diningRoom);
         getRooms().add(bathroom);
-        getRooms().add(yourRoom);
+        getRooms().add(backyard);
         //obejcts
         AdvObject battery = new AdvObject(1, "batteria", "Un pacco di batterie, chissà se sono cariche.");
         battery.setAlias(new String[]{"batterie", "pile", "pila"});
