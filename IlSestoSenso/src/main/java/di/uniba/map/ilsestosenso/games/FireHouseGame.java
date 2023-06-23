@@ -65,49 +65,266 @@ public class FireHouseGame extends GameDescription {
         push.setAlias(new String[]{"spingi","attiva"});
         getCommands().add(push);
         //Rooms
-        Room hall = new Room(0, "Corridoio", "Sei appena tornato a casa e non sai cosa fare.\nTi ricordi che non hai ancora aperto quel fantastico regalo di tua zia Lina.\n"
-                + " Sarà il caso di cercarlo e di giocarci!");
-        hall.setLook("Sei nel corridoio, a nord vedi il bagno, a sud il soggiorno e ad ovest la tua cameretta, forse il gioco sarà lì?");
-        Room livingRoom = new Room(1, "Soggiorno", "Ti trovi nel soggiorno.\nCi sono quei mobili marrone scuro che hai sempre odiato e delle orribili sedie.");
-        livingRoom.setLook("Non c'è nulla di interessante qui.");
-        Room kitchen = new Room(2, "Cucina", "Ti trovi nella solita cucina.\nMobili bianchi, maniglie azzurre, quello strano lampadario che adoravi tanto quando eri piccolo.\n"
-                + "C'è un tavolo con un bel portafrutta e una finestra.");
-        kitchen.setLook("La solita cucina, ma noti una chiave vicino al portafrutta.");
-        Room bathroom = new Room(3, "Bagno", "Sei nel bagno.\nQuanto tempo passato qui dentro...meglio non pensarci...");
-        bathroom.setLook("Vedo delle batterie sul mobile alla destra del lavandino.");
-        Room yourRoom = new Room(4, "La tua cameratta", "Finalmente la tua cameretta!\nQuesto luogo ti è così famigliare...ma non ricordi dove hai messo il nuovo regalo di zia Lina.");
-        yourRoom.setLook("C'è un armadio bianco, di solito ci conservi i tuoi giochi.");
-        //maps
-        kitchen.setEast(livingRoom);
-        livingRoom.setNorth(hall);
-        livingRoom.setWest(kitchen);
-        hall.setSouth(livingRoom);
-        hall.setWest(yourRoom);
-        hall.setNorth(bathroom);
-        bathroom.setSouth(hall);
-        yourRoom.setEast(hall);
-        getRooms().add(kitchen);
+        Room entranceHall = new Room(0, "Atrio", "Sei nell atrio");
+        Room livingRoom = new Room(1, "Soggiorno", "Sei nel soggiorno");
+        Room kitchen = new Room(2, "Cucina", "Sei in cucina");
+        Room walkinCloset = new Room(3, "Cabina armadio", "Sei nella cabina armadio");
+        Room bedRoom = new Room(4, "Camera da letto", "Sei nella camera da letto");
+        Room diningRoom = new Room(5, "Sala da pranzo", "Sei nella sala da pranzo");
+        Room bathroom = new Room(6, "Bagno", "Sei nel bagno");
+        Room backyard = new Room(7, "Cortile", "Sei nel cortile");
+        entranceHall.setEast(kitchen);
+        entranceHall.setNorth(livingRoom);
+        livingRoom.setNorth(backyard);
+        livingRoom.setEast(bedRoom);
+        kitchen.setWest(entranceHall);
+        kitchen.setNorth(diningRoom);
+        walkinCloset.setSouth(bedRoom);
+        bedRoom.setNorth(walkinCloset);
+        bedRoom.setEast(bathroom);
+        bedRoom.setWest(livingRoom);
+        diningRoom.setNorth(bathroom);
+        diningRoom.setSouth(kitchen);
+        bathroom.setSouth(diningRoom);
+        bathroom.setWest(bedRoom);
+        backyard.setSouth(livingRoom);
+        getRooms().add(entranceHall);
         getRooms().add(livingRoom);
-        getRooms().add(hall);
+        getRooms().add(kitchen);
+        getRooms().add(walkinCloset);
+        getRooms().add(bedRoom);
+        getRooms().add(diningRoom);
         getRooms().add(bathroom);
-        getRooms().add(yourRoom);
-        //obejcts
-        AdvObject battery = new AdvObject(1, "batteria", "Un pacco di batterie, chissà se sono cariche.");
-        battery.setAlias(new String[]{"batterie", "pile", "pila"});
-        bathroom.getObjects().add(battery);
-        AdvObjectContainer wardrobe = new AdvObjectContainer(2, "armadio", "Un semplice armadio.");
-        wardrobe.setAlias(new String[]{"guardaroba", "vestiario"});
-        wardrobe.setOpenable(true);
-        wardrobe.setPickupable(false);
-        wardrobe.setOpen(false);
-        yourRoom.getObjects().add(wardrobe);
-        AdvObject toy = new AdvObject(3, "giocattolo", "Il gioco che ti ha regalato zia Lina.");
-        toy.setAlias(new String[]{"gioco", "robot"});
-        toy.setPushable(true);
-        toy.setPush(false);
-        wardrobe.add(toy);
+        getRooms().add(backyard);
+        
+        //obejcts of entrance hall
+        AdvObject carpet = new AdvObject(1, "tappeto", "tappeto rosso");
+        carpet.setAlias(new String[]{"zerbino"});
+        carpet.setPush(true);
+        entranceHall.getObjects().add(carpet);
+        
+        AdvObject hangers = new AdvObject(2, "appendiabiti", "appendiabiti in ferro");
+        carpet.setPickupable(false);
+        entranceHall.getObjects().add(hangers);
+        
+        AdvObject dresser = new AdvObject(3, "cassettiera", "cassettiera in legno di quercia");
+        dresser.setAlias(new String[]{"mobile"});
+        dresser.setOpenable(true);
+        entranceHall.getObjects().add(dresser);
+        
+        AdvObject keySaucer = new AdvObject(4, "piattino", "piattino per le chiavi");
+        keySaucer.setAlias(new String[]{"portaoggetti"});
+        entranceHall.getObjects().add(keySaucer);
+        
+        AdvObject door = new AdvObject(5, "porta", "porta blindata");
+        door.setOpenable(true);
+        door.setOpen(true);
+        entranceHall.getObjects().add(door);
+        
+        AdvObject leash = new AdvObject(6, "guinzaglio", "guinzaglio nero in stoffa per cani");
+        entranceHall.getObjects().add(leash);
+        
+        
+        
+        //objects of living room
+        AdvObject paper = new AdvObject(7, "foglio", "foglio di carta");
+        livingRoom.getObjects().add(paper);
+        
+        AdvObject sofa = new AdvObject(8, "divano", "divano in pelle");
+        sofa.setPushable(true);
+        sofa.setPickupable(false);
+        livingRoom.getObjects().add(sofa);
+        
+        AdvObject sideTable = new AdvObject(9, "tavolino", "tavolino con base in vetro");
+        sideTable.setPickupable(false);
+        livingRoom.getObjects().add(sideTable);
+        
+        AdvObject teaService = new AdvObject(10, "servizio da the", "servizio da the in porcellana");
+        livingRoom.getObjects().add(teaService);
+        
+        AdvObject tv = new AdvObject(11, "tv", "smart tv da 50 pollici");
+        tv.setPickupable(false);
+        livingRoom.getObjects().add(tv);
+        
+        AdvObject picture1 = new AdvObject(12, "quadro", "quadro di picasso");
+        livingRoom.getObjects().add(picture1);
+        
+        AdvObject picture2 = new AdvObject(13, "quadro", "quadro di giotto");
+        livingRoom.getObjects().add(picture2);
+        
+        AdvObject library = new AdvObject(14, "libreria", "libreria in legno piena di libri");
+        livingRoom.getObjects().add(library);
+        
+        
+        //objects of kitchen
+        AdvObject kitchenIsland = new AdvObject(15, "isola", "isola con piano di lavoro");
+        kitchenIsland.setPickupable(false);
+        kitchen.getObjects().add(kitchenIsland);
+        
+        AdvObject stoves = new AdvObject(16, "fornelli", "fornelli del piano cottura");
+        stoves.setPickupable(false);
+        kitchen.getObjects().add(stoves);
+        
+        AdvObject waterBowl = new AdvObject(17, "ciotola", "ciotola dell'acqua per il cane");
+        kitchen.getObjects().add(waterBowl);
+        
+        AdvObject foodBowl = new AdvObject(18, "ciotola", "ciotola del cibo per il cane");
+        kitchen.getObjects().add(foodBowl);
+        
+        AdvObject calendar = new AdvObject(19, "calendario", "calendario anno 2023");
+        kitchen.getObjects().add(calendar);
+        
+        AdvObject fridge = new AdvObject(20, "frigorifero", "frigorifero con freezer integrato");
+        fridge.setOpenable(true);
+        kitchen.getObjects().add(fridge);
+        
+        AdvObject wallUnit = new AdvObject(21, "pensile", "pensile con cibo");
+        wallUnit.setOpenable(true);
+        kitchen.getObjects().add(wallUnit);
+        
+        AdvObject sideboard = new AdvObject(22, "credenza", "credenza");
+        sideboard.setOpenable(true);
+        kitchen.getObjects().add(sideboard);
+        
+        
+        
+        //objects of walkin closet
+        AdvObject fork = new AdvObject(23, "forchetta", "forchetta");
+        walkinCloset.getObjects().add(fork);
+        
+        AdvObject book = new AdvObject(24, "libro", "libro di George Owell");
+        book.setOpenable(true);
+        walkinCloset.getObjects().add(book);
+        
+        AdvObject skirting = new AdvObject(25, "battiscopa", "battiscopa con apertura");
+        skirting.setPickupable(false);
+        walkinCloset.getObjects().add(skirting); 
+        
+        AdvObject closet1 = new AdvObject(26, "armadio estivo", "armadio per guardaroba estivo");
+        closet1.setOpenable(true);
+        walkinCloset.getObjects().add(closet1);
+        
+        AdvObject closet2 = new AdvObject(27, "armadio", "armadio per guardaroba invernale");
+        closet2.setOpenable(true);
+        walkinCloset.getObjects().add(closet2);
+        
+        AdvObject shoes = new AdvObject(28, "scarpe", "ci sono 10 paia di scarpe diverse");
+        shoes.setPickupable(false);
+        walkinCloset.getObjects().add(book);
+        
+        
+        
+        //objects of bedroom
+        AdvObject bed = new AdvObject(29, "letto", "letto matrimoniale a doppia piazza");
+        bed.setPickupable(false);
+        bedRoom.getObjects().add(bed);
+        
+        AdvObject nightstand1 = new AdvObject(30, "comodino", "comodino dal lato del marito");
+        nightstand1.setOpenable(true);
+        bedRoom.getObjects().add(nightstand1);
+        
+        AdvObject nightstand2 = new AdvObject(31, "comodino", "comodino dal lato della moglie");
+        nightstand1.setOpenable(true);
+        bedRoom.getObjects().add(nightstand2);
+        
+        AdvObject picture3 = new AdvObject(32, "quadro", "quadro camera da letto situato sopra il letto matrimoniale");
+        bedRoom.getObjects().add(picture3);
+        
+        AdvObject armchair = new AdvObject(33, "poltrona", "poltrona in pelle situata all angolo del letto matrimoniale");
+        armchair.setPickupable(false);
+        bedRoom.getObjects().add(armchair);
+        
+        AdvObject desk = new AdvObject(34, "scrivania", "scrivania per il pc");
+        desk.setPickupable(false);
+        bedRoom.getObjects().add(desk);
+        
+        AdvObject pc = new AdvObject(35, "pc", "pc fisso");
+        bedRoom.getObjects().add(pc);
+        
+        AdvObject backyardDoor = new AdvObject(36, "porta finestra", "porta finestra in vetro che porta al cortile");
+        backyardDoor.setOpenable(true);
+        backyardDoor.setPickupable(false);
+        bedRoom.getObjects().add(backyardDoor);
+        
+        
+        
+        //objects of dining room
+        AdvObject table = new AdvObject(37, "tavolo", "tavolo da pranzo in legno");
+        table.setPickupable(false);
+        diningRoom.getObjects().add(table);
+        
+        AdvObject chair = new AdvObject(38, "sedia", "ci sono 4 sedie");
+        chair.setPickupable(false);
+        diningRoom.getObjects().add(chair);
+        
+        AdvObject tv2 = new AdvObject(39, "tv", "tv sala da pranzo");
+        tv2.setPickupable(false);
+        diningRoom.getObjects().add(tv2);
+        
+        AdvObject window = new AdvObject(40, "finestra", "finestra");
+        window.setOpenable(true);
+        diningRoom.getObjects().add(window);
+        
+        AdvObject wineRack = new AdvObject(41, "porta vini", "porta vini piena di vini pregiati");
+        diningRoom.getObjects().add(wineRack);
+        
+        
+        
+        //objects of bathroom
+        AdvObjectContainer mirror = new AdvObjectContainer(42, "specchio", "specchio con sportello");
+        mirror.setOpenable(true);
+        bathroom.getObjects().add(mirror);
+        
+        AdvObject washbasin = new AdvObject(43, "lavabo", "lavabo doppio");
+        washbasin.setPickupable(false);
+        bathroom.getObjects().add(washbasin);
+        
+        AdvObject wc = new AdvObject(44, "wc", "water closet");
+        wc.setPickupable(false);
+        bathroom.getObjects().add(wc);
+        
+        AdvObject bidet = new AdvObject(45, "bidet", "bidet");
+        bidet.setPickupable(false);
+        bathroom.getObjects().add(bidet);
+        
+        AdvObject shower = new AdvObject(46, "doccia", "doccia");
+        shower.setPickupable(false);
+        bathroom.getObjects().add(shower);
+        
+        AdvObject medicines = new AdvObject(47, "medicine", "medicine");
+        mirror.add(medicines);
+        
+        AdvObject window2 = new AdvObject(48, "finestra", "finestra del bagno");
+        window2.setOpenable(true);
+        bathroom.getObjects().add(window2);
+        
+        
+        
+        //objects of backyard
+        AdvObject backyardTable = new AdvObject(49, "tavolo", "tavolo del cortile");
+        backyardTable.setPickupable(false);
+        backyard.getObjects().add(backyardTable);
+        
+        AdvObject backyardChair = new AdvObject(50, "sedia", "ci sono 2 sedie");
+        backyardChair.setPickupable(false);
+        backyard.getObjects().add(backyardChair);
+        
+        AdvObject kennel = new AdvObject(51, "cuccia", "cuccia del cane");
+        backyard.getObjects().add(kennel);
+        
+        AdvObject swing = new AdvObject(52, "altalena", "altalena");
+        swing.setPickupable(false);
+        backyard.getObjects().add(swing);
+        
+        AdvObject slide = new AdvObject(53, "scivolo", "scivolo");
+        slide.setPickupable(false);
+        backyard.getObjects().add(slide);
+        
+        AdvObject woods = new AdvObject(54, "alberi", "ci sono 8 alberi");
+        woods.setPickupable(false);
+        backyard.getObjects().add(woods);
         //set starting room
-        setCurrentRoom(hall);
+        setCurrentRoom(bedRoom);
     }
 
     @Override
