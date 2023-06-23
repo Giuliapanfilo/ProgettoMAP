@@ -9,6 +9,7 @@ import di.uniba.map.ilsestosenso.games.FireHouseGame;
 import di.uniba.map.ilsestosenso.parser.Parser;
 import di.uniba.map.ilsestosenso.parser.ParserOutput;
 import di.uniba.map.ilsestosenso.type.CommandType;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -48,7 +49,8 @@ public class Engine {
         System.out.println("================================");
         System.out.println(game.getCurrentRoom().getName());
         System.out.println();
-        System.out.println(game.getCurrentRoom().getDescription());
+        System.out.println(game.getCurrentRoom().getDescriptionFirstTime());
+        game.getCurrentRoom().setFirstTime(false);
         System.out.println();
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
@@ -65,6 +67,8 @@ public class Engine {
             }
         }
     }
+
+}
 
     /**
      * @param args the command line arguments
