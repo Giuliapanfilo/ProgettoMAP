@@ -144,6 +144,7 @@ public class UserInterface extends javax.swing.JFrame {
     private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
         IlSestoSenso finestra = new IlSestoSenso(this, true);
         finestra.setVisible(true);
+        
     }//GEN-LAST:event_StartActionPerformed
 
     private void ScoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ScoreActionPerformed
