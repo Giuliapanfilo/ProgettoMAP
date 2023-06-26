@@ -4,6 +4,7 @@
  */
 package di.uniba.map.ilsestosenso.ui;
 
+import di.uniba.map.ilsestosenso.StopWatch;
 import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -18,6 +19,7 @@ public class IlSestoSenso extends javax.swing.JDialog {
     
     private static Clip clip;
     private static final String SOUNDTRACK = "./resources/soundTrack.wav";
+    private StopWatch time;
     
     private static void playMusic(String filePath) {
         try {
@@ -38,7 +40,9 @@ public class IlSestoSenso extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         audio.setSelected(true);
-        playMusic(SOUNDTRACK); // Sostituisci con il percorso del file audio desiderato
+        playMusic(SOUNDTRACK);
+        time = new StopWatch(Stopwatch);
+        time.start();
     }
 
     /**
