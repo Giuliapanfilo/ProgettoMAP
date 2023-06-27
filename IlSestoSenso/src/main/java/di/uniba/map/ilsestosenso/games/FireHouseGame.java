@@ -66,8 +66,8 @@ public class FireHouseGame extends GameDescription {
         getCommands().add(push);
         //Rooms
         Room entranceHall = new Room(0, "Atrio", "Sei nell atrio", "Prima volta atrio");
-        Room livingRoom = new Room(1, "Soggiorno", "Sei nel soggiorno", "Prima volta soggiorno"");
-        Room kitchen = new Room(2, "Cucina", "Sei in cucina", "Prima volta cucina"
+        Room livingRoom = new Room(1, "Soggiorno", "Sei nel soggiorno", "Prima volta soggiorno");
+        Room kitchen = new Room(2, "Cucina", "Sei in cucina", "Prima volta cucina");
         Room walkinCloset = new Room(3, "Cabina armadio", "Sei nella cabina armadio", "Prima volta cabina armadio");
         Room bedRoom = new Room(4, "Camera da letto", "Sei nella camera da letto", "Prima volta camera da letto");
         Room diningRoom = new Room(5, "Sala da pranzo", "Sei nella sala da pranzo", "Prima volta sala da pranzo");
@@ -327,10 +327,10 @@ public class FireHouseGame extends GameDescription {
         setCurrentRoom(bedRoom);
     }
 
-    public void firstDescription(){
+    public void firstDescription(PrintStream out){
         if (getCurrentRoom().isFirstTime()) {
             getCurrentRoom().setFirstTime(false);
-            out.println(getCurrentRoom().getFirstDescription());
+            out.println(getCurrentRoom().getDescriptionFirstTime());
         }
     }
 
@@ -345,7 +345,7 @@ public class FireHouseGame extends GameDescription {
             if (p.getCommand().getType() == CommandType.NORD) {
                 if (getCurrentRoom().getNorth() != null) {
                     setCurrentRoom(getCurrentRoom().getNorth());
-                    firstDescription();
+                    firstDescription(out);
                     move = true;
                 } else {
                     noroom = true;
@@ -353,7 +353,7 @@ public class FireHouseGame extends GameDescription {
             } else if (p.getCommand().getType() == CommandType.SOUTH) {
                 if (getCurrentRoom().getSouth() != null) {
                     setCurrentRoom(getCurrentRoom().getSouth());
-                    firstDescription();
+                    firstDescription(out);
                     move = true;
                 } else {
                     noroom = true;
@@ -361,7 +361,7 @@ public class FireHouseGame extends GameDescription {
             } else if (p.getCommand().getType() == CommandType.EAST) {
                 if (getCurrentRoom().getEast() != null) {
                     setCurrentRoom(getCurrentRoom().getEast());
-                    firstDescription();
+                    firstDescription(out);
                     move = true;
                 } else {
                     noroom = true;
@@ -369,7 +369,7 @@ public class FireHouseGame extends GameDescription {
             } else if (p.getCommand().getType() == CommandType.WEST) {
                 if (getCurrentRoom().getWest() != null) {
                     setCurrentRoom(getCurrentRoom().getWest());
-                    firstDescription();
+                    firstDescription(out);
                     move = true;
                 } else {
                     noroom = true;

@@ -146,12 +146,16 @@ public class Room {
         return firstTime;
     }
 
-    public void getDescriptionFirstTime(){
+    public String getDescriptionFirstTime(){
         return descriptionFirstTime;
     }
 
     public void setDescriptionFirstTime(String descriptionFirstTime){
         this.descriptionFirstTime=descriptionFirstTime;
+    }
+    
+    public void setFirstTime(boolean firstTime){
+        this.firstTime = firstTime;
     }
 
 
