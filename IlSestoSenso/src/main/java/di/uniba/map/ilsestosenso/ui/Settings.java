@@ -9,6 +9,20 @@ package di.uniba.map.ilsestosenso.ui;
  * @author Camil
  */
 public class Settings extends javax.swing.JDialog {
+    
+    private boolean dark = false;
+    
+    public boolean isDark(){
+        return dark;
+    }
+    
+    public void setValue(){
+        if(dark){
+            theme.setText("Dark");
+        } else {
+            theme.setText("Light");
+        }
+    }
 
     /**
      * Creates new form Settings
@@ -16,6 +30,9 @@ public class Settings extends javax.swing.JDialog {
     public Settings(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        dark = true;
+        theme.setSelected(true);
+        theme.setText("Dark");
     }
 
     /**
@@ -27,56 +44,81 @@ public class Settings extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToggleButton1 = new javax.swing.JToggleButton();
+        audio = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        theme = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(300, 100));
+        setMinimumSize(new java.awt.Dimension(300, 100));
+        setResizable(false);
 
-        jToggleButton1.setText("ON/OFF");
+        audio.setText("ON/OFF");
+        audio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                audioActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("AUDIO");
 
-        jLabel2.setText("INTERFACCIA");
+        jLabel2.setText("TEMA");
 
-        jToggleButton2.setText("DARK/LIGHT");
+        theme.setText("DARK/LIGHT");
+        theme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                themeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32))
+                        .addGap(18, 18, 18)
+                        .addComponent(audio, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(135, 135, 135))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(theme, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {audio, theme});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton1)
-                    .addComponent(jLabel1))
-                .addGap(33, 33, 33)
+                    .addComponent(jLabel1)
+                    .addComponent(audio))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jToggleButton2))
-                .addContainerGap(126, Short.MAX_VALUE))
+                    .addComponent(theme))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {audio, theme});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void audioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_audioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_audioActionPerformed
+
+    private void themeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themeActionPerformed
+        dark = theme.isSelected();
+        setValue();
+    }//GEN-LAST:event_themeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,9 +170,9 @@ public class Settings extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton audio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton theme;
     // End of variables declaration//GEN-END:variables
 }

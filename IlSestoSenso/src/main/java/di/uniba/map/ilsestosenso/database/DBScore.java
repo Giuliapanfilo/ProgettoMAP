@@ -19,7 +19,7 @@ public class DBScore {
     
     private static Connection connection;
     
-    public static final String CREATE_TABLE_SCORE = "CREATE TABLE IF NOT EXISTS score (username VARCHAR(15) PRIMARY KEY, time INT, score DOUBLE, data DATE)";
+    public static final String CREATE_TABLE_SCORE = "CREATE TABLE IF NOT EXISTS score (username VARCHAR(15) PRIMARY KEY, time INT, score INT, data DATE)";
 
     
     public static void connect() throws SQLException{
@@ -45,6 +45,7 @@ public class DBScore {
          pstm.setInt(2, time);
          pstm.setInt(3, score);
          pstm.setString(4, data);
+         pstm.execute();
+         pstm.close();
     }
-    
 }

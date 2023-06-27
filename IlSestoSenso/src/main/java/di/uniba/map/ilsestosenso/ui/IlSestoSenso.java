@@ -4,11 +4,34 @@
  */
 package di.uniba.map.ilsestosenso.ui;
 
+import di.uniba.map.ilsestosenso.StopWatch;
+import java.io.File;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
 /**
  *
  * @author Camil
  */
 public class IlSestoSenso extends javax.swing.JDialog {
+    
+    
+    private static Clip clip;
+    private static final String SOUNDTRACK = "./resources/soundTrack.wav";
+    private StopWatch time;
+    
+    private static void playMusic(String filePath) {
+        try {
+            File audioFile = new File(filePath);
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+            clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Creates new form IlSestoSenso
@@ -16,6 +39,10 @@ public class IlSestoSenso extends javax.swing.JDialog {
     public IlSestoSenso(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        audio.setSelected(true);
+        playMusic(SOUNDTRACK);
+        time = new StopWatch(Stopwatch);
+        time.start();
     }
 
     /**
@@ -27,22 +54,26 @@ public class IlSestoSenso extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToggleButton1 = new javax.swing.JToggleButton();
+        audio = new javax.swing.JToggleButton();
         scrollPane1 = new java.awt.ScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        Stopwatch = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jToggleButton1.setText("AUDIO");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        audio.setText("AUDIO");
+        audio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                audioActionPerformed(evt);
             }
         });
 
         jButton1.setText("INVIO");
+
+        Stopwatch.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Stopwatch.setText("00:00");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -52,8 +83,10 @@ public class IlSestoSenso extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jToggleButton1))
+                        .addGap(11, 11, 11)
+                        .addComponent(Stopwatch)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(audio))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
@@ -70,7 +103,9 @@ public class IlSestoSenso extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jToggleButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(audio)
+                    .addComponent(Stopwatch))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1)
@@ -80,16 +115,20 @@ public class IlSestoSenso extends javax.swing.JDialog {
                     .addComponent(jTextField1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(0, 19, Short.MAX_VALUE)))
+                        .addGap(0, 17, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    private void audioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_audioActionPerformed
+        if(audio.isSelected())
+            playMusic(SOUNDTRACK);
+        else
+            clip.stop();
+                
+    }//GEN-LAST:event_audioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,10 +180,11 @@ public class IlSestoSenso extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Stopwatch;
+    private javax.swing.JToggleButton audio;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JToggleButton jToggleButton1;
     private java.awt.ScrollPane scrollPane1;
     // End of variables declaration//GEN-END:variables
 }
