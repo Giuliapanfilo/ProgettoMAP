@@ -39,6 +39,16 @@ public class UserScore {
 
     public void setTime(int time) {
         this.time = time;
+        
+        if(time<300) {
+            score = 500;
+        } else if(time < 600) {
+            score = 400;
+        } else if (time < 900) {
+            score = 200;
+        } else {
+            score = 100;
+        }
     }
 
     public int getScore() {

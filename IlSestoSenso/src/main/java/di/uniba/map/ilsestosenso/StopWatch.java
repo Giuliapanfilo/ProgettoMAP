@@ -55,5 +55,9 @@ public class StopWatch extends Thread{
     public void arrestStopWatch() {
         isRunning = false;
     }
+    
+    public int getTime() {
+        return seconds;
+    }
 
 }
