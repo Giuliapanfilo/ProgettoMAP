@@ -65,14 +65,14 @@ public class FireHouseGame extends GameDescription {
         push.setAlias(new String[]{"spingi","attiva"});
         getCommands().add(push);
         //Rooms
-        Room entranceHall = new Room(0, "Atrio", "Sei nell atrio");
-        Room livingRoom = new Room(1, "Soggiorno", "Sei nel soggiorno");
-        Room kitchen = new Room(2, "Cucina", "Sei in cucina");
-        Room walkinCloset = new Room(3, "Cabina armadio", "Sei nella cabina armadio");
-        Room bedRoom = new Room(4, "Camera da letto", "Sei nella camera da letto");
-        Room diningRoom = new Room(5, "Sala da pranzo", "Sei nella sala da pranzo");
-        Room bathroom = new Room(6, "Bagno", "Sei nel bagno");
-        Room backyard = new Room(7, "Cortile", "Sei nel cortile");
+        Room entranceHall = new Room(0, "Atrio", "Sei nell atrio", "Prima volta atrio");
+        Room livingRoom = new Room(1, "Soggiorno", "Sei nel soggiorno", "Prima volta soggiorno"");
+        Room kitchen = new Room(2, "Cucina", "Sei in cucina", "Prima volta cucina"
+        Room walkinCloset = new Room(3, "Cabina armadio", "Sei nella cabina armadio", "Prima volta cabina armadio");
+        Room bedRoom = new Room(4, "Camera da letto", "Sei nella camera da letto", "Prima volta camera da letto");
+        Room diningRoom = new Room(5, "Sala da pranzo", "Sei nella sala da pranzo", "Prima volta sala da pranzo");
+        Room bathroom = new Room(6, "Bagno", "Sei nel bagno", "Prima volta bagno");
+        Room backyard = new Room(7, "Cortile", "Sei nel cortile", "Prima volta cortile");
         entranceHall.setEast(kitchen);
         entranceHall.setNorth(livingRoom);
         livingRoom.setNorth(backyard);
@@ -327,6 +327,13 @@ public class FireHouseGame extends GameDescription {
         setCurrentRoom(bedRoom);
     }
 
+    public void firstDescription(){
+        if (getCurrentRoom().isFirstTime()) {
+            getCurrentRoom().setFirstTime(false);
+            out.println(getCurrentRoom().getFirstDescription());
+        }
+    }
+
     @Override
     public void nextMove(ParserOutput p, PrintStream out) {
         if (p.getCommand() == null) {
@@ -338,6 +345,7 @@ public class FireHouseGame extends GameDescription {
             if (p.getCommand().getType() == CommandType.NORD) {
                 if (getCurrentRoom().getNorth() != null) {
                     setCurrentRoom(getCurrentRoom().getNorth());
+                    firstDescription();
                     move = true;
                 } else {
                     noroom = true;
@@ -345,6 +353,7 @@ public class FireHouseGame extends GameDescription {
             } else if (p.getCommand().getType() == CommandType.SOUTH) {
                 if (getCurrentRoom().getSouth() != null) {
                     setCurrentRoom(getCurrentRoom().getSouth());
+                    firstDescription();
                     move = true;
                 } else {
                     noroom = true;
@@ -352,6 +361,7 @@ public class FireHouseGame extends GameDescription {
             } else if (p.getCommand().getType() == CommandType.EAST) {
                 if (getCurrentRoom().getEast() != null) {
                     setCurrentRoom(getCurrentRoom().getEast());
+                    firstDescription();
                     move = true;
                 } else {
                     noroom = true;
@@ -359,6 +369,7 @@ public class FireHouseGame extends GameDescription {
             } else if (p.getCommand().getType() == CommandType.WEST) {
                 if (getCurrentRoom().getWest() != null) {
                     setCurrentRoom(getCurrentRoom().getWest());
+                    firstDescription();
                     move = true;
                 } else {
                     noroom = true;

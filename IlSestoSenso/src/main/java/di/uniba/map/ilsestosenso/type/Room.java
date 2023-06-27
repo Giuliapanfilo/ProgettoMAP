@@ -34,14 +34,19 @@ public class Room {
     
     private final List<AdvObject> objects=new ArrayList<>();
 
+    private boolean firstTime = true;
+
+    private String descriptionFirstTime;
+
     public Room(int id) {
         this.id = id;
     }
 
-    public Room(int id, String name, String description) {
+    public Room(int id, String name, String description, String descriptionFirstTime) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.descriptionFirstTime = descriptionFirstTime;
     }
 
     public String getName() {
@@ -137,4 +142,19 @@ public class Room {
         this.look = look;
     }
 
+    public boolean isFirstTime(){
+        return firstTime;
+    }
+
+    public void getDescriptionFirstTime(){
+        return descriptionFirstTime;
+    }
+
+    public void setDescriptionFirstTime(String descriptionFirstTime){
+        this.descriptionFirstTime=descriptionFirstTime;
+    }
+
+
 }
+
+
