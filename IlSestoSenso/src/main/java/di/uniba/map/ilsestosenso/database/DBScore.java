@@ -24,7 +24,7 @@ public class DBScore {
     
     public static final String CREATE_TABLE_SCORE = "CREATE TABLE IF NOT EXISTS score (username VARCHAR(15) PRIMARY KEY, time INT, score INT, data DATE)";
 
-    List<Integer> scores = new ArrayList<>();
+    private List<Integer> scores = new ArrayList<>();
     
     public static void connect() throws SQLException{
         Properties dbprops = new Properties();
@@ -52,11 +52,9 @@ public class DBScore {
          pstm.execute();
          pstm.close();
     }
-    public int averageScore() {
-        try (
-                Connection connection = DriverManager.getConnection("jdbc:h2:./resources/db/score", "user", "1234");
-                Statement stm = connection.createStatement(); 
-                ResultSet resultSet = stm.executeQuery("SELECT score FROM score")){
+    public int averageScore() throws SQLException {
+        try (Statement stm = connection.createStatement(); 
+             ResultSet resultSet = stm.executeQuery("SELECT score FROM score")){
 
             while (resultSet.next()) {
                 int score = resultSet.getInt("score");
@@ -70,9 +68,9 @@ public class DBScore {
                 .mapToInt(score -> score)
                 .average()
                 .orElse(0.0);
-        int roundedAverage = (int) Math.round(average);
         
-        System.out.print("La media dei punteggi e'");
-        return roundedAverage;
+        disconnect();
+        
+        return (int) Math.round(average);
     }
 }
