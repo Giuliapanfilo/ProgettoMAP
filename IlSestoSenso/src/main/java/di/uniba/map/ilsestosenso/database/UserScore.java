@@ -67,11 +67,11 @@ public class UserScore {
         this.score = score;
     }
 
-    public void AverageScore() {
+    public int averageScore() {
         try (
                 Connection connection = DriverManager.getConnection("jdbc:h2:./resources/db/score", "user", "1234");
                 Statement stm = connection.createStatement(); 
-                ResultSet resultSet = stm.executeQuery("SELECT score FROM score")) {
+                ResultSet resultSet = stm.executeQuery("SELECT score FROM score")){
 
             while (resultSet.next()) {
                 int score = resultSet.getInt("score");
@@ -85,8 +85,10 @@ public class UserScore {
                 .mapToInt(Integer::intValue)
                 .average()
                 .orElse(0.0);
+        int roundedAverage = (int) Math.round(average);
         
-        System.out.println("La media dei punteggi e' " + average);
+        System.out.print("La media dei punteggi e'");
+        return roundedAverage;
     }
     
     
