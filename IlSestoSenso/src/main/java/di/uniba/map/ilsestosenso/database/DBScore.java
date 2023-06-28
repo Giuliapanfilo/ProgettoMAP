@@ -53,24 +53,19 @@ public class DBScore {
          pstm.close();
     }
     public int averageScore() throws SQLException {
-        try (Statement stm = connection.createStatement(); 
-             ResultSet resultSet = stm.executeQuery("SELECT score FROM score")){
+             Statement stm = connection.createStatement(); 
+             ResultSet resultSet = stm.executeQuery("SELECT score FROM score");
 
             while (resultSet.next()) {
                 int score = resultSet.getInt("score");
                 scores.add(score);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         double average;
         average = scores.stream()
                 .mapToInt(score -> score)
                 .average()
                 .orElse(0.0);
-        
-        disconnect();
-        
+        stm.close();
         return (int) Math.round(average);
     }
 }
