@@ -22,7 +22,7 @@ import java.util.Set;
  *
  * @author pierpaolo
  */
-public class Engine {
+public class Engine extends Thread{
 
     private final GameDescription game;
 
@@ -43,7 +43,8 @@ public class Engine {
         }
     }
 
-    public void execute() {
+    @Override
+    public void run(){
         System.out.println("================================");
         System.out.println("* Adventure v. 0.3 - 2021-2022 *");
         System.out.println("================================");
@@ -71,9 +72,9 @@ public class Engine {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         Engine engine = new Engine(new FireHouseGame());
         engine.execute();
-    }
+    }*/
 
 }
