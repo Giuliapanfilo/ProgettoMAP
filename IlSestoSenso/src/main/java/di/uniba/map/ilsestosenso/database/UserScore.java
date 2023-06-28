@@ -1,5 +1,12 @@
-
 package di.uniba.map.ilsestosenso.database;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -11,6 +18,7 @@ public class UserScore {
     private int time;
     private int score;
     private String data;
+    List<Integer> scores = new ArrayList<>();
 
     public UserScore(String username, String data) {
         this.username = username;
@@ -39,10 +47,10 @@ public class UserScore {
 
     public void setTime(int time) {
         this.time = time;
-        
-        if(time<300) {
+
+        if (time < 300) {
             score = 500;
-        } else if(time < 600) {
+        } else if (time < 600) {
             score = 400;
         } else if (time < 900) {
             score = 200;
@@ -58,6 +66,29 @@ public class UserScore {
     public void setScore(int score) {
         this.score = score;
     }
+
+    public void AverageScore() {
+        try (
+                Connection connection = DriverManager.getConnection("jdbc:h2:./resources/db/score", "user", "1234");
+                Statement stm = connection.createStatement(); 
+                ResultSet resultSet = stm.executeQuery("SELECT score FROM score")) {
+
+            while (resultSet.next()) {
+                int score = resultSet.getInt("score");
+                scores.add(score);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        double average;
+        average = scores.stream()
+                .mapToInt(Integer::intValue)
+                .average()
+                .orElse(0.0);
+        
+        System.out.println("La media dei punteggi e' " + average);
+    }
     
     
+
 }
