@@ -10,17 +10,12 @@ import di.uniba.map.ilsestosenso.games.FireHouseGame;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PipedInputStream;
-import java.io.PipedOutputStream;
 import java.io.PrintStream;
-import java.util.Scanner;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 /**
  *
@@ -31,6 +26,7 @@ public class IlSestoSenso extends javax.swing.JDialog {
     private static Clip clip;
     private static final String SOUNDTRACK = "./resources/soundTrack.wav";
     private StopWatch time;
+    Engine engine = new Engine(new FireHouseGame());
 
     private static void playMusic(String filePath) {
         try
@@ -79,7 +75,6 @@ public class IlSestoSenso extends javax.swing.JDialog {
         // Reindirizza System.out a TextAreaOutputStream
         System.setOut(new PrintStream(outputStream));
 
-        Engine engine = new Engine(new FireHouseGame());
         engine.start();
 
     }
@@ -122,11 +117,6 @@ public class IlSestoSenso extends javax.swing.JDialog {
         Output.setRows(5);
         jScrollPane1.setViewportView(Output);
 
-        Input.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InputActionPerformed(evt);
-            }
-        });
         Input.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 InputKeyPressed(evt);
@@ -202,29 +192,10 @@ public class IlSestoSenso extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_audioActionPerformed
 
-    private void InputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputActionPerformed
-       if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            
-        }
-    }//GEN-LAST:event_InputActionPerformed
-
     private void InputKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InputKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-           String input = Input.getText();
-
-                // Creazione della pipeline tra textFieldInput e System.in
-                PipedInputStream pipedInputStream = new PipedInputStream();
-                System.setIn(pipedInputStream);
-
-                try (PipedOutputStream pipedOutputStream = new PipedOutputStream(pipedInputStream)) {
-                    pipedOutputStream.write(input.getBytes());
-                    pipedOutputStream.close();
-
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-
-                System.setIn(System.in);
+          engine.setCommand(Input.getText());
+          Input.setText("");
         }
     }//GEN-LAST:event_InputKeyPressed
 
