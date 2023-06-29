@@ -11,8 +11,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Properties;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -25,7 +27,8 @@ public class DBScore {
     
     public static final String CREATE_TABLE_SCORE = "CREATE TABLE IF NOT EXISTS score (username VARCHAR(15) PRIMARY KEY, time INT, score INT, data DATE)";
 
-    private List<Integer> scores = new ArrayList<>();
+   
+    
     
     
     public static void connect() throws SQLException{
@@ -55,11 +58,12 @@ public class DBScore {
          pstm.close();
     }
     public int averageScore() throws SQLException {
+             List<Integer> scores = new ArrayList();
              Statement stm = connection.createStatement(); 
              ResultSet resultSet = stm.executeQuery("SELECT score FROM score");
 
             while (resultSet.next()) {
-                UserScore.score = resultSet.getInt("score");
+                int score = resultSet.getInt("score");
                 scores.add(score);
             }
         double average;
@@ -68,6 +72,27 @@ public class DBScore {
                 .average()
                 .orElse(0.0);
         stm.close();
+        resultSet.close();
         return (int) Math.round(average);
     }
+    
+   public List<UserScore> top3player() throws SQLException{
+       List<UserScore> player = new ArrayList();
+       Statement stm = connection.createStatement();
+       ResultSet resultSet = stm.executeQuery("SELECT * FROM score");
+       
+       while(resultSet.next()){
+           UserScore user = new UserScore(resultSet.getString(1), resultSet.getString(4));
+           user.setTime(2);
+           player.add(user);   
+       }
+       stm.close();
+       resultSet.close();
+       
+       return player.stream()
+            .sorted(Comparator.comparingInt(UserScore::getScore).reversed())
+            .limit(3)
+            .collect(Collectors.toList());   
+   }
+    
 }
