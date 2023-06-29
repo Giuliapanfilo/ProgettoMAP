@@ -20,11 +20,13 @@ import java.util.List;
  */
 public class DBScore {
     
+    
     private static Connection connection;
     
     public static final String CREATE_TABLE_SCORE = "CREATE TABLE IF NOT EXISTS score (username VARCHAR(15) PRIMARY KEY, time INT, score INT, data DATE)";
 
     private List<Integer> scores = new ArrayList<>();
+    
     
     public static void connect() throws SQLException{
         Properties dbprops = new Properties();
@@ -57,7 +59,7 @@ public class DBScore {
              ResultSet resultSet = stm.executeQuery("SELECT score FROM score");
 
             while (resultSet.next()) {
-                int score = resultSet.getInt("score");
+                UserScore.score = resultSet.getInt("score");
                 scores.add(score);
             }
         double average;
