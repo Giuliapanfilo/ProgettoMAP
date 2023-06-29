@@ -7,6 +7,7 @@ package di.uniba.map.ilsestosenso.ui;
 import di.uniba.map.ilsestosenso.Engine;
 import di.uniba.map.ilsestosenso.StopWatch;
 import di.uniba.map.ilsestosenso.games.FireHouseGame;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
@@ -58,6 +59,25 @@ public class IlSestoSenso extends javax.swing.JDialog {
             textArea.setCaretPosition(textArea.getDocument().getLength());
         }
     }
+    
+    public void initSettings(){
+        if (Settings.isDark()){
+            input.setBackground(new Color(51, 51, 51));
+            input.setForeground(new Color(255, 255, 255));
+            output.setBackground(new Color(51, 51, 51));
+            output.setForeground(new Color(255, 255, 255));
+            inventory.setBackground(new Color(51, 51, 51));
+            inventory.setForeground(new Color(255, 255, 255));
+        }
+
+        if (Settings.isWithoutAudio()){
+            audio.setSelected(true);
+        } else{
+            audio.setSelected(false);
+            playMusic(SOUNDTRACK);
+        }
+
+    }
 
     /**
      * Creates new form IlSestoSenso
@@ -65,12 +85,12 @@ public class IlSestoSenso extends javax.swing.JDialog {
     public IlSestoSenso(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        audio.setSelected(true);
-        playMusic(SOUNDTRACK);
+        
+        initSettings();
         time = new StopWatch(Stopwatch);
         time.start();
 
-        TextAreaOutputStream outputStream = new TextAreaOutputStream(Output);
+        TextAreaOutputStream outputStream = new TextAreaOutputStream(output);
 
         // Reindirizza System.out a TextAreaOutputStream
         System.setOut(new PrintStream(outputStream));
@@ -88,23 +108,20 @@ public class IlSestoSenso extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
         audio = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Output = new javax.swing.JTextArea();
-        Input = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        output = new javax.swing.JTextArea();
+        input = new javax.swing.JTextField();
+        send = new javax.swing.JButton();
         Stopwatch = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        Inventory = new javax.swing.JTextArea();
-
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane3.setViewportView(jTextArea2);
+        inventory = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Partita");
+        setResizable(false);
 
+        audio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         audio.setText("AUDIO");
         audio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,26 +129,37 @@ public class IlSestoSenso extends javax.swing.JDialog {
             }
         });
 
-        Output.setEditable(false);
-        Output.setColumns(20);
-        Output.setRows(5);
-        jScrollPane1.setViewportView(Output);
+        output.setEditable(false);
+        output.setColumns(20);
+        output.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        output.setRows(5);
+        jScrollPane1.setViewportView(output);
 
-        Input.addKeyListener(new java.awt.event.KeyAdapter() {
+        input.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        input.setForeground(new java.awt.Color(0, 0, 0));
+        input.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                InputKeyPressed(evt);
+                inputKeyPressed(evt);
             }
         });
 
-        jButton1.setText("INVIO");
+        send.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        send.setText("INVIO");
+        send.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendActionPerformed(evt);
+            }
+        });
 
         Stopwatch.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Stopwatch.setText("00:00");
 
-        Inventory.setEditable(false);
-        Inventory.setColumns(20);
-        Inventory.setRows(5);
-        jScrollPane2.setViewportView(Inventory);
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        inventory.setEditable(false);
+        inventory.setColumns(20);
+        inventory.setRows(5);
+        jScrollPane2.setViewportView(inventory);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,50 +168,50 @@ public class IlSestoSenso extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
+                        .addComponent(input))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addComponent(Stopwatch)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(audio))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Input, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1))
+                        .addComponent(Stopwatch)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jButton1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(7, 7, 7)))
-                .addContainerGap())
+                                .addGap(6, 6, 6)
+                                .addComponent(send, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(audio, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(audio)
-                    .addComponent(Stopwatch))
+                    .addComponent(Stopwatch)
+                    .addComponent(audio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Input)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(0, 25, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(send, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                        .addGap(12, 12, 12))
+                    .addComponent(input)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void audioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_audioActionPerformed
-        if (audio.isSelected())
+        if (!audio.isSelected())
         {
             playMusic(SOUNDTRACK);
         } else
@@ -192,12 +220,17 @@ public class IlSestoSenso extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_audioActionPerformed
 
-    private void InputKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InputKeyPressed
+    private void inputKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-          engine.setCommand(Input.getText());
-          Input.setText("");
+          engine.setCommand(input.getText());
+          input.setText("");
         }
-    }//GEN-LAST:event_InputKeyPressed
+    }//GEN-LAST:event_inputKeyPressed
+
+    private void sendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendActionPerformed
+        engine.setCommand(input.getText());
+        input.setText("");
+    }//GEN-LAST:event_sendActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,15 +282,13 @@ public class IlSestoSenso extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Input;
-    private javax.swing.JTextArea Inventory;
-    private javax.swing.JTextArea Output;
     private javax.swing.JLabel Stopwatch;
     private javax.swing.JToggleButton audio;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField input;
+    private javax.swing.JTextArea inventory;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea output;
+    private javax.swing.JButton send;
     // End of variables declaration//GEN-END:variables
 }

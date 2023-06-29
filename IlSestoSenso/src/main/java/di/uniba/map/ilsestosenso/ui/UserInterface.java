@@ -25,7 +25,7 @@ public class UserInterface extends javax.swing.JFrame {
         Image originalImage = icon.getImage();
         Image resizedImage = originalImage.getScaledInstance(25, 25, Image.SCALE_SMOOTH); // Imposta le dimensioni desiderate
         ImageIcon resizedIcon = new ImageIcon(resizedImage);
-        Settings.setIcon(resizedIcon);
+        settingsButton.setIcon(resizedIcon);
     }
 
     /**
@@ -37,140 +37,141 @@ public class UserInterface extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Sfondo = new javax.swing.JPanel();
+        wallpaper = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        Start = new javax.swing.JButton();
-        Score = new javax.swing.JButton();
-        Help = new javax.swing.JButton();
-        Settings = new javax.swing.JButton();
+        startButton = new javax.swing.JButton();
+        scoreButton = new javax.swing.JButton();
+        helpButton = new javax.swing.JButton();
+        settingsButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("IL SESTO SENSO");
         setLocation(new java.awt.Point(450, 170));
 
-        Sfondo.setBackground(new java.awt.Color(51, 51, 51));
+        wallpaper.setBackground(new java.awt.Color(51, 51, 51));
 
         jLabel1.setFont(new java.awt.Font("Chiller", 0, 100)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 0, 0));
         jLabel1.setText("IL SESTO SENSO");
 
-        Start.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 20)); // NOI18N
-        Start.setText("INIZIA");
-        Start.addActionListener(new java.awt.event.ActionListener() {
+        startButton.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 20)); // NOI18N
+        startButton.setText("INIZIA");
+        startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StartActionPerformed(evt);
+                startButtonActionPerformed(evt);
             }
         });
 
-        Score.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 20)); // NOI18N
-        Score.setText("PUNTEGGI");
-        Score.addActionListener(new java.awt.event.ActionListener() {
+        scoreButton.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 20)); // NOI18N
+        scoreButton.setText("PUNTEGGI");
+        scoreButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ScoreActionPerformed(evt);
+                scoreButtonActionPerformed(evt);
             }
         });
 
-        Help.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 20)); // NOI18N
-        Help.setText("HELP");
-        Help.addActionListener(new java.awt.event.ActionListener() {
+        helpButton.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 20)); // NOI18N
+        helpButton.setText("HELP");
+        helpButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HelpActionPerformed(evt);
+                helpButtonActionPerformed(evt);
             }
         });
 
-        Settings.addActionListener(new java.awt.event.ActionListener() {
+        settingsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SettingsActionPerformed(evt);
+                settingsButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout SfondoLayout = new javax.swing.GroupLayout(Sfondo);
-        Sfondo.setLayout(SfondoLayout);
-        SfondoLayout.setHorizontalGroup(
-            SfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SfondoLayout.createSequentialGroup()
+        javax.swing.GroupLayout wallpaperLayout = new javax.swing.GroupLayout(wallpaper);
+        wallpaper.setLayout(wallpaperLayout);
+        wallpaperLayout.setHorizontalGroup(
+            wallpaperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, wallpaperLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Settings, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(settingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
-            .addGroup(SfondoLayout.createSequentialGroup()
-                .addGroup(SfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(SfondoLayout.createSequentialGroup()
+            .addGroup(wallpaperLayout.createSequentialGroup()
+                .addGroup(wallpaperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(wallpaperLayout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(jLabel1))
-                    .addGroup(SfondoLayout.createSequentialGroup()
+                    .addGroup(wallpaperLayout.createSequentialGroup()
                         .addGap(158, 158, 158)
-                        .addComponent(Score)
+                        .addComponent(scoreButton)
                         .addGap(64, 64, 64)
-                        .addComponent(Help))
-                    .addGroup(SfondoLayout.createSequentialGroup()
+                        .addComponent(helpButton))
+                    .addGroup(wallpaperLayout.createSequentialGroup()
                         .addGap(246, 246, 246)
-                        .addComponent(Start)))
+                        .addComponent(startButton)))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
 
-        SfondoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Help, Score, Start});
+        wallpaperLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {helpButton, scoreButton, startButton});
 
-        SfondoLayout.setVerticalGroup(
-            SfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SfondoLayout.createSequentialGroup()
+        wallpaperLayout.setVerticalGroup(
+            wallpaperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(wallpaperLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(Settings, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(settingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Start)
+                .addComponent(startButton)
                 .addGap(30, 30, 30)
-                .addGroup(SfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Score)
-                    .addComponent(Help))
+                .addGroup(wallpaperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(scoreButton)
+                    .addComponent(helpButton))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
-        SfondoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {Help, Score, Start});
+        wallpaperLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {helpButton, scoreButton, startButton});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Sfondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(wallpaper, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Sfondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(wallpaper, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
+    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         IlSestoSenso finestra = new IlSestoSenso(this, true);
         finestra.setVisible(true);
         
-    }//GEN-LAST:event_StartActionPerformed
+    }//GEN-LAST:event_startButtonActionPerformed
 
-    private void ScoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ScoreActionPerformed
+    private void scoreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scoreButtonActionPerformed
         Scores finestra = new Scores(this, true);
         finestra.setVisible(true);
-    }//GEN-LAST:event_ScoreActionPerformed
+    }//GEN-LAST:event_scoreButtonActionPerformed
 
-    private void HelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HelpActionPerformed
+    private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
         Help finestra = new Help(this, true);
         finestra.setVisible(true);
-    }//GEN-LAST:event_HelpActionPerformed
+    }//GEN-LAST:event_helpButtonActionPerformed
 
-    private void SettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SettingsActionPerformed
-        if(settings == null){
-            settings = new Settings(this, true);
-        }
-        settings.setValue();
+    private void settingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButtonActionPerformed
+
+        settings = new Settings(this, true);
+
+        //Settings.setThemeButtonValue();
         settings.setVisible(true);
-        if(settings.isDark())
+        if (Settings.isDark())
         {
-            Sfondo.setBackground(new Color(51, 51, 51));
+            wallpaper.setBackground(new Color(51, 51, 51));
         } else
         {
-            Sfondo.setBackground(new Color(255, 255, 255));
+            wallpaper.setBackground(new Color(255, 255, 255));
         }
-    }//GEN-LAST:event_SettingsActionPerformed
+    }//GEN-LAST:event_settingsButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,11 +216,11 @@ public class UserInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Help;
-    private javax.swing.JButton Score;
-    private javax.swing.JButton Settings;
-    private javax.swing.JPanel Sfondo;
-    private javax.swing.JButton Start;
+    private javax.swing.JButton helpButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton scoreButton;
+    private javax.swing.JButton settingsButton;
+    private javax.swing.JButton startButton;
+    private javax.swing.JPanel wallpaper;
     // End of variables declaration//GEN-END:variables
 }

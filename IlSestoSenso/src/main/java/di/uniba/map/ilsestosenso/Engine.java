@@ -30,7 +30,7 @@ public class Engine extends Thread{
 
     private Parser parser;
     
-    private String command = "";
+    private String command = "-1";
     
     public void setCommand(String command){
         this.command = command;
@@ -65,12 +65,12 @@ public class Engine extends Thread{
         while (true)
         {
             try{
-                Thread.sleep(1);
+                Thread.sleep(100);
             } catch (InterruptedException ex)
             {
                 Logger.getLogger(Engine.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (!command.equals(""))
+            if (!command.equals("-1"))
             {
                 ParserOutput p = parser.parse(command, game.getCommands(), game.getCurrentRoom().getObjects(), game.getInventory());
                 if (p == null || p.getCommand() == null)
@@ -86,10 +86,10 @@ public class Engine extends Thread{
                     System.out.println();
                 }
                 
-                command = "";
+                command = "-1";
             }
         }
-        
+
     }
 
     /**
