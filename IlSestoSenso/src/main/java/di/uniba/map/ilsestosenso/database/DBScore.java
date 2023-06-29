@@ -94,5 +94,36 @@ public class DBScore {
             .limit(3)
             .collect(Collectors.toList());   
    }
+   
+   public List<Integer> countPlayersByScore() throws SQLException {
+    Statement stm = connection.createStatement();
+    ResultSet resultSet = stm.executeQuery("SELECT * FROM score");
+
+    List<UserScore> players = new ArrayList<>();
+    while (resultSet.next()) {
+        UserScore user = new UserScore(resultSet.getString(1), resultSet.getString(4));
+        user.setTime(2);
+        players.add(user);
+    }
+
+    stm.close();
+    resultSet.close();
+
+    long countHighScore = players.stream()
+            .filter(player -> player.getScore() >= 500)
+            .count();
+
+    long countLowScore = players.stream()
+            .filter(player -> player.getScore() < 500)
+            .count();
+
+     List<Integer> counts = new ArrayList<>();
+    counts.add((int) countHighScore);
+    counts.add((int) countLowScore);
+
+    return counts;
+}
+
+
     
 }
