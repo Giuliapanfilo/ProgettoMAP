@@ -119,6 +119,7 @@ public class IlSestoSenso extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Partita");
+        setLocation(new java.awt.Point(450, 170));
         setResizable(false);
 
         audio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N

@@ -144,18 +144,24 @@ public class UserInterface extends javax.swing.JFrame {
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         IlSestoSenso finestra = new IlSestoSenso(this, true);
+        this.setVisible(false);
         finestra.setVisible(true);
+        this.setVisible(true);
         
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void scoreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scoreButtonActionPerformed
         Scores finestra = new Scores(this, true);
+        this.setVisible(false);
         finestra.setVisible(true);
+        this.setVisible(true);
     }//GEN-LAST:event_scoreButtonActionPerformed
 
     private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
         Help finestra = new Help(this, true);
+        this.setVisible(false);
         finestra.setVisible(true);
+        this.setVisible(true);
     }//GEN-LAST:event_helpButtonActionPerformed
 
     private void settingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButtonActionPerformed
@@ -163,7 +169,10 @@ public class UserInterface extends javax.swing.JFrame {
         settings = new Settings(this, true);
 
         //Settings.setThemeButtonValue();
+        this.setVisible(false);
         settings.setVisible(true);
+        this.setVisible(true);
+        
         if (Settings.isDark())
         {
             wallpaper.setBackground(new Color(51, 51, 51));

@@ -64,6 +64,8 @@ public class Settings extends javax.swing.JDialog {
         themeButton = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("SETTINGS");
+        setLocation(new java.awt.Point(500, 250));
         setMaximumSize(new java.awt.Dimension(300, 100));
         setMinimumSize(new java.awt.Dimension(300, 100));
         setResizable(false);
