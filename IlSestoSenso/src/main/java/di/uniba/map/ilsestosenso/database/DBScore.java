@@ -7,8 +7,10 @@ package di.uniba.map.ilsestosenso.database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.Properties;
 
 /**
@@ -48,4 +50,21 @@ public class DBScore {
          pstm.execute();
          pstm.close();
     }
+    
+    public static boolean alreadyExists(String username) throws SQLException{
+        Statement stm = connection.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT username FROM score WHERE username ='" + username + "'");
+        Boolean b=false;
+        
+        if(rs.next()) 
+            b=true;
+        else
+            b=false;
+        
+        rs.close();
+        stm.close();
+        return b;
+    }
+    
+    
 }

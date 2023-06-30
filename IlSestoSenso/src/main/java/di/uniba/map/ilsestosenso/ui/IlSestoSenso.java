@@ -87,14 +87,15 @@ public class IlSestoSenso extends javax.swing.JDialog {
         initComponents();
         
         initSettings();
-        time = new StopWatch(Stopwatch);
-        time.start();
+        
 
         TextAreaOutputStream outputStream = new TextAreaOutputStream(output);
 
         // Reindirizza System.out a TextAreaOutputStream
         System.setOut(new PrintStream(outputStream));
 
+        time = new StopWatch(Stopwatch);
+        time.start();
         engine.start();
 
     }

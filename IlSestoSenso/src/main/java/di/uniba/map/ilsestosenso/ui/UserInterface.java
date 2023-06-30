@@ -4,8 +4,10 @@
  */
 package di.uniba.map.ilsestosenso.ui;
 
+import di.uniba.map.ilsestosenso.database.UserScore;
 import java.awt.Color;
 import java.awt.Image;
+import java.time.LocalDate;
 import javax.swing.ImageIcon;
 
 /**
@@ -15,6 +17,7 @@ import javax.swing.ImageIcon;
 public class UserInterface extends javax.swing.JFrame {
     
     Settings settings = null;
+    UserScore userScore = null;
 
     /**
      * Creates new form UserInterface
@@ -143,10 +146,21 @@ public class UserInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-        IlSestoSenso finestra = new IlSestoSenso(this, true);
+        
+        UsernameInput inputUsername = new UsernameInput(this, true);
         this.setVisible(false);
-        finestra.setVisible(true);
+        inputUsername.setVisible(true);
         this.setVisible(true);
+        if(!inputUsername.getUsername().equals("-1"))
+        {
+            IlSestoSenso finestra = new IlSestoSenso(this, true);
+            this.setVisible(false);
+            finestra.setVisible(true);
+            this.setVisible(true);
+            userScore = new UserScore(inputUsername.getUsername(), LocalDate.now().toString());
+        }
+        
+        
         
     }//GEN-LAST:event_startButtonActionPerformed
 
