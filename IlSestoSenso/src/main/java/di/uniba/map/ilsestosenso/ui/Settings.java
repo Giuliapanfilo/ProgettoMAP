@@ -10,18 +10,33 @@ package di.uniba.map.ilsestosenso.ui;
  */
 public class Settings extends javax.swing.JDialog {
     
-    private boolean dark = false;
+    private static boolean dark = true;
+    private static boolean audio = true;
     
-    public boolean isDark(){
+    public static boolean isDark(){
         return dark;
     }
     
-    public void setValue(){
+    public static boolean isWithoutAudio(){
+        return audio;
+    }
+    
+    public void setThemeButtonValue(){
         if(dark){
-            theme.setText("Dark");
+            themeButton.setText("Dark");
         } else {
-            theme.setText("Light");
+            themeButton.setText("Light");
         }
+        themeButton.setSelected(dark);
+    }
+    
+    public void setAudioButtonValue(){
+        if(audio){
+            audioButton.setText("Off");
+        } else {
+            audioButton.setText("On");
+        }
+        audioButton.setSelected(audio);
     }
 
     /**
@@ -30,9 +45,8 @@ public class Settings extends javax.swing.JDialog {
     public Settings(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        dark = true;
-        theme.setSelected(true);
-        theme.setText("Dark");
+        setThemeButtonValue();
+        setAudioButtonValue();
     }
 
     /**
@@ -44,20 +58,22 @@ public class Settings extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        audio = new javax.swing.JToggleButton();
+        audioButton = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        theme = new javax.swing.JToggleButton();
+        themeButton = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("SETTINGS");
+        setLocation(new java.awt.Point(500, 250));
         setMaximumSize(new java.awt.Dimension(300, 100));
         setMinimumSize(new java.awt.Dimension(300, 100));
         setResizable(false);
 
-        audio.setText("ON/OFF");
-        audio.addActionListener(new java.awt.event.ActionListener() {
+        audioButton.setText("ON/OFF");
+        audioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                audioActionPerformed(evt);
+                audioButtonActionPerformed(evt);
             }
         });
 
@@ -65,10 +81,10 @@ public class Settings extends javax.swing.JDialog {
 
         jLabel2.setText("TEMA");
 
-        theme.setText("DARK/LIGHT");
-        theme.addActionListener(new java.awt.event.ActionListener() {
+        themeButton.setText("DARK/LIGHT");
+        themeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                themeActionPerformed(evt);
+                themeButtonActionPerformed(evt);
             }
         });
 
@@ -82,15 +98,15 @@ public class Settings extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(audio, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(audioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(theme, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(themeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {audio, theme});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {audioButton, themeButton});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,27 +114,28 @@ public class Settings extends javax.swing.JDialog {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(audio))
+                    .addComponent(audioButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(theme))
+                    .addComponent(themeButton))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {audio, theme});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {audioButton, themeButton});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void audioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_audioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_audioActionPerformed
+    private void audioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_audioButtonActionPerformed
+        audio = audioButton.isSelected();
+        setAudioButtonValue();
+    }//GEN-LAST:event_audioButtonActionPerformed
 
-    private void themeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themeActionPerformed
-        dark = theme.isSelected();
-        setValue();
-    }//GEN-LAST:event_themeActionPerformed
+    private void themeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themeButtonActionPerformed
+        dark = themeButton.isSelected();
+        setThemeButtonValue();
+    }//GEN-LAST:event_themeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,9 +187,9 @@ public class Settings extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton audio;
+    private javax.swing.JToggleButton audioButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JToggleButton theme;
+    private javax.swing.JToggleButton themeButton;
     // End of variables declaration//GEN-END:variables
 }
