@@ -10,10 +10,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Properties;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -95,34 +98,27 @@ public class DBScore {
             .collect(Collectors.toList());   
    }
    
-   public List<Integer> countPlayersByScore() throws SQLException {
-    Statement stm = connection.createStatement();
-    ResultSet resultSet = stm.executeQuery("SELECT * FROM score");
+   public Map<LocalDate, Double> averageScoreByDate() throws SQLException{
+        Map<LocalDate, List<Integer>> scoreByDate = new HashMap<>();
+        Map<LocalDate, Double> averageScoreByDate = new HashMap<>(); 
+       Statement stm = connection.createStatement();
+        ResultSet resultSet = stm.executeQuery("SELECT date, score FROM score");
+        
+        while (resultSet.next()) {
+            LocalDate date = resultSet.getDate("date").toLocalDate();
+            int score = resultSet.getInt("score");
+            scoreByDate.computeIfAbsent(date, k -> new ArrayList<>()).add(score);
+        }
+        scoreByDate.forEach((date, scores) -> {
+            double average = scores.stream()
+                    .mapToInt(Integer::intValue)
+                    .average()
+                    .orElse(0.0);
 
-    List<UserScore> players = new ArrayList<>();
-    while (resultSet.next()) {
-        UserScore user = new UserScore(resultSet.getString(1), resultSet.getString(4));
-        user.setTime(2);
-        players.add(user);
-    }
-
-    stm.close();
-    resultSet.close();
-
-    long countHighScore = players.stream()
-            .filter(player -> player.getScore() >= 500)
-            .count();
-
-    long countLowScore = players.stream()
-            .filter(player -> player.getScore() < 500)
-            .count();
-
-     List<Integer> counts = new ArrayList<>();
-    counts.add((int) countHighScore);
-    counts.add((int) countLowScore);
-
-    return counts;
-}
+            averageScoreByDate.put(date, average);
+        });
+        return averageScoreByDate;
+   }
 
 
     
