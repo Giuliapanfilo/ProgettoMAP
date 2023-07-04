@@ -78,7 +78,6 @@ public class UserScore {
             user = user + (time % 60);
         }
 
-        
         user = user +"                "+ score +"             "+ data;
         
         return user;
