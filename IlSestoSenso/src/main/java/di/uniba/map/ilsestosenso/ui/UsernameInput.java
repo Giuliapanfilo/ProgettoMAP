@@ -83,9 +83,6 @@ public class UsernameInput extends javax.swing.JDialog {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 sendMouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                sendMouseExited(evt);
-            }
         });
         send.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,12 +175,6 @@ public class UsernameInput extends javax.swing.JDialog {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER)
             this.setVisible(false);
     }//GEN-LAST:event_inputKeyPressed
-
-    private void sendMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendMouseExited
-        if(username.equals("-1")){
-            
-        }
-    }//GEN-LAST:event_sendMouseExited
 
     private void sendMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendMouseEntered
         if(username.equals("-1")){
