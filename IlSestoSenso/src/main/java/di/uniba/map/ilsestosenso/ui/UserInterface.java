@@ -4,10 +4,14 @@
  */
 package di.uniba.map.ilsestosenso.ui;
 
+import di.uniba.map.ilsestosenso.database.DBScore;
 import di.uniba.map.ilsestosenso.database.UserScore;
 import java.awt.Color;
 import java.awt.Image;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
@@ -151,13 +155,28 @@ public class UserInterface extends javax.swing.JFrame {
         this.setVisible(false);
         inputUsername.setVisible(true);
         this.setVisible(true);
-        if(!inputUsername.getUsername().equals("-1"))
-        {
+        
+        if(!inputUsername.getUsername().equals("-1")) {
             IlSestoSenso gameWindow = new IlSestoSenso(this, true);
             this.setVisible(false);
             gameWindow.setVisible(true);
             this.setVisible(true);
             userScore = new UserScore(inputUsername.getUsername(), LocalDate.now().toString());
+            
+            if(gameWindow.getTimeRecorded() != -1)
+            {
+                userScore.setTime(gameWindow.getTimeRecorded());
+                try
+                {
+                    DBScore.connect();
+                    DBScore.insertScore(userScore);
+                    DBScore.disconnect();
+                } catch (SQLException ex)
+                {
+                    Logger.getLogger(UserInterface.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
         }
         
         
