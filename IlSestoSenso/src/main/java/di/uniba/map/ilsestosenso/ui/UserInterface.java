@@ -153,9 +153,9 @@ public class UserInterface extends javax.swing.JFrame {
         this.setVisible(true);
         if(!inputUsername.getUsername().equals("-1"))
         {
-            IlSestoSenso finestra = new IlSestoSenso(this, true);
+            IlSestoSenso gameWindow = new IlSestoSenso(this, true);
             this.setVisible(false);
-            finestra.setVisible(true);
+            gameWindow.setVisible(true);
             this.setVisible(true);
             userScore = new UserScore(inputUsername.getUsername(), LocalDate.now().toString());
         }
@@ -165,16 +165,16 @@ public class UserInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void scoreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scoreButtonActionPerformed
-        Scores finestra = new Scores(this, true);
+        Scores scoresWindow = new Scores(this, true);
         this.setVisible(false);
-        finestra.setVisible(true);
+        scoresWindow.setVisible(true);
         this.setVisible(true);
     }//GEN-LAST:event_scoreButtonActionPerformed
 
     private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
-        Help finestra = new Help(this, true);
+        Help helpWindow = new Help(this, true);
         this.setVisible(false);
-        finestra.setVisible(true);
+        helpWindow.setVisible(true);
         this.setVisible(true);
     }//GEN-LAST:event_helpButtonActionPerformed
 
