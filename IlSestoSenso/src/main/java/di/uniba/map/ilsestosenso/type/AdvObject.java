@@ -151,5 +151,10 @@ public class AdvObject {
         }
         return true;
     }
+    
+     @Override
+    public String toString() {
+        return name;
+    } 
 
 }

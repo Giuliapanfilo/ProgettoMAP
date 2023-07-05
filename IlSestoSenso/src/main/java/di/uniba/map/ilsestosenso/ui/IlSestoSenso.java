@@ -256,6 +256,8 @@ public class IlSestoSenso extends javax.swing.JDialog {
                 Logger.getLogger(IlSestoSenso.class.getName()).log(Level.SEVERE, null, ex);
             }
             
+            updateInventory();
+            
             if (!engine.isInGame()){
                 time.arrestStopWatch();
 
@@ -278,6 +280,8 @@ public class IlSestoSenso extends javax.swing.JDialog {
         } catch (InterruptedException ex) {
             Logger.getLogger(IlSestoSenso.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        updateInventory();
 
         if (!engine.isInGame()){
             time.arrestStopWatch();
