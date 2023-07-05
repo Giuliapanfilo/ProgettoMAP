@@ -60,6 +60,7 @@ public class DBScore {
          pstm.execute();
          pstm.close();
     }
+    
     public int averageScore() throws SQLException {
              List<Integer> scores = new ArrayList();
              Statement stm = connection.createStatement(); 
@@ -120,6 +121,21 @@ public class DBScore {
         return averageScoreByDate;
    }
 
-
+    
+    public static boolean alreadyExists(String username) throws SQLException{
+        Statement stm = connection.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT username FROM score WHERE username ='" + username + "'");
+        Boolean b=false;
+        
+        if(rs.next()) 
+            b=true;
+        else
+            b=false;
+        
+        rs.close();
+        stm.close();
+        return b;
+    }
+    
     
 }
