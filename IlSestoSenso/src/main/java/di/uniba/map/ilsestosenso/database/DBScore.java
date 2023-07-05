@@ -99,26 +99,25 @@ public class DBScore {
             .collect(Collectors.toList());   
    }
    
-   public Map<LocalDate, Double> averageScoreByDate() throws SQLException{
-        Map<LocalDate, List<Integer>> scoreByDate = new HashMap<>();
-        Map<LocalDate, Double> averageScoreByDate = new HashMap<>(); 
+   public Map<String, Double> averageScoreByDate() throws SQLException{
+        Map<String, Double> averageScoreByDate = new HashMap<>(); 
+        List<UserScore> player = new ArrayList();
        Statement stm = connection.createStatement();
         ResultSet resultSet = stm.executeQuery("SELECT date, score FROM score");
         
-        while (resultSet.next()) {
-            LocalDate date = resultSet.getDate("date").toLocalDate();
-            int score = resultSet.getInt("score");
-            scoreByDate.computeIfAbsent(date, k -> new ArrayList<>()).add(score);
-        }
-        scoreByDate.forEach((date, scores) -> {
-            double average = scores.stream()
-                    .mapToInt(Integer::intValue)
-                    .average()
-                    .orElse(0.0);
-
-            averageScoreByDate.put(date, average);
-        });
-        return averageScoreByDate;
+        while(resultSet.next()){
+           UserScore user = new UserScore(resultSet.getString(1), resultSet.getString(4));
+           user.setTime(resultSet.getInt(2));
+           player.add(user);   
+       }
+       stm.close();
+       resultSet.close();
+       
+       averageScoreByDate = player.stream()
+               .collect(Collectors.groupingBy(UserScore::getData, Collectors.averagingInt(UserScore::getScore)));
+               
+               
+       return averageScoreByDate;
    }
 
     
