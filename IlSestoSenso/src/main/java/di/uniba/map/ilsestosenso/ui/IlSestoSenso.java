@@ -13,6 +13,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -27,7 +29,12 @@ public class IlSestoSenso extends javax.swing.JDialog {
     private static Clip clip;
     private static final String SOUNDTRACK = "./resources/soundTrack.wav";
     private StopWatch time;
+    private int timeRecorded = -1;
     Engine engine = new Engine(new FireHouseGame());
+    
+    public int getTimeRecorded(){
+        return timeRecorded;
+    }
 
     private static void playMusic(String filePath) {
         try
@@ -97,7 +104,7 @@ public class IlSestoSenso extends javax.swing.JDialog {
         time = new StopWatch(Stopwatch);
         time.start();
         engine.start();
-
+        
     }
 
     /**
@@ -223,15 +230,50 @@ public class IlSestoSenso extends javax.swing.JDialog {
     }//GEN-LAST:event_audioActionPerformed
 
     private void inputKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-          engine.setCommand(input.getText());
-          input.setText("");
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+        {
+            engine.setCommand(input.getText());
+            input.setText("");
+            
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(IlSestoSenso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            if (!engine.isInGame()){
+                time.arrestStopWatch();
+
+                if (engine.getExitCode() == 1){
+                    timeRecorded = time.getTime();
+                } else {
+                    timeRecorded = -1;
+                }
+                this.setVisible(false);
+            }
         }
     }//GEN-LAST:event_inputKeyPressed
 
     private void sendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendActionPerformed
         engine.setCommand(input.getText());
         input.setText("");
+    
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(IlSestoSenso.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (!engine.isInGame()){
+            time.arrestStopWatch();
+
+            if (engine.getExitCode() == 1) {
+                timeRecorded = time.getTime();
+            } else {
+                timeRecorded = -1;
+            }
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_sendActionPerformed
 
     /**

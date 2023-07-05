@@ -60,6 +60,29 @@ public class UserScore {
     }
 
     
+    @Override
+    public String toString() {
+        String user = username + "                     ";
+        
+        if (time / 60 < 10)
+        {
+            user = user + "0" + time / 60 + ":";
+        } else
+        {
+            user = user + (time / 60) + ":";
+        }
+        if (time % 60 < 10)
+        {
+            user = user + "0" + time % 60;
+        } else
+        {
+            user = user + (time % 60);
+        }
+
+        user = user +"                "+ score +"             "+ data;
+        
+        return user;
+    }
     
 
 }
