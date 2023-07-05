@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Properties;
@@ -50,13 +51,14 @@ public class DBScore {
         }
     }
     
-    public static void insertScore (String username, int time, int score, String data) throws SQLException{
+    public static void insertScore (UserScore user) throws SQLException{
         
+         
          PreparedStatement pstm = connection.prepareStatement("INSERT INTO score VALUES (?,?,?,?)");
-         pstm.setString(1, username);
-         pstm.setInt(2, time);
-         pstm.setInt(3, score);
-         pstm.setString(4, data);
+         pstm.setString(1, user.getUsername());
+         pstm.setInt(2, user.getTime());
+         pstm.setInt(3, user.getScore());
+         pstm.setString(4, user.getData());
          pstm.execute();
          pstm.close();
     }
@@ -136,5 +138,18 @@ public class DBScore {
         return b;
     }
     
+     public static List<UserScore> allScore() throws SQLException {
+        Statement stm = connection.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT * FROM score");
+        List<UserScore> list = new ArrayList();
+        while (rs.next()) {
+            UserScore user = new UserScore(rs.getString(1), rs.getString(4));
+            user.setTime(rs.getInt(2));
+            list.add(user);
+        }
+        rs.close();
+        stm.close();
+        return list;
+    }
     
 }

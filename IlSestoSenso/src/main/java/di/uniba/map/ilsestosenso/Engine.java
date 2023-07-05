@@ -32,8 +32,24 @@ public class Engine extends Thread{
     
     private String command = "-1";
     
+    private boolean inGame = true;
+    
+    /**
+     * -1 indica fine partita per resa/uscita anticipata
+     *  1 indica fine partita regolare il cui risultato può essere salvato.
+     */
+    private int exitCode = -1;
+    
+    public boolean isInGame(){
+        return inGame;
+    }
+    
     public void setCommand(String command){
         this.command = command;
+    }
+    
+    public int getExitCode(){
+        return exitCode;
     }
 
     public Engine(GameDescription game) {
@@ -79,6 +95,7 @@ public class Engine extends Thread{
                 } else if (p.getCommand() != null && p.getCommand().getType() == CommandType.END)
                 {
                     System.out.println("Addio!");
+                    exitCode = -1;
                     break;
                 } else
                 {
@@ -87,17 +104,9 @@ public class Engine extends Thread{
                 }
                 
                 command = "-1";
-            }
+            }  
         }
-
+        
+        inGame = false;
     }
-
-    /**
-     * @param args the command line arguments
-     */
-    /*public static void main(String[] args) {
-        Engine engine = new Engine(new FireHouseGame());
-        engine.execute();
-    }*/
-
 }
