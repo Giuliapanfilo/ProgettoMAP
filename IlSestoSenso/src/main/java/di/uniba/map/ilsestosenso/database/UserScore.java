@@ -1,5 +1,5 @@
-
 package di.uniba.map.ilsestosenso.database;
+
 
 /**
  *
@@ -39,10 +39,10 @@ public class UserScore {
 
     public void setTime(int time) {
         this.time = time;
-        
-        if(time<300) {
+
+        if (time < 300) {
             score = 500;
-        } else if(time < 600) {
+        } else if (time < 600) {
             score = 400;
         } else if (time < 900) {
             score = 200;
@@ -58,6 +58,8 @@ public class UserScore {
     public void setScore(int score) {
         this.score = score;
     }
+
     
     
+
 }
