@@ -65,7 +65,7 @@ public class FireHouseGame extends GameDescription {
         push.setAlias(new String[]{"spingi","attiva"});
         getCommands().add(push);
         //Rooms
-        Room entranceHall = new Room(0, "Atrio", "Sei nell atrio", "Prima volta atrio");
+        Room entranceHall = new Room(0, "Atrio", "Sei nell atrio, prova", "Prima volta atrio");
         Room livingRoom = new Room(1, "Soggiorno", "Sei nel soggiorno", "Prima volta soggiorno");
         Room kitchen = new Room(2, "Cucina", "Sei in cucina", "Prima volta cucina");
         Room walkinCloset = new Room(3, "Cabina armadio", "Sei nella cabina armadio", "Prima volta cabina armadio");
