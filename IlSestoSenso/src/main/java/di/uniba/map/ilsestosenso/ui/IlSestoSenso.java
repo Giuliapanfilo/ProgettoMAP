@@ -54,6 +54,10 @@ public class IlSestoSenso extends javax.swing.JDialog {
             e.printStackTrace();
         }
     }
+    
+    public void stopMusic(){
+        clip.stop();
+    }
 
     public class TextAreaOutputStream extends OutputStream {
 
@@ -183,6 +187,7 @@ public class IlSestoSenso extends javax.swing.JDialog {
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
+        inventory.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jScrollPane2.setViewportView(inventory);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -240,7 +245,7 @@ public class IlSestoSenso extends javax.swing.JDialog {
             playMusic(SOUNDTRACK);
         } else
         {
-            clip.stop();
+            stopMusic();
         }
     }//GEN-LAST:event_audioActionPerformed
 

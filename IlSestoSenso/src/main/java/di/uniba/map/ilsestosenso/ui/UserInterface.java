@@ -160,6 +160,7 @@ public class UserInterface extends javax.swing.JFrame {
             IlSestoSenso gameWindow = new IlSestoSenso(this, true);
             this.setVisible(false);
             gameWindow.setVisible(true);
+            gameWindow.stopMusic();
             this.setVisible(true);
             userScore = new UserScore(inputUsername.getUsername(), LocalDate.now().toString());
             
