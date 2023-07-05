@@ -87,7 +87,7 @@ public class DBScore {
        
        while(resultSet.next()){
            UserScore user = new UserScore(resultSet.getString(1), resultSet.getString(4));
-           user.setTime(2);
+           user.setTime(resultSet.getInt(2));
            player.add(user);   
        }
        stm.close();
