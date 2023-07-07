@@ -65,14 +65,27 @@ public class FireHouseGame extends GameDescription {
         push.setAlias(new String[]{"spingi","attiva"});
         getCommands().add(push);
         //Rooms
-        Room entranceHall = new Room(0, "Atrio", "Sei nell atrio", "Prima volta atrio");
-        Room livingRoom = new Room(1, "Soggiorno", "Sei nel soggiorno", "Prima volta soggiorno");
-        Room kitchen = new Room(2, "Cucina", "Sei in cucina", "Prima volta cucina");
-        Room walkinCloset = new Room(3, "Cabina armadio", "Sei nella cabina armadio", "Prima volta cabina armadio");
-        Room bedRoom = new Room(4, "Camera da letto", "Sei nella camera da letto", "Prima volta camera da letto");
-        Room diningRoom = new Room(5, "Sala da pranzo", "Sei nella sala da pranzo", "Prima volta sala da pranzo");
-        Room bathroom = new Room(6, "Bagno", "Sei nel bagno", "Prima volta bagno");
-        Room backyard = new Room(7, "Cortile", "Sei nel cortile", "Prima volta cortile");
+        Room entranceHall = new Room(0, "Atrio", "Sei nell atrio, all'ingresso c'è un tappeto." +
+                "A destra trovi un appendiabiti e di fronte c'è una cassettiera con sopra un piattino" +
+                "e un guinzaglio per cani nero.", "Prima volta atrio");
+        Room livingRoom = new Room(1, "Soggiorno", "Sei nel soggiorno, al centro della" +
+                "stanza c'è un sofa e un tavolino con sopra un foglio e un servizio da the. Di fronte" +
+                "appesa al muro ci sono una tv e un quadro e a sinistra nella stanza c'è un ampia libreria.", "Prima volta soggiorno");
+        Room kitchen = new Room(2, "Cucina", "Sei in cucina, al centro c'è una grande isola " +
+                "con un piano di lavoro e i fornelli. Il resto della cucina di fronte è composta da un frigorifero, " +
+                "una credenza, un pensile e altri mobili. Sotto la cucina si trovano le ciotole del cibo e dell'acqua del cane, " +
+                "mentre a sinistra della stanza c'è un calendario appeso.", "Prima volta cucina");
+        Room walkinCloset = new Room(3, "Cabina armadio", "Sei nella cabina armadio, di fronte ci sono " +
+                "due armadi, una scarpiera con diverse paia di scarpe e a terra sotto la scarpiera si trova una forchetta.", "Prima volta cabina armadio");
+        Room bedRoom = new Room(4, "Camera da letto", "Sei nella camera da letto, sul muro a sinistra c'è un " +
+                "letto matrimoniale a doppia piazza con due comodini e un quadro appeso sopra. Di fronte c'è una scrivania con " +
+                "sopra un pc e una poltrona.", "Prima volta camera da letto");
+        Room diningRoom = new Room(5, "Sala da pranzo", "Sei nella sala da pranzo, al centro c'è un grande tavolo con 4 sedie, " +
+                "appesa al muro c'è una tv, a destra c'è un portavini e di fronte c'è una spaziosa finestra.", "Prima volta sala da pranzo");
+        Room bathroom = new Room(6, "Bagno", "Sei nel bagno, di fronte c'è il lavabo, uno specchio con uno sportello " +
+                "in cui ci sono varie medicine e la doccia. A destra invece ci sono il wc, il bidet e una finestra.", "Prima volta bagno");
+        Room backyard = new Room(7, "Cortile", "Sei nel cortile, al centro c'è un tavolo con delle sedie. A destra c'è la cuccia del cane " +
+                "mentre a sinistra ci sono un altalena e uno scivolo per bambini accanto a vari alberi.", "Prima volta cortile");
         entranceHall.setEast(kitchen);
         entranceHall.setNorth(livingRoom);
         livingRoom.setNorth(backyard);
