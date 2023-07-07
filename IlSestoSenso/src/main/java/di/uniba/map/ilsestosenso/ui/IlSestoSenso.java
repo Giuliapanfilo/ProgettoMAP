@@ -183,7 +183,7 @@ public class IlSestoSenso extends javax.swing.JDialog {
             }
         });
 
-        Stopwatch.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Stopwatch.setFont(new java.awt.Font("Stencil", 0, 18)); // NOI18N
         Stopwatch.setText("00:00");
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
