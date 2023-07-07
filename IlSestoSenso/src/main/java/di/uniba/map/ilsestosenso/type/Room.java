@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author pierpaolo
  */
 public class Room {
@@ -31,8 +30,8 @@ public class Room {
     private Room east = null;
 
     private Room west = null;
-    
-    private final List<AdvObject> objects=new ArrayList<>();
+
+    private final List<AdvObject> objects = new ArrayList<>();
 
     private boolean firstTime = true;
 
@@ -142,19 +141,19 @@ public class Room {
         this.look = look;
     }
 
-    public boolean isFirstTime(){
+    public boolean isFirstTime() {
         return firstTime;
     }
 
-    public String getDescriptionFirstTime(){
+    public String getDescriptionFirstTime() {
         return descriptionFirstTime;
     }
 
-    public void setDescriptionFirstTime(String descriptionFirstTime){
-        this.descriptionFirstTime=descriptionFirstTime;
+    public void setDescriptionFirstTime(String descriptionFirstTime) {
+        this.descriptionFirstTime = descriptionFirstTime;
     }
-    
-    public void setFirstTime(boolean firstTime){
+
+    public void setFirstTime(boolean firstTime) {
         this.firstTime = firstTime;
     }
 

@@ -6,7 +6,7 @@ package di.uniba.map.ilsestosenso.ui;
 
 import di.uniba.map.ilsestosenso.Engine;
 import di.uniba.map.ilsestosenso.StopWatch;
-import di.uniba.map.ilsestosenso.games.FireHouseGame;
+import di.uniba.map.ilsestosenso.games.IlSestoSensoGame;
 import di.uniba.map.ilsestosenso.type.AdvObject;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -34,7 +34,7 @@ public class IlSestoSenso extends javax.swing.JDialog {
     private static final String SOUNDTRACK = "./resources/soundTrack.wav";
     private StopWatch time;
     private int timeRecorded = -1;
-    Engine engine = new Engine(new FireHouseGame());
+    Engine engine = new Engine(new IlSestoSensoGame());
     private DefaultListModel<AdvObject> model;
     
     public int getTimeRecorded(){

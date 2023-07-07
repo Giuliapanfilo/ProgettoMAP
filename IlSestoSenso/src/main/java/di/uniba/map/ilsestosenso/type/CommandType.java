@@ -6,7 +6,6 @@
 package di.uniba.map.ilsestosenso.type;
 
 /**
- *
  * @author pierpaolo
  */
 public enum CommandType {

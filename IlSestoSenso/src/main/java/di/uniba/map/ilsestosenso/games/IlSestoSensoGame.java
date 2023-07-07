@@ -12,6 +12,7 @@ import di.uniba.map.ilsestosenso.type.AdvObjectContainer;
 import di.uniba.map.ilsestosenso.type.Command;
 import di.uniba.map.ilsestosenso.type.CommandType;
 import di.uniba.map.ilsestosenso.type.Room;
+
 import java.io.PrintStream;
 import java.util.Iterator;
 
@@ -20,7 +21,7 @@ import java.util.Iterator;
  * debba estendere la classe GameDescription. L'Engine è fatto in modo che possa
  * eseguire qualsiasi gioco che estende GameDescription, in questo modo si
  * possono creare più gioci utilizzando lo stesso Engine.
- *
+ * <p>
  * Diverse migliorie possono essere applicate: - la descrizione del gioco
  * potrebbe essere caricate da file o da DBMS in modo da non modificare il
  * codice sorgente - l'utilizzo di file e DBMS non è semplice poiché all'interno
@@ -29,7 +30,7 @@ import java.util.Iterator;
  *
  * @author pierpaolo
  */
-public class FireHouseGame extends GameDescription {
+public class IlSestoSensoGame extends GameDescription {
 
     @Override
     public void init() throws Exception {
@@ -50,7 +51,7 @@ public class FireHouseGame extends GameDescription {
         ovest.setAlias(new String[]{"o", "O", "Ovest", "OVEST"});
         getCommands().add(ovest);
         Command end = new Command(CommandType.END, "end");
-        end.setAlias(new String[]{"end", "fine", "esci", "muori", "ammazzati", "ucciditi", "suicidati","exit"});
+        end.setAlias(new String[]{"end", "fine", "esci", "muori", "ammazzati", "ucciditi", "suicidati", "exit"});
         getCommands().add(end);
         Command look = new Command(CommandType.LOOK_AT, "osserva");
         look.setAlias(new String[]{"guarda", "vedi", "trova", "cerca", "descrivi"});
@@ -62,7 +63,7 @@ public class FireHouseGame extends GameDescription {
         open.setAlias(new String[]{});
         getCommands().add(open);
         Command push = new Command(CommandType.PUSH, "premi");
-        push.setAlias(new String[]{"spingi","attiva"});
+        push.setAlias(new String[]{"spingi", "attiva"});
         getCommands().add(push);
         //Rooms
         Room entranceHall = new Room(0, "Atrio", "Sei nell atrio, all'ingresso c'è un tappeto." +
@@ -110,280 +111,274 @@ public class FireHouseGame extends GameDescription {
         getRooms().add(diningRoom);
         getRooms().add(bathroom);
         getRooms().add(backyard);
-        
+
         //obejcts of entrance hall
         AdvObject carpet = new AdvObject(1, "tappeto", "tappeto rosso");
         carpet.setAlias(new String[]{"zerbino"});
         carpet.setPush(true);
         entranceHall.getObjects().add(carpet);
-        
+
         AdvObject hangers = new AdvObject(2, "appendiabiti", "appendiabiti in ferro");
         hangers.setAlias(new String[]{"appendiabiti"});
         carpet.setPickupable(false);
         entranceHall.getObjects().add(hangers);
-        
+
         AdvObject dresser = new AdvObject(3, "cassettiera", "cassettiera in legno di quercia");
         dresser.setAlias(new String[]{});
         dresser.setOpenable(true);
         entranceHall.getObjects().add(dresser);
-        
+
         AdvObject keySaucer = new AdvObject(4, "piattino", "piattino per le chiavi");
         keySaucer.setAlias(new String[]{});
         entranceHall.getObjects().add(keySaucer);
-        
+
         AdvObject door = new AdvObject(5, "porta", "porta blindata");
         door.setAlias(new String[]{});
         door.setOpenable(true);
         door.setOpen(true);
         entranceHall.getObjects().add(door);
-        
+
         AdvObject leash = new AdvObject(6, "guinzaglio", "guinzaglio nero in stoffa per cani");
         leash.setAlias(new String[]{});
         entranceHall.getObjects().add(leash);
-        
-        
-        
+
+
         //objects of living room
         AdvObject paper = new AdvObject(7, "foglio", "foglio di carta");
         paper.setAlias(new String[]{});
         livingRoom.getObjects().add(paper);
-        
+
         AdvObject sofa = new AdvObject(8, "divano", "divano in pelle");
         sofa.setAlias(new String[]{"sofa"});
         sofa.setPushable(true);
         sofa.setPickupable(false);
         livingRoom.getObjects().add(sofa);
-        
+
         AdvObject sideTable = new AdvObject(9, "tavolino", "tavolino con base in vetro");
         sideTable.setAlias(new String[]{});
         sideTable.setPickupable(false);
         livingRoom.getObjects().add(sideTable);
-        
+
         AdvObject teaService = new AdvObject(10, "servizio da the", "servizio da the in porcellana");
         teaService.setAlias(new String[]{});
         livingRoom.getObjects().add(teaService);
-        
+
         AdvObject tv = new AdvObject(11, "tv", "smart tv da 50 pollici");
         tv.setAlias(new String[]{"televisione", "televisore"});
         tv.setPickupable(false);
         livingRoom.getObjects().add(tv);
-        
+
         AdvObject picture1 = new AdvObject(12, "quadro", "quadro di picasso");
         picture1.setAlias(new String[]{"dipinto", "tela"});
         livingRoom.getObjects().add(picture1);
-        
+
         AdvObject picture2 = new AdvObject(13, "quadro", "quadro di giotto");
         picture2.setAlias(new String[]{"dipinto", "tela"});
         livingRoom.getObjects().add(picture2);
-        
+
         AdvObject library = new AdvObject(14, "libreria", "libreria in legno piena di libri");
         library.setAlias(new String[]{});
         livingRoom.getObjects().add(library);
-        
-        
+
+
         //objects of kitchen
         AdvObject kitchenIsland = new AdvObject(15, "isola", "isola con piano di lavoro");
         kitchenIsland.setAlias(new String[]{});
         kitchenIsland.setPickupable(false);
         kitchen.getObjects().add(kitchenIsland);
-        
+
         AdvObject stoves = new AdvObject(16, "fornelli", "fornelli del piano cottura");
         stoves.setAlias(new String[]{});
         stoves.setPickupable(false);
         kitchen.getObjects().add(stoves);
-        
+
         AdvObject waterBowl = new AdvObject(17, "ciotola", "ciotola dell'acqua per il cane");
         waterBowl.setAlias(new String[]{});
         kitchen.getObjects().add(waterBowl);
-        
+
         AdvObject foodBowl = new AdvObject(18, "ciotola", "ciotola del cibo per il cane");
         foodBowl.setAlias(new String[]{});
         kitchen.getObjects().add(foodBowl);
-        
+
         AdvObject calendar = new AdvObject(19, "calendario", "calendario anno 2023");
         calendar.setAlias(new String[]{});
         kitchen.getObjects().add(calendar);
-        
+
         AdvObject fridge = new AdvObject(20, "frigorifero", "frigorifero con freezer integrato");
         fridge.setAlias(new String[]{"frigo"});
         fridge.setOpenable(true);
         kitchen.getObjects().add(fridge);
-        
+
         AdvObject wallUnit = new AdvObject(21, "pensile", "pensile con cibo");
         wallUnit.setAlias(new String[]{});
         wallUnit.setOpenable(true);
         kitchen.getObjects().add(wallUnit);
-        
+
         AdvObject sideboard = new AdvObject(22, "credenza", "credenza");
         sideboard.setAlias(new String[]{});
         sideboard.setOpenable(true);
         kitchen.getObjects().add(sideboard);
-        
-        
-        
+
+
         //objects of walkin closet
         AdvObject fork = new AdvObject(23, "forchetta", "forchetta");
         fork.setAlias(new String[]{});
         walkinCloset.getObjects().add(fork);
-        
+
         AdvObject book = new AdvObject(24, "libro", "libro di George Owell");
         book.setAlias(new String[]{});
         book.setOpenable(true);
         walkinCloset.getObjects().add(book);
-        
+
         AdvObject skirting = new AdvObject(25, "battiscopa", "battiscopa con apertura");
         skirting.setAlias(new String[]{});
         skirting.setPickupable(false);
-        walkinCloset.getObjects().add(skirting); 
-        
+        walkinCloset.getObjects().add(skirting);
+
         AdvObject closet1 = new AdvObject(26, "armadio estivo", "armadio per guardaroba estivo");
         closet1.setAlias(new String[]{});
         closet1.setOpenable(true);
         walkinCloset.getObjects().add(closet1);
-        
+
         AdvObject closet2 = new AdvObject(27, "armadio", "armadio per guardaroba invernale");
         closet2.setAlias(new String[]{});
         closet2.setOpenable(true);
         walkinCloset.getObjects().add(closet2);
-        
+
         AdvObject shoes = new AdvObject(28, "scarpe", "ci sono 10 paia di scarpe diverse");
         shoes.setAlias(new String[]{"stivali", "tacchi"});
         shoes.setPickupable(false);
         walkinCloset.getObjects().add(book);
-        
-        
-        
+
+
         //objects of bedroom
         AdvObject bed = new AdvObject(29, "letto", "letto matrimoniale a doppia piazza");
         bed.setAlias(new String[]{});
         bed.setPickupable(false);
         bedRoom.getObjects().add(bed);
-        
+
         AdvObject nightstand1 = new AdvObject(30, "comodino", "comodino dal lato del marito");
         nightstand1.setAlias(new String[]{"comò"});
         nightstand1.setOpenable(true);
         bedRoom.getObjects().add(nightstand1);
-        
+
         AdvObject nightstand2 = new AdvObject(31, "comodino", "comodino dal lato della moglie");
         nightstand2.setAlias(new String[]{"comò"});
         nightstand1.setOpenable(true);
         bedRoom.getObjects().add(nightstand2);
-        
+
         AdvObject picture3 = new AdvObject(32, "quadro", "quadro camera da letto situato sopra il letto matrimoniale");
         picture3.setAlias(new String[]{"dipinto", "tela"});
         bedRoom.getObjects().add(picture3);
-        
+
         AdvObject armchair = new AdvObject(33, "poltrona", "poltrona in pelle situata all angolo del letto matrimoniale");
         armchair.setAlias(new String[]{});
         armchair.setPickupable(false);
         bedRoom.getObjects().add(armchair);
-        
+
         AdvObject desk = new AdvObject(34, "scrivania", "scrivania per il pc");
         desk.setAlias(new String[]{});
         desk.setPickupable(false);
         bedRoom.getObjects().add(desk);
-        
+
         AdvObject pc = new AdvObject(35, "pc", "pc fisso");
         pc.setAlias(new String[]{"computer"});
         bedRoom.getObjects().add(pc);
-        
+
         AdvObject backyardDoor = new AdvObject(36, "porta finestra", "porta finestra in vetro che porta al cortile");
         backyardDoor.setAlias(new String[]{"porta"});
         backyardDoor.setOpenable(true);
         backyardDoor.setPickupable(false);
         bedRoom.getObjects().add(backyardDoor);
-        
-        
-        
+
+
         //objects of dining room
         AdvObject table = new AdvObject(37, "tavolo", "tavolo da pranzo in legno");
         table.setAlias(new String[]{});
         table.setPickupable(false);
         diningRoom.getObjects().add(table);
-        
+
         AdvObject chair = new AdvObject(38, "sedia", "ci sono 4 sedie");
         chair.setAlias(new String[]{});
         chair.setPickupable(false);
         diningRoom.getObjects().add(chair);
-        
+
         AdvObject tv2 = new AdvObject(39, "tv", "tv sala da pranzo");
         tv2.setAlias(new String[]{"televisione", "televisore"});
         tv2.setPickupable(false);
         diningRoom.getObjects().add(tv2);
-        
+
         AdvObject window = new AdvObject(40, "finestra", "finestra");
         window.setAlias(new String[]{});
         window.setOpenable(true);
         diningRoom.getObjects().add(window);
-        
+
         AdvObject wineRack = new AdvObject(41, "porta vini", "porta vini piena di vini pregiati");
         wineRack.setAlias(new String[]{"cantina"});
         diningRoom.getObjects().add(wineRack);
-        
-        
-        
+
+
         //objects of bathroom
         AdvObjectContainer mirror = new AdvObjectContainer(42, "specchio", "specchio con sportello");
         mirror.setAlias(new String[]{});
         mirror.setOpenable(true);
         bathroom.getObjects().add(mirror);
-        
+
         AdvObject washbasin = new AdvObject(43, "lavabo", "lavabo doppio");
         washbasin.setAlias(new String[]{"lavandino"});
         washbasin.setPickupable(false);
         bathroom.getObjects().add(washbasin);
-        
+
         AdvObject wc = new AdvObject(44, "wc", "water closet");
         wc.setAlias(new String[]{"water", "gabinetto"});
         wc.setPickupable(false);
         bathroom.getObjects().add(wc);
-        
+
         AdvObject bidet = new AdvObject(45, "bidet", "bidet");
         bidet.setAlias(new String[]{});
         bidet.setPickupable(false);
         bathroom.getObjects().add(bidet);
-        
+
         AdvObject shower = new AdvObject(46, "doccia", "doccia");
         shower.setAlias(new String[]{});
         shower.setPickupable(false);
         bathroom.getObjects().add(shower);
-        
+
         AdvObject medicines = new AdvObject(47, "medicine", "medicine");
         medicines.setAlias(new String[]{"compresse", "pillole", "bustine"});
         mirror.add(medicines);
-        
+
         AdvObject window2 = new AdvObject(48, "finestra", "finestra del bagno");
         window2.setAlias(new String[]{});
         window2.setOpenable(true);
         bathroom.getObjects().add(window2);
-        
-        
-        
+
+
         //objects of backyard
         AdvObject backyardTable = new AdvObject(49, "tavolo", "tavolo del cortile");
         backyardTable.setAlias(new String[]{});
         backyardTable.setPickupable(false);
         backyard.getObjects().add(backyardTable);
-        
+
         AdvObject backyardChair = new AdvObject(50, "sedia", "ci sono 2 sedie");
         backyardChair.setAlias(new String[]{});
         backyardChair.setPickupable(false);
         backyard.getObjects().add(backyardChair);
-        
+
         AdvObject kennel = new AdvObject(51, "cuccia", "cuccia del cane");
         kennel.setAlias(new String[]{});
         backyard.getObjects().add(kennel);
-        
+
         AdvObject swing = new AdvObject(52, "altalena", "altalena");
         swing.setAlias(new String[]{});
         swing.setPickupable(false);
         backyard.getObjects().add(swing);
-        
+
         AdvObject slide = new AdvObject(53, "scivolo", "scivolo");
         slide.setAlias(new String[]{});
         slide.setPickupable(false);
         backyard.getObjects().add(slide);
-        
+
         AdvObject woods = new AdvObject(54, "alberi", "ci sono 8 alberi");
         woods.setAlias(new String[]{});
         woods.setPickupable(false);
@@ -392,10 +387,12 @@ public class FireHouseGame extends GameDescription {
         setCurrentRoom(bedRoom);
     }
 
-    public void firstDescription(PrintStream out){
+    public void printDescription(PrintStream out) {
         if (getCurrentRoom().isFirstTime()) {
             getCurrentRoom().setFirstTime(false);
             out.println(getCurrentRoom().getDescriptionFirstTime());
+        } else {
+            out.println(getCurrentRoom().getDescription());
         }
     }
 
@@ -410,7 +407,6 @@ public class FireHouseGame extends GameDescription {
             if (p.getCommand().getType() == CommandType.NORD) {
                 if (getCurrentRoom().getNorth() != null) {
                     setCurrentRoom(getCurrentRoom().getNorth());
-                    firstDescription(out);
                     move = true;
                 } else {
                     noroom = true;
@@ -418,7 +414,6 @@ public class FireHouseGame extends GameDescription {
             } else if (p.getCommand().getType() == CommandType.SOUTH) {
                 if (getCurrentRoom().getSouth() != null) {
                     setCurrentRoom(getCurrentRoom().getSouth());
-                    firstDescription(out);
                     move = true;
                 } else {
                     noroom = true;
@@ -426,7 +421,6 @@ public class FireHouseGame extends GameDescription {
             } else if (p.getCommand().getType() == CommandType.EAST) {
                 if (getCurrentRoom().getEast() != null) {
                     setCurrentRoom(getCurrentRoom().getEast());
-                    firstDescription(out);
                     move = true;
                 } else {
                     noroom = true;
@@ -434,7 +428,6 @@ public class FireHouseGame extends GameDescription {
             } else if (p.getCommand().getType() == CommandType.WEST) {
                 if (getCurrentRoom().getWest() != null) {
                     setCurrentRoom(getCurrentRoom().getWest());
-                    firstDescription(out);
                     move = true;
                 } else {
                     noroom = true;
@@ -464,8 +457,8 @@ public class FireHouseGame extends GameDescription {
                 }
             } else if (p.getCommand().getType() == CommandType.OPEN) {
                 /*ATTENZIONE: quando un oggetto contenitore viene aperto, tutti gli oggetti contenuti
-                * vengongo inseriti nella stanza o nell'inventario a seconda di dove si trova l'oggetto contenitore.
-                * Potrebbe non esssere la soluzione ottimale.
+                 * vengongo inseriti nella stanza o nell'inventario a seconda di dove si trova l'oggetto contenitore.
+                 * Potrebbe non esssere la soluzione ottimale.
                  */
                 if (p.getObject() == null && p.getInvObject() == null) {
                     out.println("Non c'è niente da aprire qui.");
@@ -539,7 +532,7 @@ public class FireHouseGame extends GameDescription {
             } else if (move) {
                 out.println(getCurrentRoom().getName());
                 out.println("================================================");
-                out.println(getCurrentRoom().getDescription());
+                printDescription(out);
             }
         }
     }

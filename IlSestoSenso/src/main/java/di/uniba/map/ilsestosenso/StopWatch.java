@@ -5,11 +5,10 @@
 package di.uniba.map.ilsestosenso;
 
 /**
- *
  * @author Camil
  */
-public class StopWatch extends Thread{
-    
+public class StopWatch extends Thread {
+
     private javax.swing.JLabel timerLabel;
     private boolean isRunning = true;
     private int seconds = 0;
@@ -20,33 +19,26 @@ public class StopWatch extends Thread{
 
     @Override
     public void run() {
-        while (isRunning)
-        {
-            try
-            {
+        while (isRunning) {
+            try {
                 Thread.sleep(1000);
                 seconds++;
                 String second = " ";
                 String minute = " ";
-                if (seconds % 60 < 10)
-                {
+                if (seconds % 60 < 10) {
                     second = "0" + seconds % 60;
-                } else
-                {
+                } else {
                     second = "" + (seconds % 60);
                 }
 
-                if (seconds / 60 < 10)
-                {
+                if (seconds / 60 < 10) {
                     minute = "0" + seconds / 60;
-                } else
-                {
+                } else {
                     minute = "" + (seconds / 60);
                 }
 
                 timerLabel.setText(minute + ":" + second);
-            } catch (InterruptedException e)
-            {
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
@@ -55,7 +47,7 @@ public class StopWatch extends Thread{
     public void arrestStopWatch() {
         isRunning = false;
     }
-    
+
     public int getTime() {
         return seconds;
     }
