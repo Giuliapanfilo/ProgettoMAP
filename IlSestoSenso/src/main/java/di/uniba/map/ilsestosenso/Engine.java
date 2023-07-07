@@ -51,6 +51,10 @@ public class Engine extends Thread{
     public int getExitCode(){
         return exitCode;
     }
+    
+    public GameDescription getGame(){
+        return game;
+    }
 
     public Engine(GameDescription game) {
         this.game = game;
