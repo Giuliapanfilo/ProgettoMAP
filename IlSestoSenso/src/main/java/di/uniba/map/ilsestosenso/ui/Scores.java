@@ -81,6 +81,7 @@ public class Scores extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jList1.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
         jScrollPane1.setViewportView(jList1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -163,11 +163,11 @@ public class IlSestoSenso extends javax.swing.JDialog {
 
         output.setEditable(false);
         output.setColumns(20);
-        output.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        output.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         output.setRows(5);
         jScrollPane1.setViewportView(output);
 
-        input.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        input.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         input.setForeground(new java.awt.Color(0, 0, 0));
         input.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
