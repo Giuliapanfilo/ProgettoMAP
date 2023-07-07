@@ -18,10 +18,13 @@ import javax.ws.rs.core.Response;
 public class Weather {
     
         public static final String API_KEY = "6bedf33afcad0fc380e5a6f199309146";
-        private String weather = getWeatherByCity( "Bari");
-        Gson gson = new Gson();
-        JsonObject json = gson.fromJson(weather, JsonObject.class);
-
+        private final String weather = getWeatherByCity( "Bari");
+        private final Gson gson = new Gson();
+        private final JsonObject json;
+        
+        public Weather() {
+        this.json = gson.fromJson(weather, JsonObject.class);
+        };
                 
     /**
      *
@@ -29,7 +32,7 @@ public class Weather {
      * @return
      */
         
-    public static String getWeatherByCity(String city) {
+    private static String getWeatherByCity(String city) {
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target("https://api.openweathermap.org/data/2.5");
         Response resp = target.path("weather")
@@ -41,21 +44,68 @@ public class Weather {
     
     
     
-    public String getWeather() {
+    private String getWeather() {
         JsonArray weatherArray = json.getAsJsonArray("weather");
         String weatherMain = weatherArray.get(0).getAsJsonObject().get("main").getAsString();
         return (weatherMain);
     }
 
-    public int getTemperature() {
-        JsonArray weatherArray = json.getAsJsonArray("weather");
-        String weatherMain = weatherArray.get(0).getAsJsonObject().get("main").getAsString();
-        return (5);
+    /**
+     *Return the temperature
+     * @return
+     */
+    private int getTemperature() {
+        JsonObject weatherObject = json.getAsJsonObject("main");
+        Double weatherTemperature = weatherObject.get("temp").getAsDouble();
+        int temperatureInCelsius = (int)(weatherTemperature - 273.15);
+        return (temperatureInCelsius);
     }
-   
-    public static void main(String[] args) {
-        Weather weather = new Weather();
-        System.out.println(weather.getWeather());
+    
+    public String weatherOutput() {
+        StringBuilder outputMessage = new StringBuilder();
+
+        switch (getWeather()) {
+            case "Clear":
+                outputMessage.append("Il cielo è sereno ");
+                break;
+            case "Thunderstorm":
+                outputMessage.append("Non conviene uscire, fuori ci sono tuoni, fulmini e pioggia a dirotto ");
+                break;
+            case "Drizzle":
+                outputMessage.append("C'è una leggera pioggia ");
+                break;
+            case "Rain":
+                outputMessage.append("Piove ");
+                break;
+            case "Snow":
+                outputMessage.append("Sembra Natale, nevica ");
+                break;
+            case "Atmosphere":
+                outputMessage.append("C'è una fitta nebbia fuori ");
+                break;
+            case "Cloud":
+                outputMessage.append("E' nuvoloso ");
+                break;           
+        }
+        
+        if(getTemperature() < 0)
+        {
+            outputMessage.append("e la temperatura è sotto zero, si gela.");
+        } else if (getTemperature() < 10)
+        {
+            outputMessage.append("e fa freddo.");
+        } else if (getTemperature() < 20)
+        {
+            outputMessage.append("e c'è una temperatura media: non fa nè freddo nè caldo");
+        } else if (getTemperature() < 30)
+        {
+            outputMessage.append("e fa abbastanza caldo.");
+        } else if (getTemperature() > 30)
+        {
+            outputMessage.append("e fa un caldo boia.");
+        }
+        
+        return(outputMessage.toString());
     }
 }
 
