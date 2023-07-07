@@ -29,7 +29,7 @@ import java.util.Iterator;
  *
  * @author pierpaolo
  */
-public class FireHouseGame extends GameDescription {
+public class IlSestoSensoGame extends GameDescription {
 
     @Override
     public void init() throws Exception {
