@@ -56,7 +56,8 @@ public class IlSestoSenso extends javax.swing.JDialog {
     }
     
     public void stopMusic(){
-        clip.stop();
+        if(clip!=null)
+            clip.stop();
     }
 
     public class TextAreaOutputStream extends OutputStream {
