@@ -3,11 +3,11 @@ package di.uniba.map.ilsestosenso.parser;
 import di.uniba.map.ilsestosenso.Utils;
 import di.uniba.map.ilsestosenso.type.AdvObject;
 import di.uniba.map.ilsestosenso.type.Command;
+
 import java.util.List;
 import java.util.Set;
 
 /**
- *
  * @author pierpaolo
  */
 public class Parser {
@@ -36,9 +36,9 @@ public class Parser {
         return -1;
     }
 
-    /* ATTENZIONE: il parser è implementato in modo abbastanza independete dalla lingua, ma riconosce solo 
-    * frasi semplici del tipo <azione> <oggetto> <oggetto>. Eventuali articoli o preposizioni vengono semplicemente
-    * rimossi.
+    /* ATTENZIONE: il parser è implementato in modo abbastanza independete dalla lingua, ma riconosce solo
+     * frasi semplici del tipo <azione> <oggetto> <oggetto>. Eventuali articoli o preposizioni vengono semplicemente
+     * rimossi.
      */
     public ParserOutput parse(String command, List<Command> commands, List<AdvObject> objects, List<AdvObject> inventory) {
         List<String> tokens = Utils.parseString(command, stopwords);

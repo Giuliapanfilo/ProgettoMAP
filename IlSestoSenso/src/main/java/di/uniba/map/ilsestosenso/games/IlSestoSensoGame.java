@@ -12,6 +12,7 @@ import di.uniba.map.ilsestosenso.type.AdvObjectContainer;
 import di.uniba.map.ilsestosenso.type.Command;
 import di.uniba.map.ilsestosenso.type.CommandType;
 import di.uniba.map.ilsestosenso.type.Room;
+
 import java.io.PrintStream;
 import java.util.Iterator;
 
@@ -20,7 +21,7 @@ import java.util.Iterator;
  * debba estendere la classe GameDescription. L'Engine è fatto in modo che possa
  * eseguire qualsiasi gioco che estende GameDescription, in questo modo si
  * possono creare più gioci utilizzando lo stesso Engine.
- *
+ * <p>
  * Diverse migliorie possono essere applicate: - la descrizione del gioco
  * potrebbe essere caricate da file o da DBMS in modo da non modificare il
  * codice sorgente - l'utilizzo di file e DBMS non è semplice poiché all'interno
@@ -50,7 +51,7 @@ public class IlSestoSensoGame extends GameDescription {
         ovest.setAlias(new String[]{"o", "O", "Ovest", "OVEST"});
         getCommands().add(ovest);
         Command end = new Command(CommandType.END, "end");
-        end.setAlias(new String[]{"end", "fine", "esci", "muori", "ammazzati", "ucciditi", "suicidati","exit"});
+        end.setAlias(new String[]{"end", "fine", "esci", "muori", "ammazzati", "ucciditi", "suicidati", "exit"});
         getCommands().add(end);
         Command look = new Command(CommandType.LOOK_AT, "osserva");
         look.setAlias(new String[]{"guarda", "vedi", "trova", "cerca", "descrivi"});
@@ -62,7 +63,7 @@ public class IlSestoSensoGame extends GameDescription {
         open.setAlias(new String[]{});
         getCommands().add(open);
         Command push = new Command(CommandType.PUSH, "premi");
-        push.setAlias(new String[]{"spingi","attiva"});
+        push.setAlias(new String[]{"spingi", "attiva"});
         getCommands().add(push);
         //Rooms
         Room entranceHall = new Room(0, "Atrio", "Sei nell atrio", "Prima volta atrio");
@@ -127,7 +128,6 @@ public class IlSestoSensoGame extends GameDescription {
         AdvObject leash = new AdvObject(6, "guinzaglio", "guinzaglio nero in stoffa per cani");
         leash.setAlias(new String[]{});
         entranceHall.getObjects().add(leash);
-
 
 
         //objects of living room
@@ -207,7 +207,6 @@ public class IlSestoSensoGame extends GameDescription {
         kitchen.getObjects().add(sideboard);
 
 
-
         //objects of walkin closet
         AdvObject fork = new AdvObject(23, "forchetta", "forchetta");
         fork.setAlias(new String[]{});
@@ -237,7 +236,6 @@ public class IlSestoSensoGame extends GameDescription {
         shoes.setAlias(new String[]{"stivali", "tacchi"});
         shoes.setPickupable(false);
         walkinCloset.getObjects().add(book);
-
 
 
         //objects of bedroom
@@ -281,7 +279,6 @@ public class IlSestoSensoGame extends GameDescription {
         bedRoom.getObjects().add(backyardDoor);
 
 
-
         //objects of dining room
         AdvObject table = new AdvObject(37, "tavolo", "tavolo da pranzo in legno");
         table.setAlias(new String[]{});
@@ -306,7 +303,6 @@ public class IlSestoSensoGame extends GameDescription {
         AdvObject wineRack = new AdvObject(41, "porta vini", "porta vini piena di vini pregiati");
         wineRack.setAlias(new String[]{"cantina"});
         diningRoom.getObjects().add(wineRack);
-
 
 
         //objects of bathroom
@@ -345,7 +341,6 @@ public class IlSestoSensoGame extends GameDescription {
         bathroom.getObjects().add(window2);
 
 
-
         //objects of backyard
         AdvObject backyardTable = new AdvObject(49, "tavolo", "tavolo del cortile");
         backyardTable.setAlias(new String[]{});
@@ -379,7 +374,7 @@ public class IlSestoSensoGame extends GameDescription {
         setCurrentRoom(bedRoom);
     }
 
-    public void printDescription(PrintStream out){
+    public void printDescription(PrintStream out) {
         if (getCurrentRoom().isFirstTime()) {
             getCurrentRoom().setFirstTime(false);
             out.println(getCurrentRoom().getDescriptionFirstTime());

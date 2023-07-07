@@ -21,21 +21,17 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- *
  * @author Camil
  */
 public class DBScore {
-    
-    
+
+
     private static Connection connection;
-    
+
     public static final String CREATE_TABLE_SCORE = "CREATE TABLE IF NOT EXISTS score (username VARCHAR(15) PRIMARY KEY, time INT, score INT, data DATE)";
 
-   
-    
-    
-    
-    public static void connect() throws SQLException{
+
+    public static void connect() throws SQLException {
         Properties dbprops = new Properties();
         dbprops.setProperty("user", "user");
         dbprops.setProperty("password", "1234");
@@ -44,34 +40,34 @@ public class DBScore {
         stm.executeUpdate(CREATE_TABLE_SCORE);
         stm.close();
     }
-    
+
     public static void disconnect() throws SQLException {
         if (connection != null) {
             connection.close();
         }
     }
-    
-    public static void insertScore (UserScore user) throws SQLException{
-        
-         
-         PreparedStatement pstm = connection.prepareStatement("INSERT INTO score VALUES (?,?,?,?)");
-         pstm.setString(1, user.getUsername());
-         pstm.setInt(2, user.getTime());
-         pstm.setInt(3, user.getScore());
-         pstm.setString(4, user.getData());
-         pstm.execute();
-         pstm.close();
-    }
-    
-    public int averageScore() throws SQLException {
-             List<Integer> scores = new ArrayList();
-             Statement stm = connection.createStatement(); 
-             ResultSet resultSet = stm.executeQuery("SELECT score FROM score");
 
-            while (resultSet.next()) {
-                int score = resultSet.getInt("score");
-                scores.add(score);
-            }
+    public static void insertScore(UserScore user) throws SQLException {
+
+
+        PreparedStatement pstm = connection.prepareStatement("INSERT INTO score VALUES (?,?,?,?)");
+        pstm.setString(1, user.getUsername());
+        pstm.setInt(2, user.getTime());
+        pstm.setInt(3, user.getScore());
+        pstm.setString(4, user.getData());
+        pstm.execute();
+        pstm.close();
+    }
+
+    public int averageScore() throws SQLException {
+        List<Integer> scores = new ArrayList();
+        Statement stm = connection.createStatement();
+        ResultSet resultSet = stm.executeQuery("SELECT score FROM score");
+
+        while (resultSet.next()) {
+            int score = resultSet.getInt("score");
+            scores.add(score);
+        }
         double average;
         average = scores.stream()
                 .mapToInt(score -> score)
@@ -81,64 +77,64 @@ public class DBScore {
         resultSet.close();
         return (int) Math.round(average);
     }
-    
-   public List<UserScore> top3player() throws SQLException{
-       List<UserScore> player = new ArrayList();
-       Statement stm = connection.createStatement();
-       ResultSet resultSet = stm.executeQuery("SELECT * FROM score");
-       
-       while(resultSet.next()){
-           UserScore user = new UserScore(resultSet.getString(1), resultSet.getString(4));
-           user.setTime(resultSet.getInt(2));
-           player.add(user);   
-       }
-       stm.close();
-       resultSet.close();
-       
-       return player.stream()
-            .sorted(Comparator.comparingInt(UserScore::getScore).reversed())
-            .limit(3)
-            .collect(Collectors.toList());   
-   }
-   
-   public Map<String, Double> averageScoreByDate() throws SQLException{
-        Map<String, Double> averageScoreByDate = new HashMap<>(); 
-        List<UserScore> player = new ArrayList();
-       Statement stm = connection.createStatement();
-        ResultSet resultSet = stm.executeQuery("SELECT date, score FROM score");
-        
-        while(resultSet.next()){
-           UserScore user = new UserScore(resultSet.getString(1), resultSet.getString(4));
-           user.setTime(resultSet.getInt(2));
-           player.add(user);   
-       }
-       stm.close();
-       resultSet.close();
-       
-       averageScoreByDate = player.stream()
-               .collect(Collectors.groupingBy(UserScore::getData, Collectors.averagingInt(UserScore::getScore)));
-               
-               
-       return averageScoreByDate;
-   }
 
-    
-    public static boolean alreadyExists(String username) throws SQLException{
+    public List<UserScore> top3player() throws SQLException {
+        List<UserScore> player = new ArrayList();
+        Statement stm = connection.createStatement();
+        ResultSet resultSet = stm.executeQuery("SELECT * FROM score");
+
+        while (resultSet.next()) {
+            UserScore user = new UserScore(resultSet.getString(1), resultSet.getString(4));
+            user.setTime(resultSet.getInt(2));
+            player.add(user);
+        }
+        stm.close();
+        resultSet.close();
+
+        return player.stream()
+                .sorted(Comparator.comparingInt(UserScore::getScore).reversed())
+                .limit(3)
+                .collect(Collectors.toList());
+    }
+
+    public Map<String, Double> averageScoreByDate() throws SQLException {
+        Map<String, Double> averageScoreByDate = new HashMap<>();
+        List<UserScore> player = new ArrayList();
+        Statement stm = connection.createStatement();
+        ResultSet resultSet = stm.executeQuery("SELECT date, score FROM score");
+
+        while (resultSet.next()) {
+            UserScore user = new UserScore(resultSet.getString(1), resultSet.getString(4));
+            user.setTime(resultSet.getInt(2));
+            player.add(user);
+        }
+        stm.close();
+        resultSet.close();
+
+        averageScoreByDate = player.stream()
+                .collect(Collectors.groupingBy(UserScore::getData, Collectors.averagingInt(UserScore::getScore)));
+
+
+        return averageScoreByDate;
+    }
+
+
+    public static boolean alreadyExists(String username) throws SQLException {
         Statement stm = connection.createStatement();
         ResultSet rs = stm.executeQuery("SELECT username FROM score WHERE username ='" + username + "'");
-        Boolean b=false;
-        
-        if(rs.next()) 
-            b=true;
+        Boolean b = false;
+
+        if (rs.next())
+            b = true;
         else
-            b=false;
-        
+            b = false;
+
         rs.close();
         stm.close();
         return b;
     }
-    
-     public static List<UserScore> allScore() throws SQLException {
+
+    public static List<UserScore> allScore() throws SQLException {
         Statement stm = connection.createStatement();
         ResultSet rs = stm.executeQuery("SELECT * FROM score");
         List<UserScore> list = new ArrayList();
@@ -151,5 +147,5 @@ public class DBScore {
         stm.close();
         return list;
     }
-    
+
 }
