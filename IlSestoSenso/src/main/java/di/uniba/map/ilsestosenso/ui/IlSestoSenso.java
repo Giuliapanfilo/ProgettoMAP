@@ -7,18 +7,22 @@ package di.uniba.map.ilsestosenso.ui;
 import di.uniba.map.ilsestosenso.Engine;
 import di.uniba.map.ilsestosenso.StopWatch;
 import di.uniba.map.ilsestosenso.games.IlSestoSensoGame;
+import di.uniba.map.ilsestosenso.type.AdvObject;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.swing.DefaultListModel;
 import javax.swing.JTextArea;
+import javax.swing.ListModel;
 
 /**
  *
@@ -31,6 +35,7 @@ public class IlSestoSenso extends javax.swing.JDialog {
     private StopWatch time;
     private int timeRecorded = -1;
     Engine engine = new Engine(new IlSestoSensoGame());
+    private DefaultListModel<AdvObject> model;
     
     public int getTimeRecorded(){
         return timeRecorded;
@@ -48,6 +53,11 @@ public class IlSestoSenso extends javax.swing.JDialog {
         {
             e.printStackTrace();
         }
+    }
+    
+    public void stopMusic(){
+        if(clip!=null)
+            clip.stop();
     }
 
     public class TextAreaOutputStream extends OutputStream {
@@ -106,6 +116,19 @@ public class IlSestoSenso extends javax.swing.JDialog {
         engine.start();
         
     }
+    
+    private void updateInventory(){
+        model = new DefaultListModel<>();
+        inventory.setModel((ListModel) model);
+        
+        List<AdvObject> objects = engine.getGame().getInventory();
+
+        model.clear();
+        for (AdvObject o : objects)
+        {
+            model.addElement(o);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -123,7 +146,7 @@ public class IlSestoSenso extends javax.swing.JDialog {
         send = new javax.swing.JButton();
         Stopwatch = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        inventory = new javax.swing.JTextArea();
+        inventory = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Partita");
@@ -165,9 +188,7 @@ public class IlSestoSenso extends javax.swing.JDialog {
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        inventory.setEditable(false);
-        inventory.setColumns(20);
-        inventory.setRows(5);
+        inventory.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jScrollPane2.setViewportView(inventory);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -225,7 +246,7 @@ public class IlSestoSenso extends javax.swing.JDialog {
             playMusic(SOUNDTRACK);
         } else
         {
-            clip.stop();
+            stopMusic();
         }
     }//GEN-LAST:event_audioActionPerformed
 
@@ -240,6 +261,8 @@ public class IlSestoSenso extends javax.swing.JDialog {
             } catch (InterruptedException ex) {
                 Logger.getLogger(IlSestoSenso.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            updateInventory();
             
             if (!engine.isInGame()){
                 time.arrestStopWatch();
@@ -263,6 +286,8 @@ public class IlSestoSenso extends javax.swing.JDialog {
         } catch (InterruptedException ex) {
             Logger.getLogger(IlSestoSenso.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        updateInventory();
 
         if (!engine.isInGame()){
             time.arrestStopWatch();
@@ -329,7 +354,7 @@ public class IlSestoSenso extends javax.swing.JDialog {
     private javax.swing.JLabel Stopwatch;
     private javax.swing.JToggleButton audio;
     private javax.swing.JTextField input;
-    private javax.swing.JTextArea inventory;
+    private javax.swing.JList<String> inventory;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea output;
