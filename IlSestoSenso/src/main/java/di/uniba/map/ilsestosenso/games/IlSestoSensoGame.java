@@ -396,6 +396,10 @@ public class IlSestoSensoGame extends GameDescription {
         }
     }
 
+    public boolean isPossible(AdvObject obj){
+        return getInventory().contains(obj);
+    }
+
     @Override
     public void nextMove(ParserOutput p, PrintStream out) {
         if (p.getCommand() == null) {
@@ -449,6 +453,10 @@ public class IlSestoSensoGame extends GameDescription {
                         getInventory().add(p.getObject());
                         getCurrentRoom().getObjects().remove(p.getObject());
                         out.println("Hai raccolto: " + p.getObject().getDescription());
+                        
+                        if (p.getObject().getId() == 35) {
+                        end(out);
+                    }
                     } else {
                         out.println("Non puoi raccogliere questo oggetto.");
                     }
@@ -539,6 +547,6 @@ public class IlSestoSensoGame extends GameDescription {
 
     private void end(PrintStream out) {
         out.println("Premi il pulsante del giocattolo e in seguito ad una forte esplosione la tua casa prende fuoco...\ntu e tuoi famigliari cercate invano di salvarvi e venite avvolti dalle fiamme...\nè stata una morte CALOROSA...addio!");
-        System.exit(0);
+        setOver(true);
     }
 }

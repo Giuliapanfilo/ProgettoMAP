@@ -98,6 +98,11 @@ public class Engine extends Thread {
                     game.nextMove(p, System.out);
                     System.out.println();
                 }
+                
+                if(game.isOver()){
+                    exitCode = 1;
+                    break;
+                }
 
                 command = "-1";
             }

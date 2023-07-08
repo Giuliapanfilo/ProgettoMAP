@@ -26,6 +26,16 @@ public abstract class GameDescription {
     private final List<AdvObject> inventory = new ArrayList<>();
 
     private Room currentRoom;
+    
+    private boolean over = false;
+    
+    public boolean isOver(){
+        return over;
+    }
+    
+    public void setOver(boolean b){
+        over = b;
+    }
 
     public List<Room> getRooms() {
         return rooms;
