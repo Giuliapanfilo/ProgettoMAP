@@ -252,7 +252,7 @@ public class IlSestoSenso extends javax.swing.JDialog {
             input.setText("");
             
             try {
-                Thread.sleep(100);
+                Thread.sleep(300);
             } catch (InterruptedException ex) {
                 Logger.getLogger(IlSestoSenso.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -277,7 +277,7 @@ public class IlSestoSenso extends javax.swing.JDialog {
         input.setText("");
     
         try {
-            Thread.sleep(100);
+            Thread.sleep(300);
         } catch (InterruptedException ex) {
             Logger.getLogger(IlSestoSenso.class.getName()).log(Level.SEVERE, null, ex);
         }

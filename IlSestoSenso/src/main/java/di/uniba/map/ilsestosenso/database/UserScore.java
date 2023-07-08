@@ -61,22 +61,17 @@ public class UserScore {
 
     @Override
     public String toString() {
-        String user = username + "                     ";
-
-        if (time / 60 < 10) {
-            user = user + "0" + time / 60 + ":";
-        } else {
-            user = user + (time / 60) + ":";
-        }
-        if (time % 60 < 10) {
-            user = user + "0" + time % 60;
-        } else {
-            user = user + (time % 60);
-        }
-
-        user = user + "                " + score + "             " + data;
-
-        return user;
+        StringBuilder newUser = new StringBuilder();
+        newUser.append(username);
+        for(int i = username.length(); i<15; i++)
+            newUser.append(" ");
+        String newTime = String.format("%02d:%02d", time/60, time%60);
+        StringBuilder newScore = new StringBuilder();
+        newScore.append(score);
+        for(int i= newScore.length(); i<7; i++)
+            newScore.append(" ");
+        
+        return (newUser.toString() + " " + newTime + " " + newScore.toString() + " " + data);
     }
 
 
