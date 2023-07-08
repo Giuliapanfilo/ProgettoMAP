@@ -396,9 +396,6 @@ public class IlSestoSensoGame extends GameDescription {
         }
     }
 
-    public boolean isPossible(AdvObject obj){
-        return getInventory().contains(obj);
-    }
 
     @Override
     public void nextMove(ParserOutput p, PrintStream out) {
