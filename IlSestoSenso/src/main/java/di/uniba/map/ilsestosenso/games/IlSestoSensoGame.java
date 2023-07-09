@@ -411,8 +411,12 @@ public class IlSestoSensoGame extends GameDescription {
             boolean move = false;
             if (p.getCommand().getType() == CommandType.NORD) {
                 if (getCurrentRoom().getNorth() != null) {
-                    setCurrentRoom(getCurrentRoom().getNorth());
-                    move = true;
+                    if(getCurrentRoom().getNorth().getId() == 6 && !isPossible(null)) { //al posto di null ci sarà la chiave
+                        out.println("Non puoi entrare in questa stanza senza la chiave!");
+                    } else {
+                        setCurrentRoom(getCurrentRoom().getNorth());
+                        move = true;
+                    }
                 } else {
                     noroom = true;
                 }
@@ -425,8 +429,12 @@ public class IlSestoSensoGame extends GameDescription {
                 }
             } else if (p.getCommand().getType() == CommandType.EAST) {
                 if (getCurrentRoom().getEast() != null) {
-                    setCurrentRoom(getCurrentRoom().getEast());
-                    move = true;
+                    if(getCurrentRoom().getNorth().getId() == 6 && !isPossible(null)) { //al posto di null ci sarà la chiave
+                        out.println("Non puoi entrare in questa stanza senza la chiave!");
+                    } else {
+                        setCurrentRoom(getCurrentRoom().getNorth());
+                        move = true;
+                    }
                 } else {
                     noroom = true;
                 }
