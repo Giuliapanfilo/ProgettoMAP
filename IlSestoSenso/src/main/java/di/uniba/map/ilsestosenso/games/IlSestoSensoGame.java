@@ -65,6 +65,21 @@ public class IlSestoSensoGame extends GameDescription {
         Command push = new Command(CommandType.PUSH, "premi");
         push.setAlias(new String[]{"spingi", "attiva"});
         getCommands().add(push);
+        Command move = new Command(CommandType.MOVE, "sposta");
+        move.setAlias(new String[]{});
+        getCommands().add(move);
+        Command read = new Command(CommandType.READ, "leggi");
+        read.setAlias(new String[]{});
+        getCommands().add(move);
+        Command dig = new Command(CommandType.DIG, "scava");
+        dig.setAlias(new String[]{});
+        getCommands().add(dig);
+        Command leave = new Command(CommandType.LEAVE, "lascia");
+        leave.setAlias(new String[]{"posa"});
+        getCommands().add(leave);
+        Command unlock = new Command(CommandType.UNLOCK, "sblocca");
+        unlock.setAlias(new String[]{});
+        getCommands().add(unlock);
         //Rooms
         Room entranceHall = new Room(0, "Atrio", "Sei nell atrio, all'ingresso c'è un tappeto." +
                 "A destra trovi un appendiabiti e di fronte c'è una cassettiera con sopra un piattino" +
@@ -321,7 +336,7 @@ public class IlSestoSensoGame extends GameDescription {
         //objects of bathroom
         AdvObjectContainer mirror = new AdvObjectContainer(42, "specchio", "specchio con sportello");
         mirror.setAlias(new String[]{});
-        mirror.setOpenable(true);
+        mirror.setOpenable(false);
         bathroom.getObjects().add(mirror);
 
         AdvObject washbasin = new AdvObject(43, "lavabo", "lavabo doppio");
@@ -344,14 +359,19 @@ public class IlSestoSensoGame extends GameDescription {
         shower.setPickupable(false);
         bathroom.getObjects().add(shower);
 
-        AdvObject medicines = new AdvObject(47, "medicine", "medicine");
-        medicines.setAlias(new String[]{"compresse", "pillole", "bustine"});
-        mirror.add(medicines);
+        AdvObject crucified = new AdvObject(47, "crocifisso", "crocifisso");
+        crucified.setAlias(new String[]{});
+        mirror.add(crucified);
 
         AdvObject window2 = new AdvObject(48, "finestra", "finestra del bagno");
         window2.setAlias(new String[]{});
         window2.setOpenable(true);
         bathroom.getObjects().add(window2);
+        
+        AdvObject book = new AdvObject(56, "libro", "libro");
+        book.setPickupable(false);
+        book.setAlias(new String[]{});
+        mirror.add(book);
 
 
         //objects of backyard
@@ -383,6 +403,11 @@ public class IlSestoSensoGame extends GameDescription {
         woods.setAlias(new String[]{});
         woods.setPickupable(false);
         backyard.getObjects().add(woods);
+        
+        
+        AdvObject land = new AdvObject(55, "terra", "terra smossa");
+        land.setAlias(new String[]{});
+        backyard.getObjects().add(land);
         //set starting room
         setCurrentRoom(bedRoom);
     }
@@ -531,6 +556,8 @@ public class IlSestoSensoGame extends GameDescription {
                 } else {
                     out.println("Non ci sono oggetti che puoi premere qui.");
                 }
+            } else if (p.getCommand().getType() == CommandType.MOVE){
+                
             }
             if (noroom) {
                 out.println("Da quella parte non si può andare c'è un muro!\nNon hai ancora acquisito i poteri per oltrepassare i muri...");
