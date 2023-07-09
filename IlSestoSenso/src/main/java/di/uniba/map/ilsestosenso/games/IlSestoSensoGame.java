@@ -432,7 +432,7 @@ public class IlSestoSensoGame extends GameDescription {
                     if(getCurrentRoom().getNorth().getId() == 6 && !isPossible(null)) { //al posto di null ci sarà la chiave
                         out.println("Non puoi entrare in questa stanza senza la chiave!");
                     } else {
-                        setCurrentRoom(getCurrentRoom().getNorth());
+                        setCurrentRoom(getCurrentRoom().getEast());
                         move = true;
                     }
                 } else {
