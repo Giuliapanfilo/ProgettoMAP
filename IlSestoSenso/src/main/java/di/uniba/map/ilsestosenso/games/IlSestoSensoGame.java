@@ -68,19 +68,29 @@ public class IlSestoSensoGame extends GameDescription {
         //Rooms
         Room entranceHall = new Room(0, "Atrio", "Sei nell atrio, all'ingresso c'è un tappeto." +
                 "A destra trovi un appendiabiti e di fronte c'è una cassettiera con sopra un piattino" +
-                "e un guinzaglio per cani nero.", "Prima volta atrio");
+                "e un guinzaglio per cani nero.", "Ti trovi probabilmente in una specie di"
+                        + "ingresso, dato che ci sono appendiabiti e cassettiera, ma non vedi nessuna porta.");
         Room livingRoom = new Room(1, "Soggiorno", "Sei nel soggiorno, al centro della" +
                 "stanza c'è un sofa e un tavolino con sopra un foglio e un servizio da the. Di fronte" +
-                "appesa al muro ci sono una tv e un quadro e a sinistra nella stanza c'è un ampia libreria.", "Prima volta soggiorno");
+                "appesa al muro ci sono una tv e un quadro e a sinistra nella stanza c'è un ampia libreria.", "Le risate provenivano da qui."
+                        + "Non c'e nessuno pero', e sembra tutto tranquillo. Guardandoti intorno vedi solo il divano,"
+                        + "il tavolino con un servizio da the e la tv davanti. Ti incuriosisce il bigliettino sul tavolo,"
+                        + "non ricordi assolutamente di averlo lasciato.");
         Room kitchen = new Room(2, "Cucina", "Sei in cucina, al centro c'è una grande isola " +
                 "con un piano di lavoro e i fornelli. Il resto della cucina di fronte è composta da un frigorifero, " +
                 "una credenza, un pensile e altri mobili. Sotto la cucina si trovano le ciotole del cibo e dell'acqua del cane, " +
-                "mentre a sinistra della stanza c'è un calendario appeso.", "Prima volta cucina");
+                "mentre a sinistra della stanza c'è un calendario appeso.", "Sei in cucina, sembra tutto normale."
+                        + "Piano cottura, isola, credenza e altri mobili. Quello che ti colpisce e' il calendario, forse converebbe guardarlo meglio.");
         Room walkinCloset = new Room(3, "Cabina armadio", "Sei nella cabina armadio, di fronte ci sono " +
-                "due armadi, una scarpiera con diverse paia di scarpe e a terra sotto la scarpiera si trova una forchetta.", "Prima volta cabina armadio");
+                "due armadi, una scarpiera con diverse paia di scarpe e a terra sotto la scarpiera si trova una forchetta.", "Ti trovi nella cabina armadio,"
+                        + "ci sono un sacco di vestiti e scarpe anche femminili.. e' strano. C'e' anche qualcosa che non dovrebbe stare qui, una forchetta."
+                        + "Sarebbe il caso di riportarla al suo posto?");
+        walkinCloset.setLook("Vedi una strana fessura tra due mattonelle del battiscopa. Spostandola noti che c'e' una scatoletta.");
         Room bedRoom = new Room(4, "Camera da letto", "Sei nella camera da letto, sul muro a sinistra c'è un " +
                 "letto matrimoniale a doppia piazza con due comodini e un quadro appeso sopra. Di fronte c'è una scrivania con " +
-                "sopra un pc e una poltrona.", "Prima volta camera da letto");
+                "sopra un pc e una poltrona.", "Ti sei appena svegliato dopo un incubo orribile. Sei nella tua camera, completamente sudato e tremante."
+                        + "Il quadro appeso sopra la testata del letto sembra fissarti, come se sapesse del sogno che hai fatto."
+                        + "All'improvviso senti dei rumori provenire da un'altra stanza, probabilmente dal soggiorno, a ovest. Sembra la risata di un bambino.");
         Room diningRoom = new Room(5, "Sala da pranzo", "Sei nella sala da pranzo, al centro c'è un grande tavolo con 4 sedie, " +
                 "appesa al muro c'è una tv, a destra c'è un portavini e di fronte c'è una spaziosa finestra.", "Prima volta sala da pranzo");
         Room bathroom = new Room(6, "Bagno", "Sei nel bagno, di fronte c'è il lavabo, uno specchio con uno sportello " +
