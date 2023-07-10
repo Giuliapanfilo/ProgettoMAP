@@ -92,11 +92,16 @@ public class IlSestoSensoGame extends GameDescription {
                         + "Il quadro appeso sopra la testata del letto sembra fissarti, come se sapesse del sogno che hai fatto."
                         + "All'improvviso senti dei rumori provenire da un'altra stanza, probabilmente dal soggiorno, a ovest. Sembra la risata di un bambino.");
         Room diningRoom = new Room(5, "Sala da pranzo", "Sei nella sala da pranzo, al centro c'è un grande tavolo con 4 sedie, " +
-                "appesa al muro c'è una tv, a destra c'è un portavini e di fronte c'è una spaziosa finestra.", "Prima volta sala da pranzo");
+                "appesa al muro c'è una tv, a destra c'è un portavini e di fronte c'è una spaziosa finestra.", "Questa e' la sala da pranzo. Solite cose,"
+                        + " un tavolo, la tv, e una grande finestra. E' il tipico posto dove ti aspetteresti di trovare qualcosa di utile..");
         Room bathroom = new Room(6, "Bagno", "Sei nel bagno, di fronte c'è il lavabo, uno specchio con uno sportello " +
-                "in cui ci sono varie medicine e la doccia. A destra invece ci sono il wc, il bidet e una finestra.", "Prima volta bagno");
+                "in cui ci sono varie medicine e la doccia. A destra invece ci sono il wc, il bidet e una finestra.", "Questo è il bagno, la stanza"
+                        + " della casa piu' adatta per riflettere sul senso della vita. A destra c'e' il lavabo con sopra lo specchio, ma lo sportellino e' "
+                        + "chiuso a chiave... chissa' come mai.");
         Room backyard = new Room(7, "Cortile", "Sei nel cortile, al centro c'è un tavolo con delle sedie. A destra c'è la cuccia del cane " +
-                "mentre a sinistra ci sono un altalena e uno scivolo per bambini accanto a vari alberi.", "Prima volta cortile");
+                "mentre a sinistra ci sono un altalena e uno scivolo per bambini accanto a vari alberi.", "Sei nel cortile, giocavi sempre qui quando"
+                        + " eri piccolo. Ci sono un tavolino con delle sedie e l'altalena. Ma quello scivolo per bambini non era qui, o sbaglio?"
+                        + " Sotto l'albero c'e' della terra smossa, come se ci avessero sotterrato qualcosa.");
         entranceHall.setEast(kitchen);
         entranceHall.setNorth(livingRoom);
         livingRoom.setNorth(backyard);
