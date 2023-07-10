@@ -249,6 +249,7 @@ public class IlSestoSenso extends javax.swing.JDialog {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER)
         {
             engine.setCommand(input.getText());
+            output.append("[" + input.getText() + "]" + "\n\n");
             input.setText("");
             
             try {

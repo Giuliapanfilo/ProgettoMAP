@@ -176,7 +176,7 @@ public class IlSestoSensoGame extends GameDescription {
 
         //objects of living room
         AdvObject note = new AdvObject(7, "biglietto", "biglietto");
-        note.setAlias(new String[]{});
+        note.setAlias(new String[]{"foglio", "bigliettino"});
         livingRoom.getObjects().add(note);
 
         AdvObject sofa = new AdvObject(8, "divano", "divano in pelle");
@@ -628,10 +628,7 @@ public class IlSestoSensoGame extends GameDescription {
             } else if (p.getCommand().getType() == CommandType.READ) {
                 if (p.getObject() != null && p.getObject().getId() == 7) {
                     out.println("Buongiorno da mamma e papa'");
-                } else {
-                    out.println("Non puoi leggerlo");
-                }
-                if (p.getObject() != null && p.getObject().getId() == 58) {
+                } else if (p.getObject() != null && p.getObject().getId() == 58) {
                     out.println("Vade, sátana, invéntor et magíster omnis falláciæ, hostis humánæ salútis. \n"
                             + "Da locum Christo, in quo nihil invenísti de opéribus tuis: da locum Ecclésiæ unæ, sanctæ, cathólicæ et Apostólicæ, quam Christus ipse acquisívit sánguine suo. \n"
                             + "Il Dio della pace stritolerà presto Satana sotto i vostri piedi. La grazia del Signore nostro Gesù Cristo sia con voi. “Lettera ai Romani, 16-20” ");
