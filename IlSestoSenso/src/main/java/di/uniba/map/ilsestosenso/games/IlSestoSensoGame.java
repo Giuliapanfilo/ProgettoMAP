@@ -254,13 +254,13 @@ public class IlSestoSensoGame extends GameDescription {
         fork.setAlias(new String[]{});
         walkinCloset.getObjects().add(fork);
 
-        AdvObject book = new AdvObject(24, "libro", "libro di George Owell");
+        /*AdvObject book = new AdvObject(24, "libro", "libro di George Owell");
         book.setAlias(new String[]{});
         book.setOpenable(true);
-        walkinCloset.getObjects().add(book);
+        walkinCloset.getObjects().add(book);*/
 
-        AdvObjectContainer skirting = new AdvObjectContainer(25, "battiscopa", "battiscopa con apertura");
-        skirting.setAlias(new String[]{});
+        AdvObjectContainer skirting = new AdvObjectContainer(25, "scatoletta", "scatola con oggetti");
+        skirting.setAlias(new String[]{"scatola"});
         skirting.setPickupable(false);
         skirting.setOpenable(true);
         walkinCloset.getObjects().add(skirting);
@@ -278,9 +278,9 @@ public class IlSestoSensoGame extends GameDescription {
         AdvObject shoes = new AdvObject(28, "scarpe", "ci sono 10 paia di scarpe diverse");
         shoes.setAlias(new String[]{"stivali", "tacchi"});
         shoes.setPickupable(false);
-        walkinCloset.getObjects().add(book);
+        walkinCloset.getObjects().add(shoes);
 
-        AdvObject picture = new AdvObject(57, "foto", "foto ricordo");
+        AdvObject picture = new AdvObject(57, "foto ricordo", "foto con amici");
         picture.setAlias(new String[]{});
         skirting.add(picture);
 
@@ -398,9 +398,9 @@ public class IlSestoSensoGame extends GameDescription {
         bathroom.getObjects().add(window2);
 
         AdvObject diary = new AdvObject(56, "diario", "diario dei segreti");
-        book.setPickupable(false);
-        book.setAlias(new String[]{});
-        mirror.add(book);
+        diary.setPickupable(false);
+        diary.setAlias(new String[]{});
+        mirror.add(diary);
 
         //objects of backyard
         AdvObject backyardTable = new AdvObject(49, "tavolo", "tavolo del cortile");
@@ -519,7 +519,12 @@ public class IlSestoSensoGame extends GameDescription {
                             end(out);
                         }
                     } else {
-                        out.println("Non puoi raccogliere questo oggetto.");
+                        if (p.getObject().getId() == 56) {
+                            out.println("C'è il crocifisso sopra il diario, devo spostarlo per poterlo prendere.");
+
+                        } else {
+                            out.println("Non puoi raccogliere questo oggetto.");
+                        }
                     }
                 } else {
                     out.println("Non c'è niente da raccogliere qui.");
@@ -537,8 +542,8 @@ public class IlSestoSensoGame extends GameDescription {
 
                             if (p.getObject() instanceof AdvObjectContainer) {
 
-                                if(p.getObject().getId() == 42) {
-                                    if(isPossible(58)) {
+                                if (p.getObject().getId() == 42) {
+                                    if (isPossible(58)) {
                                         out.println("Hai aperto: " + p.getObject().getName());
                                         AdvObjectContainer c = (AdvObjectContainer) p.getObject();
                                         if (!c.getList().isEmpty()) {
