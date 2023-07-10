@@ -14,7 +14,9 @@ import di.uniba.map.ilsestosenso.type.CommandType;
 import di.uniba.map.ilsestosenso.type.Room;
 
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * ATTENZIONE: La descrizione del gioco è fatta in modo che qualsiasi gioco
@@ -74,34 +76,31 @@ public class IlSestoSensoGame extends GameDescription {
         Command dig = new Command(CommandType.DIG, "scava");
         dig.setAlias(new String[]{});
         getCommands().add(dig);
-        Command leave = new Command(CommandType.LEAVE, "lascia");
-        leave.setAlias(new String[]{"posa"});
-        getCommands().add(leave);
         Command unlock = new Command(CommandType.UNLOCK, "sblocca");
         unlock.setAlias(new String[]{});
         getCommands().add(unlock);
         //Rooms
-        Room entranceHall = new Room(0, "Atrio", "Sei nell atrio, all'ingresso c'è un tappeto." +
-                "A destra trovi un appendiabiti e di fronte c'è una cassettiera con sopra un piattino" +
-                "e un guinzaglio per cani nero.", "Prima volta atrio");
-        Room livingRoom = new Room(1, "Soggiorno", "Sei nel soggiorno, al centro della" +
-                "stanza c'è un sofa e un tavolino con sopra un foglio e un servizio da the. Di fronte" +
-                "appesa al muro ci sono una tv e un quadro e a sinistra nella stanza c'è un ampia libreria.", "Prima volta soggiorno");
-        Room kitchen = new Room(2, "Cucina", "Sei in cucina, al centro c'è una grande isola " +
-                "con un piano di lavoro e i fornelli. Il resto della cucina di fronte è composta da un frigorifero, " +
-                "una credenza, un pensile e altri mobili. Sotto la cucina si trovano le ciotole del cibo e dell'acqua del cane, " +
-                "mentre a sinistra della stanza c'è un calendario appeso.", "Prima volta cucina");
-        Room walkinCloset = new Room(3, "Cabina armadio", "Sei nella cabina armadio, di fronte ci sono " +
-                "due armadi, una scarpiera con diverse paia di scarpe e a terra sotto la scarpiera si trova una forchetta.", "Prima volta cabina armadio");
-        Room bedRoom = new Room(4, "Camera da letto", "Sei nella camera da letto, sul muro a sinistra c'è un " +
-                "letto matrimoniale a doppia piazza con due comodini e un quadro appeso sopra. Di fronte c'è una scrivania con " +
-                "sopra un pc e una poltrona.", "Prima volta camera da letto");
-        Room diningRoom = new Room(5, "Sala da pranzo", "Sei nella sala da pranzo, al centro c'è un grande tavolo con 4 sedie, " +
-                "appesa al muro c'è una tv, a destra c'è un portavini e di fronte c'è una spaziosa finestra.", "Prima volta sala da pranzo");
-        Room bathroom = new Room(6, "Bagno", "Sei nel bagno, di fronte c'è il lavabo, uno specchio con uno sportello " +
-                "in cui ci sono varie medicine e la doccia. A destra invece ci sono il wc, il bidet e una finestra.", "Prima volta bagno");
-        Room backyard = new Room(7, "Cortile", "Sei nel cortile, al centro c'è un tavolo con delle sedie. A destra c'è la cuccia del cane " +
-                "mentre a sinistra ci sono un altalena e uno scivolo per bambini accanto a vari alberi.", "Prima volta cortile");
+        Room entranceHall = new Room(0, "Atrio", "Sei nell atrio, all'ingresso c'è un tappeto."
+                + "A destra trovi un appendiabiti e di fronte c'è una cassettiera con sopra un piattino"
+                + "e un guinzaglio per cani nero.", "Prima volta atrio");
+        Room livingRoom = new Room(1, "Soggiorno", "Sei nel soggiorno, al centro della"
+                + "stanza c'è un sofa e un tavolino con sopra un foglio e un servizio da the. Di fronte"
+                + "appesa al muro ci sono una tv e un quadro e a sinistra nella stanza c'è un ampia libreria.", "Prima volta soggiorno");
+        Room kitchen = new Room(2, "Cucina", "Sei in cucina, al centro c'è una grande isola "
+                + "con un piano di lavoro e i fornelli. Il resto della cucina di fronte è composta da un frigorifero, "
+                + "una credenza, un pensile e altri mobili. Sotto la cucina si trovano le ciotole del cibo e dell'acqua del cane, "
+                + "mentre a sinistra della stanza c'è un calendario appeso.", "Prima volta cucina");
+        Room walkinCloset = new Room(3, "Cabina armadio", "Sei nella cabina armadio, di fronte ci sono "
+                + "due armadi, una scarpiera con diverse paia di scarpe e a terra sotto la scarpiera si trova una forchetta.", "Prima volta cabina armadio");
+        Room bedRoom = new Room(4, "Camera da letto", "Sei nella camera da letto, sul muro a sinistra c'è un "
+                + "letto matrimoniale a doppia piazza con due comodini e un quadro appeso sopra. Di fronte c'è una scrivania con "
+                + "sopra un pc e una poltrona.", "Prima volta camera da letto");
+        Room diningRoom = new Room(5, "Sala da pranzo", "Sei nella sala da pranzo, al centro c'è un grande tavolo con 4 sedie, "
+                + "appesa al muro c'è una tv, a destra c'è un portavini e di fronte c'è una spaziosa finestra.", "Prima volta sala da pranzo");
+        Room bathroom = new Room(6, "Bagno", "Sei nel bagno, di fronte c'è il lavabo, uno specchio con uno sportello "
+                + "in cui ci sono varie medicine e la doccia. A destra invece ci sono il wc, il bidet e una finestra.", "Prima volta bagno");
+        Room backyard = new Room(7, "Cortile", "Sei nel cortile, al centro c'è un tavolo con delle sedie. A destra c'è la cuccia del cane "
+                + "mentre a sinistra ci sono un altalena e uno scivolo per bambini accanto a vari alberi.", "Prima volta cortile");
         entranceHall.setEast(kitchen);
         entranceHall.setNorth(livingRoom);
         livingRoom.setNorth(backyard);
@@ -157,11 +156,10 @@ public class IlSestoSensoGame extends GameDescription {
         leash.setAlias(new String[]{});
         entranceHall.getObjects().add(leash);
 
-
         //objects of living room
-        AdvObject paper = new AdvObject(7, "foglio", "foglio di carta");
-        paper.setAlias(new String[]{});
-        livingRoom.getObjects().add(paper);
+        AdvObject note = new AdvObject(7, "biglietto", "biglietto");
+        note.setAlias(new String[]{});
+        livingRoom.getObjects().add(note);
 
         AdvObject sofa = new AdvObject(8, "divano", "divano in pelle");
         sofa.setAlias(new String[]{"sofa"});
@@ -194,7 +192,6 @@ public class IlSestoSensoGame extends GameDescription {
         AdvObject library = new AdvObject(14, "libreria", "libreria in legno piena di libri");
         library.setAlias(new String[]{});
         livingRoom.getObjects().add(library);
-
 
         //objects of kitchen
         AdvObject kitchenIsland = new AdvObject(15, "isola", "isola con piano di lavoro");
@@ -234,7 +231,6 @@ public class IlSestoSensoGame extends GameDescription {
         sideboard.setOpenable(true);
         kitchen.getObjects().add(sideboard);
 
-
         //objects of walkin closet
         AdvObject fork = new AdvObject(23, "forchetta", "forchetta");
         fork.setAlias(new String[]{});
@@ -245,9 +241,10 @@ public class IlSestoSensoGame extends GameDescription {
         book.setOpenable(true);
         walkinCloset.getObjects().add(book);
 
-        AdvObject skirting = new AdvObject(25, "battiscopa", "battiscopa con apertura");
+        AdvObjectContainer skirting = new AdvObjectContainer(25, "battiscopa", "battiscopa con apertura");
         skirting.setAlias(new String[]{});
         skirting.setPickupable(false);
+        skirting.setOpenable(true);
         walkinCloset.getObjects().add(skirting);
 
         AdvObject closet1 = new AdvObject(26, "armadio estivo", "armadio per guardaroba estivo");
@@ -265,6 +262,13 @@ public class IlSestoSensoGame extends GameDescription {
         shoes.setPickupable(false);
         walkinCloset.getObjects().add(book);
 
+        AdvObject picture = new AdvObject(57, "foto", "foto ricordo");
+        picture.setAlias(new String[]{});
+        skirting.add(picture);
+
+        AdvObject key = new AdvObject(58, "chiave", "chiave che apre sportello nel bagno");
+        key.setAlias(new String[]{});
+        skirting.add(key);
 
         //objects of bedroom
         AdvObject bed = new AdvObject(29, "letto", "letto matrimoniale a doppia piazza");
@@ -306,7 +310,6 @@ public class IlSestoSensoGame extends GameDescription {
         backyardDoor.setPickupable(false);
         bedRoom.getObjects().add(backyardDoor);
 
-
         //objects of dining room
         AdvObject table = new AdvObject(37, "tavolo", "tavolo da pranzo in legno");
         table.setAlias(new String[]{});
@@ -332,11 +335,18 @@ public class IlSestoSensoGame extends GameDescription {
         wineRack.setAlias(new String[]{"cantina"});
         diningRoom.getObjects().add(wineRack);
 
+        AdvObjectContainer safe = new AdvObjectContainer(59, "cassaforte", "cassaforte");
+        safe.setAlias(new String[]{});
+        diningRoom.getObjects().add(safe);
+
+        AdvObject backyardKey = new AdvObject(60, "chiave cortile", "chiave per aprire il cortile");
+        backyardKey.setAlias(new String[]{});
+        safe.add(backyardKey);
 
         //objects of bathroom
         AdvObjectContainer mirror = new AdvObjectContainer(42, "specchio", "specchio con sportello");
         mirror.setAlias(new String[]{});
-        mirror.setOpenable(false);
+        mirror.setOpenable(true);
         bathroom.getObjects().add(mirror);
 
         AdvObject washbasin = new AdvObject(43, "lavabo", "lavabo doppio");
@@ -367,12 +377,11 @@ public class IlSestoSensoGame extends GameDescription {
         window2.setAlias(new String[]{});
         window2.setOpenable(true);
         bathroom.getObjects().add(window2);
-        
-        AdvObject book = new AdvObject(56, "libro", "libro");
+
+        AdvObject diary = new AdvObject(56, "diario", "diario dei segreti");
         book.setPickupable(false);
         book.setAlias(new String[]{});
         mirror.add(book);
-
 
         //objects of backyard
         AdvObject backyardTable = new AdvObject(49, "tavolo", "tavolo del cortile");
@@ -403,11 +412,14 @@ public class IlSestoSensoGame extends GameDescription {
         woods.setAlias(new String[]{});
         woods.setPickupable(false);
         backyard.getObjects().add(woods);
-        
-        
-        AdvObject land = new AdvObject(55, "terra", "terra smossa");
+
+        AdvObjectContainer land = new AdvObjectContainer(55, "terra", "terra smossa");
         land.setAlias(new String[]{});
         backyard.getObjects().add(land);
+
+        AdvObject coffin = new AdvObject(58, "bara", "bara");
+        coffin.setAlias(new String[]{});
+        land.add(coffin);
         //set starting room
         setCurrentRoom(bedRoom);
     }
@@ -420,7 +432,6 @@ public class IlSestoSensoGame extends GameDescription {
             out.println(getCurrentRoom().getDescription());
         }
     }
-
 
     @Override
     public void nextMove(ParserOutput p, PrintStream out) {
@@ -475,10 +486,10 @@ public class IlSestoSensoGame extends GameDescription {
                         getInventory().add(p.getObject());
                         getCurrentRoom().getObjects().remove(p.getObject());
                         out.println("Hai raccolto: " + p.getObject().getDescription());
-                        
+
                         if (p.getObject().getId() == 35) {
-                        end(out);
-                    }
+                            end(out);
+                        }
                     } else {
                         out.println("Non puoi raccogliere questo oggetto.");
                     }
@@ -556,7 +567,70 @@ public class IlSestoSensoGame extends GameDescription {
                 } else {
                     out.println("Non ci sono oggetti che puoi premere qui.");
                 }
-            } else if (p.getCommand().getType() == CommandType.MOVE){
+            } else if (p.getCommand().getType() == CommandType.READ) {
+                if (p.getObject() != null && p.getObject().getId() == 7) {
+                    out.println("Buongiorno da mamma e papa'");
+                } else {
+                    out.println("Non puoi leggerlo");
+                }
+                if (p.getObject() != null && p.getObject().getId() == 58) {
+                    out.println("Vade, sátana, invéntor et magíster omnis falláciæ, hostis humánæ salútis. \n"
+                            + "Da locum Christo, in quo nihil invenísti de opéribus tuis: da locum Ecclésiæ unæ, sanctæ, cathólicæ et Apostólicæ, quam Christus ipse acquisívit sánguine suo. \n"
+                            + "Il Dio della pace stritolerà presto Satana sotto i vostri piedi. La grazia del Signore nostro Gesù Cristo sia con voi. “Lettera ai Romani, 16-20” ");
+                } else {
+                    out.println("Non puoi leggerlo");
+                }
+            } else if (p.getCommand().getType() == CommandType.DIG) {
+                if (p.getInvObject() != null && p.getInvObject().getId() == 55) {
+                    AdvObjectContainer c = (AdvObjectContainer) p.getObject();
+                    out.println("Scavando...");
+                    if (!c.getList().isEmpty()) {
+                        out.print(c.getName() + " contiene:");
+                        Iterator<AdvObject> it = c.getList().iterator();
+                        while (it.hasNext()) {
+                            AdvObject next = it.next();
+                            getCurrentRoom().getObjects().add(next);
+                            out.print(" " + next.getName());
+                            it.remove();
+                        }
+                        out.println();
+                    }
+                    out.println("sulla bara c'e' scritto qualcosa...");
+                }
+            } else if (p.getCommand().getType() == CommandType.MOVE) {
+                if (p.getObject() != null && p.getObject().getId() == 47) {
+                    List<AdvObject> objects = new ArrayList();
+                    objects = getCurrentRoom().getObjects();
+                    for (AdvObject o : objects) {
+                        if (o.getId() == 56) {
+                            o.setPickupable(true);
+                        }
+                    }
+                    out.println("AHIA SCOTTA");
+                }
+            } else if (p.getCommand().getType() == CommandType.UNLOCK) {
+                if (p.getObject() != null && p.getObject().getId() == 59) {
+                    out.println("indizio (inserire il comando: sblocca cassaforte [codice])");
+                    if (true) { //da completare
+                        AdvObjectContainer c = (AdvObjectContainer) p.getInvObject();
+                        if (!c.getList().isEmpty()) {
+                            out.print(c.getName() + " hai raccolto:");
+                            Iterator<AdvObject> it = c.getList().iterator();
+                            while (it.hasNext()) {
+                                AdvObject next = it.next();
+                                getInventory().add(next);
+                                out.print(" " + next.getName());
+                                it.remove();
+                            }
+
+                        }
+                    }
+                }else if(p.getObject() != null && p.getObject().getId() == 56){
+                    out.println("inizio (inserire il comando: sblocca diario [codice]");
+                    if(true){ //true
+                        end(out);
+                    }
+                }
                 
             }
             if (noroom) {
@@ -573,4 +647,3 @@ public class IlSestoSensoGame extends GameDescription {
         out.println("Premi il pulsante del giocattolo e in seguito ad una forte esplosione la tua casa prende fuoco...\ntu e tuoi famigliari cercate invano di salvarvi e venite avvolti dalle fiamme...\nè stata una morte CALOROSA...addio!");
         setOver(true);
     }
-}
