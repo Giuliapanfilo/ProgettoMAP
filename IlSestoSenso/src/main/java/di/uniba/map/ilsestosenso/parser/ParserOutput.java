@@ -20,15 +20,18 @@ public class ParserOutput {
     
     private AdvObject invObject;
 
+    private int code;
+
     public ParserOutput(Command command, AdvObject object) {
         this.command = command;
         this.object = object;
     }
 
-    public ParserOutput(Command command, AdvObject object, AdvObject invObejct) {
+    public ParserOutput(Command command, AdvObject object, AdvObject invObejct, int code) {
         this.command = command;
         this.object = object;
         this.invObject = invObejct;
+        this.code = code;
     }
 
     public Command getCommand() {
@@ -53,6 +56,10 @@ public class ParserOutput {
 
     public void setInvObject(AdvObject invObject) {
         this.invObject = invObject;
+    }
+
+    public int getCode(){
+        return code;
     }
 
 }
