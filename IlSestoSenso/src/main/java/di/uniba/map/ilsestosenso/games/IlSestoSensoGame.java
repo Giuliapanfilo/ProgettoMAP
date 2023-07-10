@@ -211,6 +211,11 @@ public class IlSestoSensoGame extends GameDescription {
         library.setAlias(new String[]{});
         livingRoom.getObjects().add(library);
 
+        AdvObject diary2 = new AdvObject(62, "diario", "diario dei segreti");
+        diary2.setPickupable(false);
+        diary2.setAlias(new String[]{});
+        livingRoom.getObjects().add(diary2);
+
         //objects of kitchen
         AdvObject kitchenIsland = new AdvObject(15, "isola", "isola con piano di lavoro");
         kitchenIsland.setAlias(new String[]{});
@@ -436,7 +441,7 @@ public class IlSestoSensoGame extends GameDescription {
         land.setAlias(new String[]{});
         backyard.getObjects().add(land);
 
-        AdvObject coffin = new AdvObject(58, "bara", "bara");
+        AdvObject coffin = new AdvObject(61, "bara", "bara");
         coffin.setAlias(new String[]{});
         land.add(coffin);
         //set starting room
@@ -628,7 +633,7 @@ public class IlSestoSensoGame extends GameDescription {
             } else if (p.getCommand().getType() == CommandType.READ) {
                 if (p.getObject() != null && p.getObject().getId() == 7) {
                     out.println("Buongiorno da mamma e papa'");
-                } else if (p.getObject() != null && p.getObject().getId() == 58) {
+                } else if (p.getObject() != null && p.getObject().getId() == 61) {
                     out.println("Vade, sátana, invéntor et magíster omnis falláciæ, hostis humánæ salútis. \n"
                             + "Da locum Christo, in quo nihil invenísti de opéribus tuis: da locum Ecclésiæ unæ, sanctæ, cathólicæ et Apostólicæ, quam Christus ipse acquisívit sánguine suo. \n"
                             + "Il Dio della pace stritolerà presto Satana sotto i vostri piedi. La grazia del Signore nostro Gesù Cristo sia con voi. “Lettera ai Romani, 16-20” ");
@@ -682,13 +687,15 @@ public class IlSestoSensoGame extends GameDescription {
                     } else {
                         out.println("codice errato");
                     }
-                } else if (p.getObject() != null && p.getObject().getId() == 56) {
+                } else if (p.getObject() != null && p.getObject().getId() == 62) {
                     out.println("inizio (inserire il comando: sblocca diario [codice]");
                     if (p.getCode() == 1620) { //true
                         end(out);
                     } else {
                         out.println("codice errato");
                     }
+                } else {
+                    out.println("Non puoi sbloccarlo");
                 }
 
             }
