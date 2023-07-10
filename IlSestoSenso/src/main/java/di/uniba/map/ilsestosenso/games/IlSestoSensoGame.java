@@ -476,8 +476,12 @@ public class IlSestoSensoGame extends GameDescription {
             boolean move = false;
             if (p.getCommand().getType() == CommandType.NORD) {
                 if (getCurrentRoom().getNorth() != null) {
-                    setCurrentRoom(getCurrentRoom().getNorth());
-                    move = true;
+                    if(getCurrentRoom().getNorth().getId() == 7 && !isPossible(60)) {
+                        out.println("Ti serve una chiave per andare lì!");
+                    } else {
+                        setCurrentRoom(getCurrentRoom().getNorth());
+                        move = true;
+                    }
                 } else {
                     noroom = true;
                 }
