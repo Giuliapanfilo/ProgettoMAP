@@ -72,7 +72,7 @@ public class IlSestoSensoGame extends GameDescription {
         getCommands().add(move);
         Command read = new Command(CommandType.READ, "leggi");
         read.setAlias(new String[]{});
-        getCommands().add(move);
+        getCommands().add(read);
         Command dig = new Command(CommandType.DIG, "scava");
         dig.setAlias(new String[]{});
         getCommands().add(dig);
