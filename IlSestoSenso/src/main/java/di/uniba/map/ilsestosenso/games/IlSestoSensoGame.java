@@ -96,6 +96,7 @@ public class IlSestoSensoGame extends GameDescription {
         Room diningRoom = new Room(5, "Sala da pranzo", "Sei nella sala da pranzo, al centro c'è un grande tavolo con 4 sedie, " +
                 "\nappesa al muro c'è una tv, a destra c'è un portavini e di fronte c'è una spaziosa finestra.", "Questa e' la sala da pranzo. \nSolite cose:"
                         + " un tavolo, la tv, e una grande finestra. \nE' il tipico posto dove ti aspetteresti di trovare qualcosa di utile..");
+        diningRoom.setLook("Dietro il portavini c'e' una cassaforte. Forse dovrei cercare di sbloccarla.");
         Room bathroom = new Room(6, "Bagno", "Sei nel bagno, di fronte c'è il lavabo, uno specchio con uno sportello " +
                 "\nin cui probabilmente ci sono varie medicine, e la doccia. \nA destra invece ci sono il wc, il bidet e una finestra.", "Questo è il bagno, la stanza"
                         + " della casa piu' adatta \nper riflettere sul senso della vita. \nA destra c'e' il lavabo con sopra lo specchio, \nma lo sportellino e' "
