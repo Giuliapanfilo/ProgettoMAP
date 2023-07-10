@@ -588,16 +588,21 @@ public class IlSestoSensoGame extends GameDescription {
                 }
             } else if (p.getCommand().getType() == CommandType.READ) {
                 if (p.getObject() != null && p.getObject().getId() == 7) {
-                    out.println("Buongiorno da mamma e papa'");
-                } else {
-                    out.println("Non puoi leggerlo");
-                }
-                if (p.getObject() != null && p.getObject().getId() == 58) {
+                    out.println("'Buongiorno tesoro, ti ho lasciato il caffe'"
+                            + " pronto in cucina.\nBuona giornata.'\n\n"
+                            + "...ma che strano, io vivo da solo.");
+                } else if (p.getObject() != null && p.getObject().getId() == 58) {
                     out.println("Vade, sátana, invéntor et magíster omnis falláciæ, hostis humánæ salútis. \n"
-                            + "Da locum Christo, in quo nihil invenísti de opéribus tuis: da locum Ecclésiæ unæ, sanctæ, cathólicæ et Apostólicæ, quam Christus ipse acquisívit sánguine suo. \n"
-                            + "Il Dio della pace stritolerà presto Satana sotto i vostri piedi. La grazia del Signore nostro Gesù Cristo sia con voi. “Lettera ai Romani, 16-20” ");
+                            + "Da locum Christo, in quo nihil invenísti de opéribus tuis: da locum Ecclésiæ unæ,\n "
+                            + "sanctæ, cathólicæ et Apostólicæ, quam Christus ipse acquisívit sánguine suo. \n"
+                            + "Il Dio della pace stritolerà presto Satana sotto i vostri piedi.\n "
+                            + "La grazia del Signore nostro Gesù Cristo sia con voi. “Lettera ai Romani, 16-20”\n ");
+                } else if (p.getObject() != null && p.getObject().getId() == 19) {
+                    out.println("'Calendario 2066' \nMa non e' possibile.."
+                            + "Forse non mi sono ancora svegliato? Siamo nel 2023 o"
+                            + " sono impazzito?");
                 } else {
-                    out.println("Non puoi leggerlo");
+                    out.println("Ma hai bevuto? Non puoi leggere questo oggetto.");
                 }
             } else if (p.getCommand().getType() == CommandType.DIG) {
                 if (p.getInvObject() != null && p.getInvObject().getId() == 55) {
@@ -614,7 +619,7 @@ public class IlSestoSensoGame extends GameDescription {
                         }
                         out.println();
                     }
-                    out.println("sulla bara c'e' scritto qualcosa...");
+                    out.println("Sulla bara c'e' scritto qualcosa...");
                 }
             } else if (p.getCommand().getType() == CommandType.MOVE) {
                 if (p.getObject() != null && p.getObject().getId() == 47) {
@@ -625,7 +630,7 @@ public class IlSestoSensoGame extends GameDescription {
                             o.setPickupable(true);
                         }
                     }
-                    out.println("AHIA SCOTTA");
+                    out.println("MALEDIZIONE BRUCIA!!\nMi ha lasciato il segno sulla mano.\n");
                 }
             } else if (p.getCommand().getType() == CommandType.UNLOCK) {
                 if (p.getObject() != null && p.getObject().getId() == 59) {
@@ -645,7 +650,8 @@ public class IlSestoSensoGame extends GameDescription {
                         }
                     }
                 }else if(p.getObject() != null && p.getObject().getId() == 56){
-                    out.println("inizio (inserire il comando: sblocca diario [codice]");
+                    out.println("'Che il Signore ci protegga dal maligno che dimora in questa casa.'\n"
+                            + " (inserire il comando: sblocca diario [codice]");
                     if(true){ //true
                         end(out);
                     }
