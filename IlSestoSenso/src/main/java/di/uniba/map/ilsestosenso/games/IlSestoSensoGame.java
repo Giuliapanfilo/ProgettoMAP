@@ -515,7 +515,7 @@ public class IlSestoSensoGame extends GameDescription {
                 if (getCurrentRoom().getLook() != null) {
                     out.println(getCurrentRoom().getLook());
                 } else {
-                    out.println("Non c'è niente di interessante qui.");
+                    out.println("Non c'è niente di interessante qui.\n");
                 }
             } else if (p.getCommand().getType() == CommandType.PICK_UP) {
                 if (p.getObject() != null) {
@@ -686,7 +686,6 @@ public class IlSestoSensoGame extends GameDescription {
                                 out.print(" " + next.getName());
                                 it.remove();
                             }
-
                         }
                     } else {
                         out.println("codice errato");

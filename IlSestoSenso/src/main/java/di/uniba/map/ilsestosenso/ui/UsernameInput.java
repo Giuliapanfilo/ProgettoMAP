@@ -54,6 +54,7 @@ public class UsernameInput extends javax.swing.JDialog {
         send = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setLocation(new java.awt.Point(550, 200));
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
