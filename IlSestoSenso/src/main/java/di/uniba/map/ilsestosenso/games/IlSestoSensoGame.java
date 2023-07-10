@@ -444,6 +444,10 @@ public class IlSestoSensoGame extends GameDescription {
         AdvObject coffin = new AdvObject(61, "bara", "bara");
         coffin.setAlias(new String[]{});
         land.add(coffin);
+
+        AdvObject shovel = new AdvObject(62, "pala", "pala");
+        shovel.setAlias(new String[]{});
+        backyard.getObjects().add(shovel);
         //set starting room
         setCurrentRoom(bedRoom);
     }
@@ -646,20 +650,26 @@ public class IlSestoSensoGame extends GameDescription {
                 }
             } else if (p.getCommand().getType() == CommandType.DIG) {
                 if (p.getObject() != null && p.getObject().getId() == 55) {
-                    AdvObjectContainer c = (AdvObjectContainer) p.getObject();
-                    out.println("Scavando...");
-                    if (!c.getList().isEmpty()) {
-                        out.print(c.getName() + " contiene:");
-                        Iterator<AdvObject> it = c.getList().iterator();
-                        while (it.hasNext()) {
-                            AdvObject next = it.next();
-                            getCurrentRoom().getObjects().add(next);
-                            out.print(" " + next.getName());
-                            it.remove();
+                    if(isPossible(62)) {
+                        AdvObjectContainer c = (AdvObjectContainer) p.getObject();
+                        out.println("Scavando...");
+                        if (!c.getList().isEmpty()) {
+                            out.print(c.getName() + " contiene:");
+                            Iterator<AdvObject> it = c.getList().iterator();
+                            while (it.hasNext()) {
+                                AdvObject next = it.next();
+                                getCurrentRoom().getObjects().add(next);
+                                out.print(" " + next.getName());
+                                it.remove();
+                            }
+                            out.println();
                         }
-                        out.println();
+                        out.println("sulla bara c'e' scritto qualcosa...");
+                    } else {
+                        out.println("Ti serve una pala per scavare, sarà qui intorno...");
                     }
-                    out.println("sulla bara c'e' scritto qualcosa...");
+                } else {
+                    out.println("Non puoi scavare qui.");
                 }
             } else if (p.getCommand().getType() == CommandType.MOVE) {
                 if (p.getObject() != null && p.getObject().getId() == 47) {
