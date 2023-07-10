@@ -115,6 +115,7 @@ public class IlSestoSensoGame extends GameDescription {
                 "\nin cui probabilmente ci sono varie medicine, e la doccia. \nA destra invece ci sono il wc, il bidet e una finestra.", "Questo è il bagno, la stanza"
                         + " della casa piu' adatta \nper riflettere sul senso della vita. \nA destra c'e' il lavabo con sopra lo specchio, \nma lo sportellino e' "
                         + "chiuso a chiave... chissa' come mai.");
+        bathroom.setLook("Sugli asciugamani ci sono ricamate le iniziali 'L&R'.. ");
         Room backyard = new Room(7, "Cortile", "Sei nel cortile, al centro c'è un tavolo con delle sedie. A destra c'è la cuccia del cane " +
                 "\nmentre a sinistra ci sono un altalena e uno scivolo per bambini accanto a degli alberi.", "Sei nel cortile, giocavi sempre qui quando"
                         + " eri piccolo. \nCi sono un tavolino con delle sedie e l'altalena. Ma quello scivolo per bambini non era qui, o sbaglio?"
@@ -506,8 +507,15 @@ public class IlSestoSensoGame extends GameDescription {
                         getCurrentRoom().getObjects().remove(p.getObject());
                         out.println("Hai raccolto: " + p.getObject().getDescription());
 
-                        if (p.getObject().getId() == 35) {
-                            end(out);
+                        if (p.getObject().getId() == 56) {
+                            out.println("'05 Marzo 2023\n"
+                                    + "La situazione continua a peggiorare... Non riconosco piu'"
+                                    + "mio figlio, mi guarda con occhi pieni di odio.\n L'altra notte"
+                                    + " mi sono svegliato e l'ho trovato ai piedi del letto\n che"
+                                    + " ci guardava dormire.\nHo paura. Spero che Linda e Roberto"
+                                    + " possano aiutarci.'\n\n"
+                                    + "..la pagina finisce qui e l'ultima e' strappata. \n"
+                                    + "Le iniziali L e R erano sugli asciugamani del bagno. o sbaglio?");
                         }
                     } else {
                         out.println("Non puoi raccogliere questo oggetto.");
