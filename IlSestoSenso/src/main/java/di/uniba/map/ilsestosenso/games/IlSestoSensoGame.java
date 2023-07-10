@@ -254,7 +254,7 @@ public class IlSestoSensoGame extends GameDescription {
         //objects of bedroom
         AdvObject bed = new AdvObject(29, "letto", "letto matrimoniale a doppia piazza");
         bed.setAlias(new String[]{});
-        bed.setPickupable(false);
+        bed.setPickupable(true);
         bedRoom.getObjects().add(bed);
 
         AdvObject nightstand1 = new AdvObject(30, "comodino", "comodino dal lato del marito");
@@ -273,7 +273,7 @@ public class IlSestoSensoGame extends GameDescription {
 
         AdvObject armchair = new AdvObject(33, "poltrona", "poltrona in pelle situata all angolo del letto matrimoniale");
         armchair.setAlias(new String[]{});
-        armchair.setPickupable(false);
+        armchair.setPickupable(true);
         bedRoom.getObjects().add(armchair);
 
         AdvObject desk = new AdvObject(34, "scrivania", "scrivania per il pc");
