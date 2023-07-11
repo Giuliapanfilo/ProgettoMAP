@@ -82,31 +82,37 @@ public class IlSestoSensoGame extends GameDescription {
         //Rooms
         Room entranceHall = new Room(0, "Atrio", "Sei nell atrio, all'ingresso c'è un tappeto." +
                 "A destra trovi un appendiabiti e di fronte c'è una cassettiera con sopra un piattino" +
-                "\ne un guinzaglio per cani nero.", "Ti trovi probabilmente in una specie di"
-                        + "ingresso, \ndato che ci sono appendiabiti e cassettiera, ma non vedi nessuna porta.");
+                "\n e un guinzaglio per cani nero.", "Ti trovi probabilmente in una specie di"
+                        + " ingresso, \ndato che ci sono appendiabiti e cassettiera, ma non vedi nessuna porta.");
+        entranceHall.setLook("Che strano...dovrebbe esserci una porta qui. C'e' il tappeto e l'appendiabiti\n"
+                + "ma appesi ci sono diversi cappotti.");
         Room livingRoom = new Room(1, "Soggiorno", "Sei nel soggiorno, al centro della" +
                 "stanza c'è un sofa e un tavolino \ncon sopra un foglio e un servizio da the. Di fronte" +
                 "appesa al muro ci sono una tv e un quadro \ne a sinistra nella stanza c'è un ampia libreria.", "Le risate provenivano da qui."
-                        + "Non c'e nessuno pero', e sembra tutto tranquillo. Guardandoti intorno vedi solo il divano,"
-                        + "\nil tavolino con un servizio da the e la tv davanti. Ti incuriosisce il bigliettino sul tavolo,"
-                        + "\nnon ricordi assolutamente di averlo lasciato.");
+                        + "Non c'e nessuno pero', e sembra tutto tranquillo. \nGuardandoti intorno vedi solo il divano,"
+                        + "\n il tavolino con un servizio da the e la tv davanti. \nTi incuriosisce il bigliettino sul tavolo,"
+                        + "\n non ricordi assolutamente di averlo lasciato.");
+        livingRoom.setLook("Nella libreria noti un libro, che potrebbe essere\n"
+                + "un diario, chiuso da un lucchetto..");
         Room kitchen = new Room(2, "Cucina", "Sei in cucina, al centro c'è una grande isola " +
                 "con un piano di lavoro e i fornelli. \nIl resto della cucina di fronte è composta da un frigorifero, " +
                 "\nuna credenza, un pensile e altri mobili. Sotto la cucina si trovano le ciotole del cibo e \ndell'acqua del cane, " +
                 "mentre a sinistra della stanza c'è un calendario appeso.", "Sei in cucina, sembra tutto normale."
                         + "\nPiano cottura, isola, credenza e altri mobili. \nQuello che ti colpisce e' il calendario, "
                         + "forse converebbe guardarlo meglio.");
+        kitchen.setLook("Ci sono un po' troppe cose in giro. Tipo, quei due bicchieri? Non ricordo di averli usati.");
         Room walkinCloset = new Room(3, "Cabina armadio", "Sei nella cabina armadio, di fronte ci sono " +
                 "due armadi, \nuna scarpiera con diverse paia di scarpe e a terra sotto la scarpiera \nsi trova una forchetta.", "Ti trovi nella cabina armadio,"
-                        + "ci sono un sacco di vestiti e scarpe anche femminili.. e' strano. \nC'e' anche qualcosa che non dovrebbe stare qui: una forchetta."
+                        + "ci sono un sacco di vestiti e \nscarpe anche femminili.. e' strano. \nC'e' anche qualcosa che non dovrebbe stare qui: una forchetta."
                         + "\nSarebbe il caso di riportarla al suo posto?");
         walkinCloset.setLook("Vedi una strana fessura tra due mattonelle del battiscopa. \nSpostandola noti che c'e' una scatoletta.");
         Room bedRoom = new Room(4, "Camera da letto", "Sei nella camera da letto, sul muro a sinistra c'è un " +
                 "letto matrimoniale a doppia piazza \ncon due comodini e un quadro appeso sopra. \nDi fronte c'è una scrivania con " +
                 "sopra un pc e una poltrona.", "Ti sei appena svegliato dopo un incubo orribile. \nSei nella tua camera, completamente sudato e tremante."
-                        + "\nIl quadro appeso sopra la testata del letto sembra fissarti, come se sapesse del sogno che hai fatto."
-                        + "\nAll'improvviso senti dei rumori provenire da un'altra stanza, probabilmente dal soggiorno, a ovest. "
+                        + "\nIl quadro appeso sopra la testata del letto sembra fissarti, \ncome se sapesse del sogno che hai fatto."
+                        + "\nAll'improvviso senti dei rumori provenire da un'altra stanza, \nprobabilmente dal soggiorno, a ovest. "
                         + "\nSembrava la risata di un bambino.");
+        bedRoom.setLook("Questa stanza mi fa sentire angosciato. Non ricordo piu' da quanto non dormo bene...");
         Room diningRoom = new Room(5, "Sala da pranzo", "Sei nella sala da pranzo, al centro c'è un grande tavolo con 4 sedie, " +
                 "\nappesa al muro c'è una tv, a destra c'è un portavini e di fronte c'è una spaziosa finestra.", "Questa e' la sala da pranzo. \nSolite cose:"
                         + " un tavolo, la tv, e una grande finestra. \nE' il tipico posto dove ti aspetteresti di trovare qualcosa di utile..");
@@ -118,8 +124,9 @@ public class IlSestoSensoGame extends GameDescription {
         bathroom.setLook("Sugli asciugamani ci sono ricamate le iniziali 'L&R'.. ");
         Room backyard = new Room(7, "Cortile", "Sei nel cortile, al centro c'è un tavolo con delle sedie. A destra c'è la cuccia del cane " +
                 "\nmentre a sinistra ci sono un altalena e uno scivolo per bambini accanto a degli alberi.", "Sei nel cortile, giocavi sempre qui quando"
-                        + " eri piccolo. \nCi sono un tavolino con delle sedie e l'altalena. Ma quello scivolo per bambini non era qui, o sbaglio?"
+                        + " eri piccolo. \nCi sono un tavolino con delle sedie e l'altalena. \nMa quello scivolo per bambini non era qui, o sbaglio?"
                         + " \nSotto l'albero c'e' della terra smossa, come se ci avessero sotterrato qualcosa.");
+        backyard.setLook("C'e' qualcosa dietro i cespugli..forse e' una pala? \nSara' quella usata per scavare la terra smossa.");
 
         entranceHall.setEast(kitchen);
         entranceHall.setNorth(livingRoom);
