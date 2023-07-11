@@ -599,6 +599,11 @@ public class IlSestoSensoGame extends GameDescription {
                     out.println("'Buongiorno tesoro, ti ho lasciato il caffe'"
                             + " pronto in cucina.\nBuona giornata.'\n\n"
                             + "...ma che strano, io vivo da solo.");
+                        out.println("\nAll'improvviso vedi un'ombra passare"
+                                + " velocissima di fianco \na te e scappare verso"
+                                + " la cabina armadio."
+                                + "\nL'istinto ti dice di scappare a gambe levate\n"
+                                + " ma tu decidi di seguirla.")
                 } else if (p.getObject() != null && p.getObject().getId() == 58) {
                     out.println("Vade, sátana, invéntor et magíster omnis falláciæ, hostis humánæ salútis. \n"
                             + "Da locum Christo, in quo nihil invenísti de opéribus tuis: da locum Ecclésiæ unæ,\n "
