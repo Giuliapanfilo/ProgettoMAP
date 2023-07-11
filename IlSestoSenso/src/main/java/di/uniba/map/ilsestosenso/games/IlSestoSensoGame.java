@@ -705,7 +705,9 @@ public class IlSestoSensoGame extends GameDescription {
                 }
             } else if (p.getCommand().getType() == CommandType.UNLOCK) {
                 if (p.getObject() != null && p.getObject().getId() == 59) {
-                    out.println("indizio (inserire il comando: sblocca cassaforte [codice])");
+                    out.println("Forse la combinazione potrebbe essere"
+                            + " legata ai miei ricordi piu' recenti.. \n"
+                            + "(inserire il comando: sblocca cassaforte [codice])");
                     if (p.getCode() == 2023) {
                         AdvObjectContainer c = (AdvObjectContainer) p.getObject();
                         if (!c.getList().isEmpty()) {
@@ -746,7 +748,20 @@ public class IlSestoSensoGame extends GameDescription {
     }
 
     private void end(PrintStream out) {
-        out.println("Premi il pulsante del giocattolo e in seguito ad una forte esplosione la tua casa prende fuoco...\ntu e tuoi famigliari cercate invano di salvarvi e venite avvolti dalle fiamme...\ne' stata una morte CALOROSA...addio!");
+        out.println("'13 Marzo 2023"
+                + "\nNon esiste una scelta alternativa. L'unico modo per trovare pace"
+                + "\ne' porre fine alla mia misera esistenza. \nLi ho uccisi io.."
+                + "\nHo ucciso i miei genitori e non ricordo nulla, sono sporco di sangue"
+                + "\ne sporco dentro. Linda e Roberto mi perdoneranno, ma non posso\n"
+                + "sopportare nemmeno un giorno in piu' su questa terra.'"
+                + "\n\nD'improvviso tutti i ricordi riaffiorano nella mia mente.\n"
+                + "Vivo ogni giorno nello stesso modo, vago tra queste mura dopo\n"
+                + "aver posto fine alla mia vita."
+                + "\nLinda e Roberto si sono presi la casa per contenere il male"
+                + "\nche io avevo liberato dal mio corpo mortale, e adesso vivono qui"
+                + "\nfacendo finta di avere un'esistenza normale, mentre io"
+                + "\nsono qui, e pago con l'eternita' la debolezza della mia"
+                + "\nmiserabile anima. ");
         setOver(true);
     }
 
