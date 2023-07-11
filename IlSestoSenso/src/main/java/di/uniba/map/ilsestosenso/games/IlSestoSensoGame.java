@@ -19,14 +19,14 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * ATTENZIONE: La descrizione del gioco è fatta in modo che qualsiasi gioco
- * debba estendere la classe GameDescription. L'Engine è fatto in modo che possa
+ * ATTENZIONE: La descrizione del gioco e' fatta in modo che qualsiasi gioco
+ * debba estendere la classe GameDescription. L'Engine e' fatto in modo che possa
  * eseguire qualsiasi gioco che estende GameDescription, in questo modo si
- * possono creare più gioci utilizzando lo stesso Engine.
+ * possono creare piu' gioci utilizzando lo stesso Engine.
  * <p>
  * Diverse migliorie possono essere applicate: - la descrizione del gioco
  * potrebbe essere caricate da file o da DBMS in modo da non modificare il
- * codice sorgente - l'utilizzo di file e DBMS non è semplice poiché all'interno
+ * codice sorgente - l'utilizzo di file e DBMS non e' semplice poiche' all'interno
  * del file o del DBMS dovrebbe anche essere codificata la logica del gioco
  * (nextMove) oltre alla descrizione di stanze, oggetti, ecc...
  *
@@ -80,20 +80,20 @@ public class IlSestoSensoGame extends GameDescription {
         unlock.setAlias(new String[]{});
         getCommands().add(unlock);
         //Rooms
-        Room entranceHall = new Room(0, "Atrio", "Sei nell atrio, all'ingresso c'è un tappeto." +
-                "A destra trovi un appendiabiti e di fronte c'è una cassettiera con sopra un piattino" +
+        Room entranceHall = new Room(0, "Atrio", "Sei nell atrio, all'ingresso c'e' un tappeto." +
+                "A destra trovi un appendiabiti e di fronte c'e' una cassettiera con sopra un piattino" +
                 "\ne un guinzaglio per cani nero.", "Ti trovi probabilmente in una specie di"
                 + "ingresso, \ndato che ci sono appendiabiti e cassettiera, ma non vedi nessuna porta.");
         Room livingRoom = new Room(1, "Soggiorno", "Sei nel soggiorno, al centro della" +
-                "stanza c'è un sofa e un tavolino \ncon sopra un foglio e un servizio da the. Di fronte" +
-                "appesa al muro ci sono una tv e un quadro \ne a sinistra nella stanza c'è un ampia libreria.", "Le risate provenivano da qui."
+                "stanza c'e' un sofa e un tavolino \ncon sopra un foglio e un servizio da the. Di fronte" +
+                "appesa al muro ci sono una tv e un quadro \ne a sinistra nella stanza c'e' un ampia libreria.", "Le risate provenivano da qui."
                 + "Non c'e nessuno pero', e sembra tutto tranquillo. Guardandoti intorno vedi solo il divano,"
                 + "\nil tavolino con un servizio da the e la tv davanti. Ti incuriosisce il bigliettino sul tavolo,"
                 + "\nnon ricordi assolutamente di averlo lasciato.");
-        Room kitchen = new Room(2, "Cucina", "Sei in cucina, al centro c'è una grande isola " +
-                "con un piano di lavoro e i fornelli. \nIl resto della cucina di fronte è composta da un frigorifero, " +
+        Room kitchen = new Room(2, "Cucina", "Sei in cucina, al centro c'e' una grande isola " +
+                "con un piano di lavoro e i fornelli. \nIl resto della cucina di fronte e' composta da un frigorifero, " +
                 "\nuna credenza, un pensile e altri mobili. Sotto la cucina si trovano le ciotole del cibo e \ndell'acqua del cane, " +
-                "mentre a sinistra della stanza c'è un calendario appeso.", "Sei in cucina, sembra tutto normale."
+                "mentre a sinistra della stanza c'e' un calendario appeso.", "Sei in cucina, sembra tutto normale."
                 + "\nPiano cottura, isola, credenza e altri mobili. \nQuello che ti colpisce e' il calendario, "
                 + "forse converebbe guardarlo meglio.");
         Room walkinCloset = new Room(3, "Cabina armadio", "Sei nella cabina armadio, di fronte ci sono " +
@@ -101,20 +101,24 @@ public class IlSestoSensoGame extends GameDescription {
                 + "ci sono un sacco di vestiti e scarpe anche femminili.. e' strano. \nC'e' anche qualcosa che non dovrebbe stare qui: una forchetta."
                 + "\nSarebbe il caso di riportarla al suo posto?");
         walkinCloset.setLook("Vedi una strana fessura tra due mattonelle del battiscopa. \nSpostandola noti che c'e' una scatoletta.");
-        Room bedRoom = new Room(4, "Camera da letto", "Sei nella camera da letto, sul muro a sinistra c'è un " +
-                "letto matrimoniale a doppia piazza \ncon due comodini e un quadro appeso sopra. \nDi fronte c'è una scrivania con " +
+        Room bedRoom = new Room(4, "Camera da letto", "Sei nella camera da letto, sul muro a sinistra c'e' un " +
+                "letto matrimoniale a doppia piazza \ncon due comodini e un quadro appeso sopra. \nDi fronte c'e' una scrivania con " +
                 "sopra un pc e una poltrona.", "Ti sei appena svegliato dopo un incubo orribile. \nSei nella tua camera, completamente sudato e tremante."
                 + "\nIl quadro appeso sopra la testata del letto sembra fissarti, come se sapesse del sogno che hai fatto."
                 + "\nAll'improvviso senti dei rumori provenire da un'altra stanza, probabilmente dal soggiorno, a ovest. "
                 + "\nSembrava la risata di un bambino.");
-        Room diningRoom = new Room(5, "Sala da pranzo", "Sei nella sala da pranzo, al centro c'è un grande tavolo con 4 sedie, " +
-                "\nappesa al muro c'è una tv, a destra c'è un portavini e di fronte c'è una spaziosa finestra.", "Questa e' la sala da pranzo. \nSolite cose:"
-                + " un tavolo, la tv, e una grande finestra. \nE' il tipico posto dove ti aspetteresti di trovare qualcosa di utile..");
-        Room bathroom = new Room(6, "Bagno", "Sei nel bagno, di fronte c'è il lavabo, uno specchio con uno sportello " +
-                "\nin cui probabilmente ci sono varie medicine, e la doccia. \nA destra invece ci sono il wc, il bidet e una finestra.", "Questo è il bagno, la stanza"
-                + " della casa piu' adatta \nper riflettere sul senso della vita. \nA destra c'e' il lavabo con sopra lo specchio, \nma lo sportellino e' "
-                + "chiuso a chiave... chissa' come mai.");
-        Room backyard = new Room(7, "Cortile", "Sei nel cortile, al centro c'è un tavolo con delle sedie. A destra c'è la cuccia del cane " +
+        Room diningRoom = new Room(5, "Sala da pranzo", "Sei nella sala da pranzo, al centro c'e' un grande tavolo con 4 sedie, " +
+                "\nappesa al muro c'e' una tv, a destra c'e' un portavini e di fronte c'e' una spaziosa finestra.", "Questa e' la sala da pranzo. \nSolite cose:"
+                        + " un tavolo, la tv, e una grande finestra. \nE' il tipico posto dove ti aspetteresti di trovare qualcosa di utile..");
+        diningRoom.setLook("Dietro il portavini c'e' una cassaforte. Forse dovrei cercare di sbloccarla.");
+
+        Room bathroom = new Room(6, "Bagno", "Sei nel bagno, di fronte c'e' il lavabo, uno specchio con uno sportello " +
+                "\nin cui probabilmente ci sono varie medicine, e la doccia. \nA destra invece ci sono il wc, il bidet e una finestra.", "Questo e' il bagno, la stanza"
+                        + " della casa piu' adatta \nper riflettere sul senso della vita. \nA destra c'e' il lavabo con sopra lo specchio, \nma lo sportellino e' "
+                        + "chiuso a chiave... chissa' come mai.");
+        bathroom.setLook("Sugli asciugamani ci sono ricamate le iniziali 'L&R'.. ");
+
+        Room backyard = new Room(7, "Cortile", "Sei nel cortile, al centro c'e' un tavolo con delle sedie. A destra c'e' la cuccia del cane " +
                 "\nmentre a sinistra ci sono un altalena e uno scivolo per bambini accanto a degli alberi.", "Sei nel cortile, giocavi sempre qui quando"
                 + " eri piccolo. \nCi sono un tavolino con delle sedie e l'altalena. Ma quello scivolo per bambini non era qui, o sbaglio?"
                 + " \nSotto l'albero c'e' della terra smossa, come se ci avessero sotterrato qualcosa.");
@@ -211,7 +215,7 @@ public class IlSestoSensoGame extends GameDescription {
         library.setAlias(new String[]{});
         livingRoom.getObjects().add(library);
 
-        AdvObject diary2 = new AdvObject(62, "diario", "diario dei segreti");
+        AdvObject diary2 = new AdvObject(63, "diario", "diario dei segreti");
         diary2.setPickupable(false);
         diary2.setAlias(new String[]{});
         livingRoom.getObjects().add(diary2);
@@ -300,12 +304,12 @@ public class IlSestoSensoGame extends GameDescription {
         bedRoom.getObjects().add(bed);
 
         AdvObject nightstand1 = new AdvObject(30, "comodino", "comodino dal lato del marito");
-        nightstand1.setAlias(new String[]{"comò"});
+        nightstand1.setAlias(new String[]{"como'"});
         nightstand1.setOpenable(true);
         bedRoom.getObjects().add(nightstand1);
 
         AdvObject nightstand2 = new AdvObject(31, "comodino", "comodino dal lato della moglie");
-        nightstand2.setAlias(new String[]{"comò"});
+        nightstand2.setAlias(new String[]{"como'"});
         nightstand1.setOpenable(true);
         bedRoom.getObjects().add(nightstand2);
 
@@ -519,7 +523,7 @@ public class IlSestoSensoGame extends GameDescription {
                 if (getCurrentRoom().getLook() != null) {
                     out.println(getCurrentRoom().getLook());
                 } else {
-                    out.println("Non c'è niente di interessante qui.\n");
+                    out.println("Non c'e' niente di interessante qui.\n");
                 }
             } else if (p.getCommand().getType() == CommandType.PICK_UP) {
                 if (p.getObject() != null) {
@@ -528,19 +532,26 @@ public class IlSestoSensoGame extends GameDescription {
                         getCurrentRoom().getObjects().remove(p.getObject());
                         out.println("Hai raccolto: " + p.getObject().getDescription());
 
-                        if (p.getObject().getId() == 35) {
-                            end(out);
+                        if (p.getObject().getId() == 56) {
+                            out.println("'05 Marzo 2023\n"
+                                    + "La situazione continua a peggiorare... Non riconosco piu'"
+                                    + "mio figlio, mi guarda con occhi pieni di odio.\n L'altra notte"
+                                    + " mi sono svegliato e l'ho trovato ai piedi del letto\n che"
+                                    + " ci guardava dormire.\nHo paura. Spero che Linda e Roberto"
+                                    + " possano aiutarci.'\n\n"
+                                    + "..la pagina finisce qui e l'ultima e' strappata. \n"
+                                    + "Le iniziali L e R erano sugli asciugamani del bagno. o sbaglio?");
                         }
                     } else {
                         if (p.getObject().getId() == 56) {
-                            out.println("C'è il crocifisso sopra il diario, devo spostarlo per poterlo prendere.");
+                            out.println("C'e' il crocifisso sopra il diario, devo spostarlo per poterlo prendere.");
 
                         } else {
                             out.println("Non puoi raccogliere questo oggetto.");
                         }
                     }
                 } else {
-                    out.println("Non c'è niente da raccogliere qui.");
+                    out.println("Non c'e' niente da raccogliere qui.");
                 }
             } else if (p.getCommand().getType() == CommandType.OPEN) {
                 /*ATTENZIONE: quando un oggetto contenitore viene aperto, tutti gli oggetti contenuti
@@ -548,7 +559,7 @@ public class IlSestoSensoGame extends GameDescription {
                  * Potrebbe non esssere la soluzione ottimale.
                  */
                 if (p.getObject() == null && p.getInvObject() == null) {
-                    out.println("Non c'è niente da aprire qui.");
+                    out.println("Non c'e' niente da aprire qui.");
                 } else {
                     if (p.getObject() != null) {
                         if (p.getObject().isOpenable() && p.getObject().isOpen() == false) {
@@ -632,21 +643,31 @@ public class IlSestoSensoGame extends GameDescription {
                     }
                 } else if (p.getInvObject() != null && p.getInvObject().isPushable()) {
                     out.println("Hai premuto: " + p.getInvObject().getName());
-                    if (p.getInvObject().getId() == 3) {
-                        end(out);
-                    }
                 } else {
                     out.println("Non ci sono oggetti che puoi premere qui.");
                 }
             } else if (p.getCommand().getType() == CommandType.READ) {
                 if (p.getObject() != null && p.getObject().getId() == 7) {
-                    out.println("Buongiorno da mamma e papa'");
+                    out.println("'Buongiorno tesoro, ti ho lasciato il caffe'"
+                            + " pronto in cucina.\nBuona giornata.'\n\n"
+                            + "...ma che strano, io vivo da solo.");
+                        out.println("\nAll'improvviso vedi un'ombra passare"
+                                + " velocissima di fianco \na te e scappare verso"
+                                + " la cabina armadio."
+                                + "\nL'istinto ti dice di scappare a gambe levate\n"
+                                + " ma tu decidi di seguirla.");
                 } else if (p.getObject() != null && p.getObject().getId() == 61) {
-                    out.println("Vade, sátana, invéntor et magíster omnis falláciæ, hostis humánæ salútis. \n"
-                            + "Da locum Christo, in quo nihil invenísti de opéribus tuis: da locum Ecclésiæ unæ, sanctæ, cathólicæ et Apostólicæ, quam Christus ipse acquisívit sánguine suo. \n"
-                            + "Il Dio della pace stritolerà presto Satana sotto i vostri piedi. La grazia del Signore nostro Gesù Cristo sia con voi. “Lettera ai Romani, 16-20” ");
+                    out.println("Vade, sátana, inve'ntor et magíster omnis falláciæ, hostis humánæ salútis. \n"
+                            + "Da locum Christo, in quo nihil invenísti de ope'ribus tuis: da locum Eccle'siæ unæ,\n "
+                            + "sanctæ, cathólicæ et Apostólicæ, quam Christus ipse acquisívit sánguine suo. \n"
+                            + "Il Dio della pace stritolera' presto Satana sotto i vostri piedi.\n "
+                            + "La grazia del Signore nostro Gesu' Cristo sia con voi. “Lettera ai Romani, 16-20”\n ");
+                } else if (p.getObject() != null && p.getObject().getId() == 19) {
+                    out.println("'Calendario 2066' \nMa non e' possibile.."
+                            + "Forse non mi sono ancora svegliato? Siamo nel 2023 o"
+                            + " sono impazzito?");
                 } else {
-                    out.println("Non puoi leggerlo");
+                    out.println("Ma hai bevuto? Non puoi leggere questo oggetto.");
                 }
             } else if (p.getCommand().getType() == CommandType.DIG) {
                 if (p.getObject() != null && p.getObject().getId() == 55) {
@@ -666,7 +687,7 @@ public class IlSestoSensoGame extends GameDescription {
                         }
                         out.println("sulla bara c'e' scritto qualcosa...");
                     } else {
-                        out.println("Ti serve una pala per scavare, sarà qui intorno...");
+                        out.println("Ti serve una pala per scavare, sara' qui intorno...");
                     }
                 } else {
                     out.println("Non puoi scavare qui.");
@@ -680,12 +701,12 @@ public class IlSestoSensoGame extends GameDescription {
                             o.setPickupable(true);
                         }
                     }
-                    out.println("AHIA SCOTTA");
+                    out.println("MALEDIZIONE BRUCIA!!\nMi ha lasciato il segno sulla mano.\n");
                 }
             } else if (p.getCommand().getType() == CommandType.UNLOCK) {
                 if (p.getObject() != null && p.getObject().getId() == 59) {
                     out.println("indizio (inserire il comando: sblocca cassaforte [codice])");
-                    if (p.getCode() == 1111) { //da completare
+                    if (p.getCode() == 2023) {
                         AdvObjectContainer c = (AdvObjectContainer) p.getObject();
                         if (!c.getList().isEmpty()) {
                             out.print(c.getName() + " hai raccolto:");
@@ -700,9 +721,11 @@ public class IlSestoSensoGame extends GameDescription {
                     } else {
                         out.println("codice errato");
                     }
-                } else if (p.getObject() != null && p.getObject().getId() == 62) {
-                    out.println("inizio (inserire il comando: sblocca diario [codice]");
-                    if (p.getCode() == 1620) { //true
+                    
+                } else if (p.getObject() != null && p.getObject().getId() == 63) {
+                    out.println("'Che il Signore ci protegga dal maligno che dimora in questa casa.'\n"
+                            + " (inserire il comando: sblocca diario [codice]");
+                    if (p.getCode() == 1620) { 
                         end(out);
                     } else {
                         out.println("codice errato");
@@ -713,7 +736,7 @@ public class IlSestoSensoGame extends GameDescription {
 
             }
             if (noroom) {
-                out.println("Da quella parte non si può andare c'è un muro!\nNon hai ancora acquisito i poteri per oltrepassare i muri...");
+                out.println("Da quella parte non si puo' andare c'e' un muro!\nNon hai ancora acquisito i poteri per oltrepassare i muri...");
             } else if (move) {
                 out.println(getCurrentRoom().getName());
                 out.println("================================================");
@@ -723,7 +746,7 @@ public class IlSestoSensoGame extends GameDescription {
     }
 
     private void end(PrintStream out) {
-        out.println("Premi il pulsante del giocattolo e in seguito ad una forte esplosione la tua casa prende fuoco...\ntu e tuoi famigliari cercate invano di salvarvi e venite avvolti dalle fiamme...\nè stata una morte CALOROSA...addio!");
+        out.println("Premi il pulsante del giocattolo e in seguito ad una forte esplosione la tua casa prende fuoco...\ntu e tuoi famigliari cercate invano di salvarvi e venite avvolti dalle fiamme...\ne' stata una morte CALOROSA...addio!");
         setOver(true);
     }
 
