@@ -48,6 +48,7 @@ public class Parser {
                 if (tokens.size() > 1) {
                     int io = checkForObject(tokens.get(1), objects);
                     int ioinv = -1;
+                    int code = -1;
                     if (io < 0 && tokens.size() > 2) {
                         io = checkForObject(tokens.get(2), objects);
                     }
@@ -57,14 +58,23 @@ public class Parser {
                             ioinv = checkForObject(tokens.get(2), inventory);
                         }
                     }
+
+                    if(ioinv == -1){
+                        try{
+                            code = Integer.parseInt(tokens.get(2));
+                        } catch (Exception e){
+                            code = -1;
+                        }
+                    }
+
                     if (io > -1 && ioinv > -1) {
-                        return new ParserOutput(commands.get(ic), objects.get(io), inventory.get(ioinv));
+                        return new ParserOutput(commands.get(ic), objects.get(io), inventory.get(ioinv), code);
                     } else if (io > -1) {
-                        return new ParserOutput(commands.get(ic), objects.get(io), null);
+                        return new ParserOutput(commands.get(ic), objects.get(io), null, code);
                     } else if (ioinv > -1) {
-                        return new ParserOutput(commands.get(ic), null, inventory.get(ioinv));
+                        return new ParserOutput(commands.get(ic), null, inventory.get(ioinv), code);
                     } else {
-                        return new ParserOutput(commands.get(ic), null, null);
+                        return new ParserOutput(commands.get(ic), null, null, code);
                     }
                 } else {
                     return new ParserOutput(commands.get(ic), null);

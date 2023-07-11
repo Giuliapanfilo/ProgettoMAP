@@ -4,18 +4,63 @@
  */
 package di.uniba.map.ilsestosenso.ui;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 /**
  *
  * @author Camil
  */
 public class Page extends javax.swing.JDialog {
+    
 
     /**
-     * Creates new form Page
+     * Creates new form Help
      */
-    public Page(java.awt.Frame parent, boolean modal) {
+    public Page(java.awt.Frame parent, boolean modal, int type) {
         super(parent, modal);
         initComponents();
+        if(type == 1){
+            this.setTitle("Help");
+            try {
+                    FileReader fileReader = new FileReader("./resources/help.txt");
+                    BufferedReader bufferedReader = new BufferedReader(fileReader);
+                    
+                    StringBuilder text = new StringBuilder();
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        text.append(line).append("\n");
+                    }
+                    
+                    bufferedReader.close();
+                    fileReader.close();
+                    
+                    Text.setText(text.toString());
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+        } else {
+            this.setTitle("13 Marzo 2023");
+             try {
+                    FileReader fileReader = new FileReader("./resources/finale.txt");
+                    BufferedReader bufferedReader = new BufferedReader(fileReader);
+                    
+                    StringBuilder text = new StringBuilder();
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        text.append(line).append("\n");
+                    }
+                    
+                    bufferedReader.close();
+                    fileReader.close();
+                    
+                    Text.setText(text.toString());
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+        }
+        
     }
 
     /**
@@ -28,37 +73,49 @@ public class Page extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Text = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
+        setLocation(new java.awt.Point(600, 150));
+        setResizable(false);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jScrollPane2.setBorder(new javax.swing.border.MatteBorder(null));
+
+        Text.setEditable(false);
+        Text.setBackground(new java.awt.Color(245, 245, 220));
+        Text.setColumns(20);
+        Text.setFont(new java.awt.Font("Sitka Text", 0, 12)); // NOI18N
+        Text.setRows(5);
+        Text.setText("Forse ancora non sai cosa ti aspetta...\nNon sono qui per fermarti e non aspettarti \nche una volta entrato tu possa tornare \nindietro.\nHai un solo compito, scoprire la verità.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLasciate ogni speranza voi che entrate");
+        jScrollPane2.setViewportView(Text);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -97,6 +154,7 @@ public class Page extends javax.swing.JDialog {
             java.util.logging.Logger.getLogger(Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -114,8 +172,8 @@ public class Page extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea Text;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

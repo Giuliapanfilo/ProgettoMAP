@@ -89,7 +89,7 @@ public class Engine extends Thread {
             if (!command.equals("-1")) {
                 ParserOutput p = parser.parse(command, game.getCommands(), game.getCurrentRoom().getObjects(), game.getInventory());
                 if (p == null || p.getCommand() == null) {
-                    System.out.println("Non capisco quello che mi vuoi dire.");
+                    System.out.println("Non capisco quello che mi vuoi dire.\n");
                 } else if (p.getCommand() != null && p.getCommand().getType() == CommandType.END) {
                     System.out.println("Addio!");
                     exitCode = -1;

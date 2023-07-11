@@ -167,6 +167,10 @@ public class UserInterface extends javax.swing.JFrame {
             
             if(gameWindow.getTimeRecorded() != -1)
             {
+                Page finalWindow = new Page(this, true, 2);
+                this.setVisible(false);
+                finalWindow.setVisible(true);
+                this.setVisible(true);
                 userScore.setTime(gameWindow.getTimeRecorded());
                 try
                 {
@@ -193,7 +197,7 @@ public class UserInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_scoreButtonActionPerformed
 
     private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
-        Help helpWindow = new Help(this, true);
+        Page helpWindow = new Page(this, true, 1);
         this.setVisible(false);
         helpWindow.setVisible(true);
         this.setVisible(true);

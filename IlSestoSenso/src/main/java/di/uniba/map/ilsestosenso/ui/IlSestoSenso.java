@@ -202,7 +202,7 @@ public class IlSestoSenso extends javax.swing.JDialog {
                         .addGap(11, 11, 11)
                         .addComponent(Stopwatch)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
                     .addComponent(input))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,6 +249,7 @@ public class IlSestoSenso extends javax.swing.JDialog {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER)
         {
             engine.setCommand(input.getText());
+            output.append("[" + input.getText() + "]" + "\n\n");
             input.setText("");
             
             try {
