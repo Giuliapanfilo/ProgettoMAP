@@ -72,7 +72,7 @@ public class Engine extends Thread {
     @Override
     public void run() {
         System.out.println("================================");
-        System.out.println("* Adventure v. 0.3 - 2021-2022 *");
+        System.out.println("* Il Sesto Senso v. 1.0 - 2023 *");
         System.out.println("================================");
         System.out.println(game.getCurrentRoom().getName());
         System.out.println();

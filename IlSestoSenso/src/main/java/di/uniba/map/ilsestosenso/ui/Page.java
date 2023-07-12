@@ -159,7 +159,7 @@ public class Page extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Page dialog = new Page(new javax.swing.JFrame(), true);
+                Page dialog = new Page(new javax.swing.JFrame(), true, 1);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

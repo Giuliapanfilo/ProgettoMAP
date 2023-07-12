@@ -50,6 +50,7 @@ public class UserInterface extends javax.swing.JFrame {
         scoreButton = new javax.swing.JButton();
         helpButton = new javax.swing.JButton();
         settingsButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("IL SESTO SENSO");
@@ -91,6 +92,14 @@ public class UserInterface extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 20)); // NOI18N
+        jButton1.setText("STATISTICHE");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout wallpaperLayout = new javax.swing.GroupLayout(wallpaper);
         wallpaper.setLayout(wallpaperLayout);
         wallpaperLayout.setHorizontalGroup(
@@ -105,17 +114,19 @@ public class UserInterface extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addComponent(jLabel1))
                     .addGroup(wallpaperLayout.createSequentialGroup()
-                        .addGap(158, 158, 158)
+                        .addGap(117, 117, 117)
                         .addComponent(scoreButton)
-                        .addGap(64, 64, 64)
-                        .addComponent(helpButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(helpButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1))
                     .addGroup(wallpaperLayout.createSequentialGroup()
                         .addGap(246, 246, 246)
                         .addComponent(startButton)))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
 
-        wallpaperLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {helpButton, scoreButton, startButton});
+        wallpaperLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {helpButton, jButton1, scoreButton, startButton});
 
         wallpaperLayout.setVerticalGroup(
             wallpaperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,7 +140,8 @@ public class UserInterface extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(wallpaperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(scoreButton)
-                    .addComponent(helpButton))
+                    .addComponent(helpButton)
+                    .addComponent(jButton1))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
@@ -221,6 +233,13 @@ public class UserInterface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_settingsButtonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Statistic statistic = new Statistic(this, true);
+        this.setVisible(false);
+        statistic.setVisible(true);
+        this.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -265,6 +284,7 @@ public class UserInterface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton helpButton;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton scoreButton;
     private javax.swing.JButton settingsButton;
