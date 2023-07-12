@@ -6,6 +6,7 @@
 package di.uniba.map.ilsestosenso.games;
 
 import di.uniba.map.ilsestosenso.GameDescription;
+import di.uniba.map.ilsestosenso.Weather;
 import di.uniba.map.ilsestosenso.parser.ParserOutput;
 import di.uniba.map.ilsestosenso.type.AdvObject;
 import di.uniba.map.ilsestosenso.type.AdvObjectContainer;
@@ -36,6 +37,9 @@ public class IlSestoSensoGame extends GameDescription {
 
     @Override
     public void init() throws Exception {
+
+        Weather weather = new Weather();
+
         //Commands
         Command nord = new Command(CommandType.NORD, "nord");
         nord.setAlias(new String[]{"n", "N", "Nord", "NORD"});
@@ -109,7 +113,7 @@ public class IlSestoSensoGame extends GameDescription {
         walkinCloset.setLook("Vedi una strana fessura tra due mattonelle del battiscopa. \nSpostandola noti che c'e' una scatoletta.");
         Room bedRoom = new Room(4, "Camera da letto", "Sei nella camera da letto, sul muro a sinistra c'e' un " +
                 "letto matrimoniale a doppia piazza \ncon due comodini e un quadro appeso sopra. \nDi fronte c'e' una scrivania con " +
-                "sopra un pc e una poltrona.", "Ti sei appena svegliato dopo un incubo orribile. \nSei nella tua camera, completamente sudato e tremante."
+                "sopra un pc e una poltrona.", "Ti sei appena svegliato dopo un incubo orribile. \n" + weather.weatherOutput() +"\nSei nella tua camera, completamente sudato e tremante."
                 + "\nIl quadro appeso sopra la testata del letto sembra fissarti, \ncome se sapesse del sogno che hai fatto."
                 + "\nAll'improvviso senti dei rumori provenire da un'altra stanza, \nprobabilmente dal soggiorno, a ovest. "
                 + "\nSembrava la risata di un bambino.");
