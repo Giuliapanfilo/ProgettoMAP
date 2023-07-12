@@ -59,7 +59,7 @@ public class DBScore {
         pstm.close();
     }
 
-    public int averageScore() throws SQLException {
+    public static int averageScore() throws SQLException {
         List<Integer> scores = new ArrayList();
         Statement stm = connection.createStatement();
         ResultSet resultSet = stm.executeQuery("SELECT score FROM score");
@@ -78,7 +78,7 @@ public class DBScore {
         return (int) Math.round(average);
     }
 
-    public List<UserScore> top3player() throws SQLException {
+    public static List<UserScore> top3player() throws SQLException {
         List<UserScore> player = new ArrayList();
         Statement stm = connection.createStatement();
         ResultSet resultSet = stm.executeQuery("SELECT * FROM score");
@@ -97,11 +97,11 @@ public class DBScore {
                 .collect(Collectors.toList());
     }
 
-    public Map<String, Double> averageScoreByDate() throws SQLException {
+    public static Map<String, Double> averageScoreByDate() throws SQLException {
         Map<String, Double> averageScoreByDate = new HashMap<>();
         List<UserScore> player = new ArrayList();
         Statement stm = connection.createStatement();
-        ResultSet resultSet = stm.executeQuery("SELECT date, score FROM score");
+        ResultSet resultSet = stm.executeQuery("SELECT * FROM score");
 
         while (resultSet.next()) {
             UserScore user = new UserScore(resultSet.getString(1), resultSet.getString(4));

@@ -754,7 +754,7 @@ public class IlSestoSensoGame extends GameDescription {
                 out.println("Da quella parte non si puo' andare c'e' un muro!\nNon hai ancora acquisito i poteri per oltrepassare i muri...");
             } else if (move) {
                 out.println(getCurrentRoom().getName());
-                out.println("================================================");
+                out.println("======================================================================================");
                 printDescription(out);
             }
         }
