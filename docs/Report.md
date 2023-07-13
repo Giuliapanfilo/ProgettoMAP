@@ -25,6 +25,10 @@ Realizzato da: <br>
 
 ![](./img/Main.jpg)
 
+>il seguente diagramma mostra le principali classi coinvolte all’avvio del gioco e della partita. Mostra, in particolare, le 3 interfacce principali: >UserInterface è l’interfaccia di avvio, dalla quale è possibile accedere a tutte le sezioni del gioco tra cui il gioco stesso. Una volta avviato, infatti, >apparirà UsernameInput che si occupa dell’inserimento dello username e di verificare la sua validità (può essere non valido perché già utilizzato). Se valido, >verrà avviata la partita.
+>Finita la partita i vari dati verranno salvati nel DB attraverso la classe DBScore.
+>All'inizio del gioco la classe IlSestoSenso si occuperà di avviare l’engine, di reindirizzare l’output del gioco in una textArea dedicata e di avviare il >cronometro attraverso la classe StopWatch (sia engine che stopWatch estendono la classe Thread); ogni volta che l’utente premerà invio o il tasto invia l’engine >si occuperà di fare il parse del comando inserito dall’utente tramite la classe Parser.
+
 ## Specifica algebrica [Inventario]
 
 ### Specifica Sintattica
