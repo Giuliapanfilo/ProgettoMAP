@@ -10,7 +10,7 @@ import di.uniba.map.ilsestosenso.type.Command;
 
 /**
  *
- * @author pierpaolo
+ * @author IlSestoSenso
  */
 public class ParserOutput {
 

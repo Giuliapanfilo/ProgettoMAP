@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Camil
+ * @author IlSestoSenso
  */
 public class Statistic extends javax.swing.JDialog {
     

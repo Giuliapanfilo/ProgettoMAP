@@ -11,7 +11,7 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * @author pierpaolo
+ * @author IlSestoSenso
  */
 public class Command {
 

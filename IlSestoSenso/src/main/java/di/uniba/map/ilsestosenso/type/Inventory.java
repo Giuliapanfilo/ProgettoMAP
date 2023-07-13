@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author pierpaolo
+ * @author IlSestoSenso
  */
 public class Inventory {
 

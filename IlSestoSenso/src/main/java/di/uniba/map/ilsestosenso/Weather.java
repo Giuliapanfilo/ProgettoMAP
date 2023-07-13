@@ -3,7 +3,7 @@ package di.uniba.map.ilsestosenso;
 
 /**
  *
- * @author giuli
+ * @author IlSestoSenso
  */
 
 import com.google.gson.Gson;

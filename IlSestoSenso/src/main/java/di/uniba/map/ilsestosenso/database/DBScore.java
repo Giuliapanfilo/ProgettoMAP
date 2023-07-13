@@ -21,7 +21,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * @author Camil
+ * @author IlSestoSenso
  */
 public class DBScore {
 

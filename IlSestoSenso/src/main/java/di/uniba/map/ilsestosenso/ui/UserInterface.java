@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author Camil
+ * @author IlSestoSenso
  */
 public class UserInterface extends javax.swing.JFrame {
     

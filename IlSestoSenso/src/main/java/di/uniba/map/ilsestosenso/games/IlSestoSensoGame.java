@@ -20,18 +20,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * ATTENZIONE: La descrizione del gioco e' fatta in modo che qualsiasi gioco
- * debba estendere la classe GameDescription. L'Engine e' fatto in modo che possa
- * eseguire qualsiasi gioco che estende GameDescription, in questo modo si
- * possono creare piu' gioci utilizzando lo stesso Engine.
- * <p>
- * Diverse migliorie possono essere applicate: - la descrizione del gioco
- * potrebbe essere caricate da file o da DBMS in modo da non modificare il
- * codice sorgente - l'utilizzo di file e DBMS non e' semplice poiche' all'interno
- * del file o del DBMS dovrebbe anche essere codificata la logica del gioco
- * (nextMove) oltre alla descrizione di stanze, oggetti, ecc...
- *
- * @author pierpaolo
+ * @author IlSestoSenso
  */
 public class IlSestoSensoGame extends GameDescription {
 

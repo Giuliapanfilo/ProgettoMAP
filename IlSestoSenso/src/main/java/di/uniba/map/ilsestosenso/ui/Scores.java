@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Camil
+ * @author IlSestoSenso
  */
 public class Scores extends javax.swing.JDialog {
     

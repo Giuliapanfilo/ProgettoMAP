@@ -2,7 +2,7 @@ package di.uniba.map.ilsestosenso.database;
 
 
 /**
- * @author Giulia
+ * @author IlSestoSenso
  */
 public class UserScore {
 
@@ -39,15 +39,7 @@ public class UserScore {
     public void setTime(int time) {
         this.time = time;
 
-        if (time < 300) {
-            score = 500;
-        } else if (time < 600) {
-            score = 400;
-        } else if (time < 900) {
-            score = 200;
-        } else {
-            score = 100;
-        }
+        score = 100 - (time / 10);
     }
 
     public int getScore() {

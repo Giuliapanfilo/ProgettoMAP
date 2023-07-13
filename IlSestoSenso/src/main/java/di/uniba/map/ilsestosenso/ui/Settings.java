@@ -6,7 +6,7 @@ package di.uniba.map.ilsestosenso.ui;
 
 /**
  *
- * @author Camil
+ * @author IlSestoSenso
  */
 public class Settings extends javax.swing.JDialog {
     
