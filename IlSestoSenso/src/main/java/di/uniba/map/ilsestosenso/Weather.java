@@ -66,13 +66,13 @@ public class Weather {
 
         switch (getWeather()) {
             case "Clear":
-                outputMessage.append("Il cielo è sereno ");
+                outputMessage.append("Il cielo e' sereno ");
                 break;
             case "Thunderstorm":
                 outputMessage.append("Non conviene uscire, fuori ci sono tuoni, fulmini e pioggia a dirotto ");
                 break;
             case "Drizzle":
-                outputMessage.append("C'è una leggera pioggia ");
+                outputMessage.append("C'e' una leggera pioggia ");
                 break;
             case "Rain":
                 outputMessage.append("Piove ");
@@ -81,7 +81,7 @@ public class Weather {
                 outputMessage.append("Sembra Natale, nevica ");
                 break;
             case "Atmosphere":
-                outputMessage.append("C'è una fitta nebbia fuori ");
+                outputMessage.append("C'e' una fitta nebbia fuori ");
                 break;
             case "Cloud":
                 outputMessage.append("E' nuvoloso ");
@@ -96,7 +96,7 @@ public class Weather {
             outputMessage.append("e fa freddo.");
         } else if (getTemperature() < 20)
         {
-            outputMessage.append("e c'è una temperatura media: non fa nè freddo nè caldo");
+            outputMessage.append("e c'e' una temperatura media: non fa ne freddo ne caldo");
         } else if (getTemperature() < 30)
         {
             outputMessage.append("e fa abbastanza caldo.");
