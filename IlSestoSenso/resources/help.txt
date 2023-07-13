@@ -4,9 +4,9 @@ che una volta entrato tu possa tornare
 indietro.
 Hai un solo compito, scoprire la verità.
 
-
-
-
+(gli oggetti sbloccabili hanno un codice 
+da inserire di 4 cifre inseribile tramite
+comando: "sblocca [oggetto] [4 CIFRE]"
 
 
 
