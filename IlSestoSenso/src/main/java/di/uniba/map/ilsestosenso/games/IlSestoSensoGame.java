@@ -86,7 +86,7 @@ public class IlSestoSensoGame extends GameDescription {
                 + "\n il tavolino con un servizio da the e la tv davanti. \nTi incuriosisce il bigliettino sul tavolo,"
                 + "\n non ricordi assolutamente di averlo lasciato.");
         livingRoom.setLook("Nella libreria noti un libro, che potrebbe essere\n"
-                + "un diario, chiuso da un lucchetto..");
+                + "un diario, chiuso da un lucchetto con 4 cifre..");
         Room kitchen = new Room(2, "Cucina", "Sei in cucina, al centro c'e' una grande isola " +
                 "con un piano di lavoro e i fornelli. \nIl resto della cucina di fronte e' composta da un frigorifero, " +
                 "\nuna credenza, un pensile e altri mobili. Sotto la cucina si trovano le ciotole del cibo e \ndell'acqua del cane, " +
