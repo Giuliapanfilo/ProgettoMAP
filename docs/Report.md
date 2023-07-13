@@ -68,7 +68,7 @@ All'inizio del gioco la classe IlSestoSenso si occuperà di avviare l’engine, 
 
 ### DATABASE
 > Il database è stato utilizzato per salvare informazioni riguardanti il risultato
-> della partita. In particolare sono stati salvati l'username del giocatore, la data,
+> della partita. In particolare sono stati salvati lo username del giocatore, la data,
 > il tempo di gioco e il punteggio ottenuto.
 
 ### PROGRAMMAZIONE CONCORRENTE
@@ -80,7 +80,7 @@ All'inizio del gioco la classe IlSestoSenso si occuperà di avviare l’engine, 
 > in base al meteo.
 
 ### SWING
-> É stato utilizzato non solo per la realizzazione dell'interfaccia di gioco principale,
+> Sono state utilizzate non solo per la realizzazione dell'interfaccia di gioco principale,
 > ma anche per tutte le altre schermate, in particolare:
 > * Schermata iniziale
 > * Punteggi
