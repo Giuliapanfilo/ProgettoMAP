@@ -5,7 +5,7 @@
 package di.uniba.map.ilsestosenso;
 
 /**
- * @author Camil
+ * @author IlSestoSenso
  */
 public class StopWatch extends Thread {
 

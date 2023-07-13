@@ -10,7 +10,7 @@ import java.io.IOException;
 
 /**
  *
- * @author Camil
+ * @author IlSestoSenso
  */
 public class Page extends javax.swing.JDialog {
     

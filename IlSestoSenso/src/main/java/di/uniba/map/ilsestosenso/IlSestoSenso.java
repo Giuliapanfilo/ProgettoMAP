@@ -6,7 +6,7 @@ package di.uniba.map.ilsestosenso;
 
 /**
  *
- * @author raffaelepapeo
+ * @author IlSestoSenso
  */
 public class IlSestoSenso {
 

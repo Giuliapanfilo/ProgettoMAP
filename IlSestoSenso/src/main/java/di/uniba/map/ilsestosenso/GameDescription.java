@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  *
- * @author pierpaolo
+ * @author IlSestoSenso
  */
 public abstract class GameDescription {
 

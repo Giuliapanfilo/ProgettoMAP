@@ -26,7 +26,7 @@ import javax.swing.ListModel;
 
 /**
  *
- * @author Camil
+ * @author IlSestoSenso
  */
 public class IlSestoSenso extends javax.swing.JDialog {
 
@@ -60,7 +60,7 @@ public class IlSestoSenso extends javax.swing.JDialog {
             clip.stop();
     }
 
-    public class TextAreaOutputStream extends OutputStream {
+    private class TextAreaOutputStream extends OutputStream {
 
         private JTextArea textArea;
 

@@ -2,7 +2,7 @@ package di.uniba.map.ilsestosenso.database;
 
 
 /**
- * @author Giulia
+ * @author IlSestoSenso
  */
 public class UserScore {
 

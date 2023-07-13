@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Camil
+ * @author IlSestoSenso
  */
 public class UsernameInput extends javax.swing.JDialog {
     
