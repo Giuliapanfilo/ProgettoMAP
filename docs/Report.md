@@ -1,4 +1,8 @@
 # IL SESTO SENSO
+Realizzato da: <br>
+> * _Panfilo Giulia_ **[Matricola: 755423]**
+> * _Papeo Raffaele_ **[Matricola: 758421]**
+> * _Valecce Camil_ **[Matricola: 758482]**
 
 ## Indice
 1. [Descrizione del caso di studio](#descrizione-del-caso-di-studio)
@@ -18,7 +22,38 @@
 > al fine di scoprire la verità.
 ## Diagramma delle classi
 
-## Specifica algebrica
+![](./img/Main.jpg)
+
+## Specifica algebrica [Inventario]
+
+### Specifica Sintattica
+**sorts**: inventory, advobject <br>
+**operators**:
+* `new_inventory(inventory, advobject) -> inventory` 
+* `add(inventory, advobject) -> inventory`
+* `remove(inventory, advobject) -> inventory`
+* `setList(inventory) -> inventory`
+* `getList() -> advobject`
+
+### Costruttori
+**declare** `i,i'` : inventario,` o,o'` :advobject
+
+![](./img/tabellaCostruttori.jpg)
+
+### Specifica Semantica
+**declare** `i,i’` : inventario,` o,o’` :advobject
+
+* `getList(new_inv()) = i’`
+* `getList(add(i,o)) = add(getList(),o)`
+* `remove(new_inv(), o’) = error`
+* `remove(add(i,o),o’) = if o’==o, then return I, else remove(i,o’)`
+* `setList(new_inv()) = i’`
+* `setList(add(i,o)) = i’`
+
+### Specifica di Restrizione
+
+* `remove(new_inv(),o’)`
+
 
 ## Descrizione argomenti del corso
 
