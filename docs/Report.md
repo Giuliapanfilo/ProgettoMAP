@@ -76,7 +76,7 @@ All'inizio del gioco la classe IlSestoSenso si occuperà di avviare l’engine, 
 > del motore di gioco.
 
 ### SOCKET/RESTFUL
-> É stato utilizzato un API di Open Weather per mostrare un messaggio personalizzato 
+> É stata utilizzata una API di Open Weather per mostrare un messaggio personalizzato 
 > in base al meteo.
 
 ### SWING
