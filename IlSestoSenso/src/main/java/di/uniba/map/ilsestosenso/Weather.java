@@ -102,7 +102,7 @@ public class Weather {
             outputMessage.append("e fa abbastanza caldo.");
         } else if (getTemperature() > 30)
         {
-            outputMessage.append("e fa un caldo boia.");
+            outputMessage.append("e fa un caldo torrido.");
         }
         
         return(outputMessage.toString());
