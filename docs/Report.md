@@ -9,6 +9,7 @@ Realizzato da: <br>
 2. [Diagramma delle classi](#diagramma-delle-classi)
 3. [Specifica algebrica](#specifica-algebrica)
 4. [Descrizine argomenti del corso](#descrizione-argomenti-del-corso)
+5. [Dettagli gioco](#dettagli-gioco)
 
 
 
@@ -90,5 +91,7 @@ Realizzato da: <br>
 > * Media dei punteggi raggruppati per data
 > * Classifica dei 3 migliori giocatori
 
+### DETTAGLI GIOCO
 
+![](./img/mappa.png)
 
